@@ -1,6 +1,6 @@
 ﻿using Astronomy.Coordinates;
 
-namespace CelestialObjects
+namespace Astronomy.CelestialObjects
 {
     public interface ICelestialObject : IEquatable<ICelestialObject>
     {
