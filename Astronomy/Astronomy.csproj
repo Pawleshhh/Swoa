@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Units\Angle\" />
+    <Compile Remove="Units\Angle\**" />
+    <EmbeddedResource Remove="Units\Angle\**" />
+    <None Remove="Units\Angle\**" />
   </ItemGroup>
 
 </Project>

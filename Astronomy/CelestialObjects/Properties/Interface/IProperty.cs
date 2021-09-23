@@ -15,11 +15,4 @@ namespace Astronomy.CelestialObjects.Properties
 
     }
 
-    public interface IProperty<T> : IProperty, IEquatable<IProperty<T>>
-    {
-
-        new T Value { get; }
-
-    }
-
 }

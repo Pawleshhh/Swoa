@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Astronomy.Units
 {
     public struct EquatorialCoordinates : IEquatable<EquatorialCoordinates>

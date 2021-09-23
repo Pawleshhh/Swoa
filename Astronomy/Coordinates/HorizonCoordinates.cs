@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Astronomy.Units
 {
     public struct HorizonCoordinates : IEquatable<HorizonCoordinates>

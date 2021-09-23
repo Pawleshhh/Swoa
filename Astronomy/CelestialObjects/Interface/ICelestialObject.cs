@@ -1,5 +1,7 @@
 ﻿using Astronomy.CelestialObjects.Properties;
 using Astronomy.Units;
+using System;
+using System.Collections.Generic;
 
 namespace Astronomy.CelestialObjects
 {

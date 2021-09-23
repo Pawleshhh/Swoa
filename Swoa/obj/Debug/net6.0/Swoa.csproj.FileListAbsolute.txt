@@ -11,3 +11,15 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.Core
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\ref\Swoa.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Swoa.deps.json
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Swoa.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\ref\Swoa.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Swoa.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.AssemblyReference.cache
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.GeneratedMSBuildEditorConfig.editorconfig
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.AssemblyInfoInputs.cache
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.AssemblyInfo.cs
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.CoreCompileInputs.cache
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\ref\Swoa.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.pdb

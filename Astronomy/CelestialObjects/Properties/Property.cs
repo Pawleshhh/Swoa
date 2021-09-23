@@ -1,10 +1,12 @@
 ﻿
+using System;
+
 namespace Astronomy.CelestialObjects.Properties
 {
-    public class PropertyBase<T> : IProperty<T>
+    public class Property<T> : IProperty, IEquatable<Property<T>>
     {
 
-        public PropertyBase(string name, T value)
+        public Property(string name, T value)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException(nameof(name));
@@ -21,13 +23,13 @@ namespace Astronomy.CelestialObjects.Properties
 
         public bool Equals(IProperty? other)
         {
-            if (other == null) 
+            if (other == null)
                 return false;
 
-            return Equals((IProperty<T>)other);
+            return Equals((Property<T>)other);
         }
 
-        public bool Equals(IProperty<T>? other)
+        public bool Equals(Property<T>? other)
         {
             if (other == null)
                 return false;
@@ -40,7 +42,7 @@ namespace Astronomy.CelestialObjects.Properties
 
         public override bool Equals(object? obj)
         {
-            if (obj is IProperty<T> property)
+            if (obj is Property<T> property)
                 return Equals(property);
 
             return false;
