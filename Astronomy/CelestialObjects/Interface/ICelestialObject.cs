@@ -15,7 +15,9 @@ namespace Astronomy.CelestialObjects
         HorizonCoordinates HorizonCoordinates { get; }
         EquatorialCoordinates EquatorialCoordinates { get; }
 
-        IReadOnlyDictionary<string, IProperty> Properties { get; }
+        IProperty this[string key] { get; }
+
+        bool ContainsProperty(string key);
 
     }
 }

@@ -26,5 +26,8 @@ namespace Astronomy.CelestialObjects.Properties
         public IProperty BuildProperty(T value)
             => buildProperty.Invoke(value);
 
+        public KeyValuePair<string, IProperty> ToKeyValuePair(T value)
+            => new KeyValuePair<string, IProperty>(Key, BuildProperty(value));
+
     }
 }

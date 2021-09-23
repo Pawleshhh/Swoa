@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Astronomy.CelestialObjects.Properties
 {
-    public static class Properties
+    public static class AllProperties
     {
 
         public static PropertyInfo<int> AbsoluteMagnitude { get; } = GetPropertyInfo<int>("Absolute magnitude");
