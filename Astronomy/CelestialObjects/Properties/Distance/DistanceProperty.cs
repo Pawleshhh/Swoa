@@ -4,8 +4,8 @@ namespace Astronomy.CelestialObjects.Properties
     public class DistanceProperty : PropertyBase<double>
     {
 
-        public DistanceProperty(double distance, DistanceUnit unit)
-            : base("Distance", distance)
+        public DistanceProperty(string name, double distance, DistanceUnit unit)
+            : base(name, distance)
         {
             if (!Enum.IsDefined(typeof(DistanceUnit), unit))
                 throw new ArgumentException(nameof(unit));
