@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swoa", "Swoa.csproj", "{30A6A675-955E-4315-8C22-87E45D1D06B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelestialObjects", "..\CelestialObjects\CelestialObjects.csproj", "{479877C7-2F82-479A-A830-592AE5B09F60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30A6A675-955E-4315-8C22-87E45D1D06B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A6A675-955E-4315-8C22-87E45D1D06B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A6A675-955E-4315-8C22-87E45D1D06B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A6A675-955E-4315-8C22-87E45D1D06B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{479877C7-2F82-479A-A830-592AE5B09F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479877C7-2F82-479A-A830-592AE5B09F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479877C7-2F82-479A-A830-592AE5B09F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479877C7-2F82-479A-A830-592AE5B09F60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5291F32-9A86-4726-9430-DD1C0E8287B6}
+	EndGlobalSection
+EndGlobal
