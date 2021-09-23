@@ -1,0 +1,13 @@
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\bin\Debug\net6.0\Astronomy.deps.json
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\bin\Debug\net6.0\Astronomy.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\bin\Debug\net6.0\ref\Astronomy.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\bin\Debug\net6.0\Astronomy.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.csproj.AssemblyReference.cache
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.AssemblyInfoInputs.cache
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.AssemblyInfo.cs
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.ImplicitNamespaceImports.cs
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.csproj.CoreCompileInputs.cache
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\ref\Astronomy.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net6.0\Astronomy.pdb

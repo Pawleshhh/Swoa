@@ -1,0 +1,13 @@
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\Swoa.deps.json
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\Swoa.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\ref\Swoa.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\Swoa.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.AssemblyReference.cache
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.AssemblyInfoInputs.cache
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.AssemblyInfo.cs
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.ImplicitNamespaceImports.cs
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.CoreCompileInputs.cache
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\ref\Swoa.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.pdb

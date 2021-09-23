@@ -1,4 +1,5 @@
-﻿using Astronomy.Coordinates;
+﻿using Astronomy.CelestialObjects.Properties;
+using Astronomy.Coordinates;
 
 namespace Astronomy.CelestialObjects
 {
@@ -11,6 +12,8 @@ namespace Astronomy.CelestialObjects
 
         HorizonCoordinates HorizonCoordinates { get; }
         EquatorialCoordinates EquatorialCoordinates { get; }
+
+        IReadOnlyDictionary<string, IProperty> Properties { get; }
 
     }
 }
