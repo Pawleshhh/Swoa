@@ -1,5 +1,5 @@
 ﻿using Astronomy.CelestialObjects.Properties;
-using Astronomy.Coordinates;
+using Astronomy.Units;
 
 namespace Astronomy.CelestialObjects
 {

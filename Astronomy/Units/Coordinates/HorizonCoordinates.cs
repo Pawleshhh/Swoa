@@ -1,5 +1,5 @@
 ﻿
-namespace Astronomy.Coordinates
+namespace Astronomy.Units
 {
     public struct HorizonCoordinates : IEquatable<HorizonCoordinates>
     {
