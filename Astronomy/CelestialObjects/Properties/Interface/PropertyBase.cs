@@ -1,7 +1,7 @@
 ﻿
 namespace Astronomy.CelestialObjects.Properties
 {
-    public abstract class PropertyBase<T> : IProperty<T>
+    public class PropertyBase<T> : IProperty<T>
     {
 
         public PropertyBase(string name, T value)
