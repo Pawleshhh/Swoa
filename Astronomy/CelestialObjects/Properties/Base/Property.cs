@@ -4,40 +4,34 @@ using System;
 
 namespace Astronomy.CelestialObjects.Properties
 {
-    public class Property<T, U> : IProperty, IEquatable<Property<T, U>>
+    public class Property<T> : IProperty, IEquatable<Property<T>>
         where T : IComparable<T>
-        where U : Unit
     {
 
-        public Property(string name, T value, U unit)
+        public Property(string name, T value)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException(nameof(name));
 
             Name = name;
             Value = value ?? throw new ArgumentNullException(nameof(value));
-            Unit = unit ?? throw new ArgumentNullException(nameof(unit));
         }
 
         public string Name { get; }
 
         object IProperty.Value => Value;
 
-        Unit IProperty.Unit => Unit;
-
         public T Value { get; }
-
-        public U Unit { get; }
 
         public bool Equals(IProperty? other)
         {
             if (other == null)
                 return false;
 
-            return Equals((Property<T, U>)other);
+            return Equals((Property<T>)other);
         }
 
-        public bool Equals(Property<T, U>? other)
+        public bool Equals(Property<T>? other)
         {
             if (other == null)
                 return false;
@@ -50,7 +44,7 @@ namespace Astronomy.CelestialObjects.Properties
 
         public override bool Equals(object? obj)
         {
-            if (obj is Property<T, U> property)
+            if (obj is Property<T> property)
                 return Equals(property);
 
             return false;

@@ -14,8 +14,6 @@ namespace Astronomy.CelestialObjects.Properties
 
         object Value { get; }
 
-        Unit Unit { get; }
-
     }
 
 }
