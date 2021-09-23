@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Astronomy.Coordinates;
 
 namespace CelestialObjects
 {
@@ -12,6 +8,9 @@ namespace CelestialObjects
         string Name { get; }
 
         double VisualMagnitude { get; }
+
+        HorizonCoordinates HorizonCoordinates { get; }
+        EquatorialCoordinates EquatorialCoordinates { get; }
 
     }
 }

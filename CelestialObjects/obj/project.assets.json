@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Astronomy/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Astronomy.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Astronomy.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Astronomy/1.0.0": {
+      "type": "project",
+      "path": "../Astronomy/Astronomy.csproj",
+      "msbuildProject": "../Astronomy/Astronomy.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Astronomy >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\mtwp\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj": {
+              "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
