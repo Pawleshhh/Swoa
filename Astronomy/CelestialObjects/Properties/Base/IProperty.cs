@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Astronomy.Units;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace Astronomy.CelestialObjects.Properties
         string Name { get; }
 
         object Value { get; }
+
+        Unit Unit { get; }
 
     }
 
