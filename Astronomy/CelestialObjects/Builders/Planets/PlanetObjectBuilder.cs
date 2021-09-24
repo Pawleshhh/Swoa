@@ -55,6 +55,8 @@ namespace Astronomy.CelestialObjects
 
         public bool Atmosphere { get; set; }
 
+        public int SatelliteCount { get; set; }
+
         protected override Dictionary<string, IProperty> GetProperties()
         {
             var properties = new Dictionary<string, IProperty>(new KeyValuePair<string, IProperty>[]
@@ -92,7 +94,8 @@ namespace Astronomy.CelestialObjects
                 AllProperties.Obliquity.ToKeyValuePair(Obliquity),
                 AllProperties.Eccentricity.ToKeyValuePair(Eccentricity),
                 AllProperties.Inclination.ToKeyValuePair(Inclination),
-                AllProperties.Atmosphere.ToKeyValuePair(Atmosphere)
+                AllProperties.Atmosphere.ToKeyValuePair(Atmosphere),
+                AllProperties.SatelliteCount.ToKeyValuePair(SatelliteCount)
             });
 
             return properties;
