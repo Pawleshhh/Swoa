@@ -18,7 +18,7 @@ namespace Astronomy.CelestialObjects
         public HorizonCoordinates HorizonCoordinates { get; set; }
         public EquatorialCoordinates EquatorialCoordinates { get; set; }
 
-        public abstract Dictionary<string, IProperty> GetProperties();
+        public abstract CelestialObjectBase BuildCelestialObject();
 
     }
 }

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Astronomy.CelestialObjects
 {
-    public abstract class CelestialObjectBase : ICelestialObject
+    public class CelestialObjectBase : ICelestialObject
     {
 
         #region Constructors
 
         public CelestialObjectBase(string name, double visualMagnitude, HorizonCoordinates horizonCoordinates, EquatorialCoordinates equatorialCoordinates,
-            CelestialObjectBuilder builder)
+            Dictionary<string, IProperty> properties)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException(nameof(name));
@@ -24,7 +24,7 @@ namespace Astronomy.CelestialObjects
             HorizonCoordinates = horizonCoordinates;
             EquatorialCoordinates = equatorialCoordinates;
 
-            properties = builder.GetProperties();
+            this.properties = properties ?? throw new ArgumentNullException(nameof(properties));
         }
 
         #endregion
