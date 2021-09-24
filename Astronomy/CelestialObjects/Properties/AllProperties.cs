@@ -79,6 +79,8 @@ namespace Astronomy.CelestialObjects.Properties
 
         public static PropertyInfo<string> Satellites { get; } = GetPropertyInfo<string>("Satellites");
 
+        public static PropertyInfo<int> Age { get; } = GetPropertyInfo<int>("Age");
+
         private static PropertyInfo<T> GetPropertyInfo<T>(string name, [CallerMemberName]string key = "noKey") where T : IComparable<T>
             => new PropertyInfo<T>(n => new Property<T>(name, n), key);
     }
