@@ -1,9 +1,6 @@
-﻿using Astronomy.Units;
+﻿using Astronomy.CelestialObjects.Properties;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Astronomy.CelestialObjects
 {
@@ -58,9 +55,48 @@ namespace Astronomy.CelestialObjects
 
         public bool Atmosphere { get; set; }
 
-        public override CelestialObjectBase BuildCelestialObject()
+        protected override Dictionary<string, IProperty> GetProperties()
         {
-            throw new NotImplementedException();
+            var properties = new Dictionary<string, IProperty>(new KeyValuePair<string, IProperty>[]
+            {
+                AllProperties.RisesAt.ToKeyValuePair(RisesAt),
+                AllProperties.SetsAt.ToKeyValuePair(SetsAt),
+                AllProperties.DistanceToSun.ToKeyValuePair(DistanceToSun),
+                AllProperties.DistanceToEarth.ToKeyValuePair(DistanceToEarth),
+                AllProperties.AvgDistanceToSun.ToKeyValuePair(AverageDistanceToSun),
+                AllProperties.AvgDistanceToEarth.ToKeyValuePair(AverageDistanceToEarth),
+                AllProperties.Peryhelium.ToKeyValuePair(Peryhelium),
+                AllProperties.Aphelium.ToKeyValuePair(Aphelium),
+                AllProperties.Perygeum.ToKeyValuePair(Perygeum),
+                AllProperties.Apogeum.ToKeyValuePair(Apogeum),
+                AllProperties.LengthOfDay.ToKeyValuePair(LengthOfDay),
+                AllProperties.LengthOfYear.ToKeyValuePair(LengthOfYear),
+                AllProperties.LengthOfDayEarthRelative.ToKeyValuePair(LengthOfDayEarthRelative),
+                AllProperties.LengthOfYearEarthRelative.ToKeyValuePair(LengthOfYearEarthRelative),
+                AllProperties.ApparentDiameter.ToKeyValuePair(ApparentDiameter),
+                AllProperties.Radius.ToKeyValuePair(Radius),
+                AllProperties.RadiusEarthRelative.ToKeyValuePair(RadiusEarthRelative),
+                AllProperties.Volume.ToKeyValuePair(Volume),
+                AllProperties.VolumeEarthRelative.ToKeyValuePair(VolumeEarthRelative),
+                AllProperties.Mass.ToKeyValuePair(Mass),
+                AllProperties.MassEarthRelative.ToKeyValuePair(MassEarthRelative),
+                AllProperties.Density.ToKeyValuePair(Density),
+                AllProperties.DensityEarthRelative.ToKeyValuePair(DensityEarthRelative),
+                AllProperties.SurfaceArea.ToKeyValuePair(SurfaceArea),
+                AllProperties.SurfaceAreaEarthRelative.ToKeyValuePair(SurfaceAreaEarthRelative),
+                AllProperties.Gravity.ToKeyValuePair(Gravity),
+                AllProperties.OrbitalVelocity.ToKeyValuePair(OrbitalVelocity),
+                AllProperties.MaximumSurfaceTemperature.ToKeyValuePair(MaximumSurfaceTemperature),
+                AllProperties.MinimumSurfaceTemperature.ToKeyValuePair(MinimumSurfaceTemperature),
+                AllProperties.AverageSurfaceTemperature.ToKeyValuePair(AverageSurfaceTemperature),
+                AllProperties.Obliquity.ToKeyValuePair(Obliquity),
+                AllProperties.Eccentricity.ToKeyValuePair(Eccentricity),
+                AllProperties.Inclination.ToKeyValuePair(Inclination),
+                AllProperties.Atmosphere.ToKeyValuePair(Atmosphere)
+            });
+
+            return properties;
         }
+
     }
 }

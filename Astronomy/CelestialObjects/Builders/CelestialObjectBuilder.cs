@@ -11,14 +11,20 @@ namespace Astronomy.CelestialObjects
     public abstract class CelestialObjectBuilder
     {
 
-        public string? Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public double VisualMagnitude { get; set; }
 
         public HorizonCoordinates HorizonCoordinates { get; set; }
         public EquatorialCoordinates EquatorialCoordinates { get; set; }
 
-        public abstract CelestialObjectBase BuildCelestialObject();
+        public virtual CelestialObjectBase BuildCelestialObject()
+        {
+            var properties = GetProperties();
+            return new CelestialObjectBase(Name, VisualMagnitude, HorizonCoordinates, EquatorialCoordinates, properties);
+        }
+
+        protected abstract Dictionary<string, IProperty> GetProperties();
 
     }
 }
