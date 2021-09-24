@@ -18,5 +18,10 @@ namespace Astronomy.CelestialObjects
 
         public static CelestialObjectType None { get; } = new CelestialObjectType(string.Empty);
 
+        public virtual CelestialObjectType GetDefault()
+        {
+            return None;
+        }
+
     }
 }
