@@ -10,7 +10,7 @@ namespace Astronomy.CelestialObjects.Properties
     public static class AllProperties
     {
 
-        public static PropertyInfo<int> AbsoluteMagnitude { get; } = GetPropertyInfo<int>("Absolute magnitude");
+        public static PropertyInfo<double> AbsoluteMagnitude { get; } = GetPropertyInfo<double>("Absolute magnitude");
 
         public static PropertyInfo<TimeSpan> RisesAt { get; } = GetPropertyInfo<TimeSpan>("Rises at");
         public static PropertyInfo<TimeSpan> SetsAt { get; } = GetPropertyInfo<TimeSpan>("Sets at");

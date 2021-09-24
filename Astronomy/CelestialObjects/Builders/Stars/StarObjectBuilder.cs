@@ -10,7 +10,7 @@ namespace Astronomy.CelestialObjects
     public class StarObjectBuilder : CelestialObjectBuilder
     {
 
-        public int AbsoluteMagnitude { get; set; }
+        public double AbsoluteMagnitude { get; set; }
 
         public string SpectralClass { get; set; } = string.Empty;
 
