@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31612.314
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swoa", "Swoa.csproj", "{30A6A675-955E-4315-8C22-87E45D1D06B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swoa", "Swoa.csproj", "{30A6A675-955E-4315-8C22-87E45D1D06B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Astronomy", "..\Astronomy\Astronomy.csproj", "{3FC57C11-9C88-452D-A4A5-CF17A1D68347}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astronomy", "..\Astronomy\Astronomy.csproj", "{3FC57C11-9C88-452D-A4A5-CF17A1D68347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "..\Utilities\Utilities.csproj", "{694DBB7E-D041-4A83-957A-BC9990316F08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3FC57C11-9C88-452D-A4A5-CF17A1D68347}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FC57C11-9C88-452D-A4A5-CF17A1D68347}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FC57C11-9C88-452D-A4A5-CF17A1D68347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{694DBB7E-D041-4A83-957A-BC9990316F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{694DBB7E-D041-4A83-957A-BC9990316F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{694DBB7E-D041-4A83-957A-BC9990316F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{694DBB7E-D041-4A83-957A-BC9990316F08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
