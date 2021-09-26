@@ -3,12 +3,12 @@ using System;
 
 namespace Astronomy.Units
 {
-    public struct HorizonCoordinates : IEquatable<HorizonCoordinates>
+    public struct HorizontalCoordinates : IEquatable<HorizontalCoordinates>, IComparable<HorizontalCoordinates>
     {
 
         #region Constructors
 
-        public HorizonCoordinates(double alt, double az)
+        public HorizontalCoordinates(double alt, double az)
         {
             (Altitude, Azimuth) = (alt, az);
         }
@@ -24,7 +24,12 @@ namespace Astronomy.Units
 
         #region Methods
 
-        public bool Equals(HorizonCoordinates horizonCoordinates)
+        public int CompareTo(HorizontalCoordinates other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(HorizontalCoordinates horizonCoordinates)
             => Altitude.Equals(horizonCoordinates.Altitude) && Azimuth.Equals(horizonCoordinates.Azimuth);
 
         public override bool Equals(object? obj)
@@ -32,7 +37,7 @@ namespace Astronomy.Units
             if (obj == null)
                 return false;
 
-            if (obj is HorizonCoordinates coordinates)
+            if (obj is HorizontalCoordinates coordinates)
                 return Equals(coordinates);
 
             return false;

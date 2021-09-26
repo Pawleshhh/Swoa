@@ -3,7 +3,7 @@ using System;
 
 namespace Astronomy.Units
 {
-    public struct EquatorialCoordinates : IEquatable<EquatorialCoordinates>
+    public struct EquatorialCoordinates : IEquatable<EquatorialCoordinates>, IComparable<EquatorialCoordinates>
     {
 
         #region Constructors
@@ -26,6 +26,11 @@ namespace Astronomy.Units
 
         public bool Equals(EquatorialCoordinates equatorialCoordinates)
             => Declination.Equals(equatorialCoordinates.Declination) && RightAscension.Equals(equatorialCoordinates.RightAscension);
+
+        public int CompareTo(EquatorialCoordinates other)
+        {
+            throw new NotImplementedException();
+        }
 
         public override bool Equals(object? obj)
         {
