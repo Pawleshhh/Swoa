@@ -1,8 +1,6 @@
-﻿
-using Astronomy.Units;
-using System;
+﻿using System;
 
-namespace Astronomy.CelestialObjects.Properties
+namespace CelestialObjects
 {
     public class Property<T> : IProperty, IEquatable<Property<T>>
         where T : IComparable<T>

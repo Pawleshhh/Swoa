@@ -1,11 +1,48 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "Astronomy/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Astronomy.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Astronomy.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilities.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Astronomy/1.0.0": {
+      "type": "project",
+      "path": "../Astronomy/Astronomy.csproj",
+      "msbuildProject": "../Astronomy/Astronomy.csproj"
+    },
+    "Utilities/1.0.0": {
+      "type": "project",
+      "path": "../Utilities/Utilities.csproj",
+      "msbuildProject": "../Utilities/Utilities.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "Astronomy >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\1\\.nuget\\packages\\": {},
@@ -42,7 +79,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj": {
+              "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
