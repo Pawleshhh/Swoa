@@ -1,0 +1,17 @@
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\CelestialObjects.deps.json
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\CelestialObjects.dll
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\ref\CelestialObjects.dll
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\CelestialObjects.pdb
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\Astronomy.dll
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\Utilities.dll
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\Astronomy.pdb
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\bin\Debug\net5.0\Utilities.pdb
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.csproj.AssemblyReference.cache
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.GeneratedMSBuildEditorConfig.editorconfig
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.AssemblyInfoInputs.cache
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.AssemblyInfo.cs
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.csproj.CoreCompileInputs.cache
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.csproj.CopyComplete
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.dll
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\ref\CelestialObjects.dll
+N:\Programowanie\Ogólne\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.pdb
