@@ -3,6 +3,6 @@
     public abstract record StarObject : CelestialObject
     {
         public string SpectralClass { get; init; } = string.Empty;
-        public double AbsoluteMagnitude { get; init; }
+        public virtual double AbsoluteMagnitude { get; init; }
     }
 }
