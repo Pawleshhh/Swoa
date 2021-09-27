@@ -22,3 +22,4 @@ N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.CoreCompileInput
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.dll
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\ref\Swoa.dll
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.AssemblyReference.cache
