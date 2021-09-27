@@ -7,14 +7,53 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "Swoa/1.0.0": {
+        "dependencies": {
+          "CelestialObjects": "1.0.0"
+        },
         "runtime": {
           "Swoa.dll": {}
+        }
+      },
+      "Astronomy/1.0.0": {
+        "dependencies": {
+          "Utilities": "1.0.0"
+        },
+        "runtime": {
+          "Astronomy.dll": {}
+        }
+      },
+      "CelestialObjects/1.0.0": {
+        "dependencies": {
+          "Astronomy": "1.0.0"
+        },
+        "runtime": {
+          "CelestialObjects.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "runtime": {
+          "Utilities.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Swoa/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Astronomy/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CelestialObjects/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utilities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

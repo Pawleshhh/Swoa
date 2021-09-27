@@ -23,3 +23,10 @@ N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.dll
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\ref\Swoa.dll
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.AssemblyReference.cache
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Astronomy.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\CelestialObjects.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Utilities.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\CelestialObjects.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Astronomy.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Utilities.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.CopyComplete
