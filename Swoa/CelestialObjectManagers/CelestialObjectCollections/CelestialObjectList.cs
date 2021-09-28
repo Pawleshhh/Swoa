@@ -113,7 +113,7 @@ namespace Swoa
 
             celestialObjects = new List<CelestialObject>();
 
-            OnRemoved(removed.ToArray());
+            OnCleared(removed.ToArray());
         }
 
         public bool Contains(CelestialObject item)

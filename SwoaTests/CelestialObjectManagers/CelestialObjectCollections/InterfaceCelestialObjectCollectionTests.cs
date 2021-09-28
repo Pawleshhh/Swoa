@@ -81,7 +81,7 @@ namespace Swoa.Tests
         public void Removed_RemovesItem_RemovedEventArgsAreAsExpected()
         {
             var celestialObject = GetCelestialObject(1);
-            var celestialObjCollection = GetCelestialObjectCollection();
+            var celestialObjCollection = GetCelestialObjectCollection(new CelestialObject[] { celestialObject });
 
             EventAssert.EventArgsEqual<CelestialObjectCollectionChangedEventArgs>(e => celestialObjCollection.Removed += e,
                 () => celestialObjCollection.Remove(celestialObject), e => e.ItemsChanged.Contains(celestialObject));
