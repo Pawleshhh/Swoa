@@ -17,12 +17,79 @@ namespace Swoa.Tests
         #region Tests
 
         [TestMethod]
+        public void Add_AddsItem_CollectionContainsAddedItem()
+        {
+            var celestialObjCollection = GetCelestialObjectCollection();
+            var added = GetCelestialObject(1);
+
+            celestialObjCollection.Add(added);
+
+            CollectionAssert.Contains(celestialObjCollection.ToArray(), added);
+        }
+
+        [TestMethod]
+        public void Remove_RemovesItem_CollectionDoesNotContainRemovedItem()
+        {
+            var removed = GetCelestialObject(1);
+            var celestialObjCollection = GetCelestialObjectCollection(removed);
+
+            celestialObjCollection.Remove(removed);
+
+            CollectionAssert.DoesNotContain(celestialObjCollection.ToArray(), removed);
+        }
+
+        [TestMethod]
+        public void Clear_ClearsCollection_CollectionIsEmpty()
+        {
+            var cleared = GetCelestialObjectArray(10);
+            var celestialObjCollection = GetCelestialObjectCollection(cleared);
+
+            celestialObjCollection.Clear();
+
+            Assert.AreEqual(0, celestialObjCollection.Count);
+        }
+
+        [TestMethod]
+        public void Count_GetsCount_CountIsEqualToNumberOfItems()
+        {
+            int count = 10;
+            var items = GetCelestialObjectArray(count);
+            var celestialObjCollection = GetCelestialObjectCollection(items);
+
+            int result = celestialObjCollection.Count;
+
+            Assert.AreEqual(count, result);
+        }
+
+        [TestMethod]
+        public void Contains_CheckIfAddedItemExists_ReturnsTrue()
+        {
+            var item = GetCelestialObject(1);
+            var celestialObjCollection = GetCelestialObjectCollection(item);
+
+            bool result = celestialObjCollection.Contains(item);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void Contains_CheckIfNotAddedItemExists_ReturnsFalse()
+        {
+            var item = GetCelestialObject(1);
+            var celestialObjCollection = GetCelestialObjectCollection();
+
+            bool result = celestialObjCollection.Contains(item);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
         public void Added_AddsItem_AddedEventRises()
         {
             var celestialObjCollection = GetCelestialObjectCollection();
             var celestialObject = GetCelestialObject(1);
 
-            EventAssert.EventRises<CelestialObjectCollectionChangedEventArgs>(e => celestialObjCollection.Added += e, 
+            EventAssert.EventRises<CelestialObjectCollectionChangedEventArgs>(e => celestialObjCollection.Added += e,
                 () => celestialObjCollection.Add(celestialObject));
         }
 
