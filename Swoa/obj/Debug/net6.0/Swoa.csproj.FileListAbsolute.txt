@@ -30,3 +30,10 @@ N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\CelestialObjects.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Astronomy.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net6.0\Utilities.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.CopyComplete
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\Astronomy.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\CelestialObjects.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\Utilities.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\CelestialObjects.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\Astronomy.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net6.0\Utilities.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net6.0\Swoa.csproj.CopyComplete

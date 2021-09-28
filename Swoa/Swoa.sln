@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swoa", "Swoa.csproj", "{30A6A675-955E-4315-8C22-87E45D1D06B8}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astronomy", "..\Astronomy\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "..\Utilities\Utilities.csproj", "{694DBB7E-D041-4A83-957A-BC9990316F08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelestialObjects", "..\CelestialObjects\CelestialObjects.csproj", "{58478584-2352-406A-9292-EACFF751A9FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelestialObjects", "..\CelestialObjects\CelestialObjects.csproj", "{58478584-2352-406A-9292-EACFF751A9FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwoaTests", "..\SwoaTests\SwoaTests.csproj", "{DB8C37BB-61B8-4950-A28C-5FAD0385F435}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{58478584-2352-406A-9292-EACFF751A9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58478584-2352-406A-9292-EACFF751A9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58478584-2352-406A-9292-EACFF751A9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB8C37BB-61B8-4950-A28C-5FAD0385F435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8C37BB-61B8-4950-A28C-5FAD0385F435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8C37BB-61B8-4950-A28C-5FAD0385F435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8C37BB-61B8-4950-A28C-5FAD0385F435}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
