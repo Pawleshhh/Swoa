@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Swoa
 {
-    public interface ICelestialObjectCollection : ICollection<CelestialObject>
+    public interface ICelestialObjectCollection : ICollection<CelestialObject>, IReadOnlyCollection<CelestialObject>
     {
 
         #region Events
