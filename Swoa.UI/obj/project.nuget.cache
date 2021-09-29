@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ajmZtLz0gEA4lVgSWzOGjWCbnAmHMMGsPYTnmgBH39V2M/4VdiR9pMKKB1+4GIxjUzt4EmP/WPMqoicAi36f8g==",
+  "success": true,
+  "projectFilePath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\1\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.9\\microsoft.netcore.app.host.win-x64.5.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

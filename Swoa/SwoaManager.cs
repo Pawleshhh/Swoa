@@ -1,4 +1,4 @@
-﻿using Swoa.CelestialObjectManagers;
+﻿using Swoa;
 
 namespace Swoa
 {
