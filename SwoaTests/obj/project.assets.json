@@ -1689,7 +1689,7 @@
       },
       "Swoa/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "CelestialObjects": "1.0.0"
         },

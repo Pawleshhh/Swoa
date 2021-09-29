@@ -153,14 +153,14 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net5.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
               "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
                 "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
@@ -175,8 +175,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "imports": [
             "net461",
             "net462",

@@ -42,6 +42,6 @@ namespace Swoa.ViewModel
         #endregion ICommand Members
 
         public static ICommand Create(ref ICommand command, Action<object> execute, Predicate<object> canExecute = null)
-            => command ?? (command = new RelayCommand(execute, canExecute));
+            => command ??= new RelayCommand(execute, canExecute);
     }
 }

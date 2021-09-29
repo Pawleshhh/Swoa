@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Swoa.CelestialObjectManagers
+namespace Swoa
 {
     public class CelestialObjectManager
     {
@@ -28,21 +28,21 @@ namespace Swoa.CelestialObjectManagers
 
         #region Events
 
-        //public event EventHandler<CelestialObjectCollectionChangedEventArgs> Added
-        //{
-        //    add => celestialObjects.Added += value;
-        //    remove => celestialObjects.Added -= value;
-        //}
-        //public event EventHandler<CelestialObjectCollectionChangedEventArgs> Removed
-        //{
-        //    add => celestialObjects.Removed += value;
-        //    remove => celestialObjects.Removed -= value;
-        //}
-        //public event EventHandler<CelestialObjectCollectionChangedEventArgs> Cleared
-        //{
-        //    add => celestialObjects.Cleared += value;
-        //    remove => celestialObjects.Cleared -= value;
-        //}
+        public event EventHandler<CelestialObjectCollectionChangedEventArgs> Added
+        {
+            add => celestialObjects.Added += value;
+            remove => celestialObjects.Added -= value;
+        }
+        public event EventHandler<CelestialObjectCollectionChangedEventArgs> Removed
+        {
+            add => celestialObjects.Removed += value;
+            remove => celestialObjects.Removed -= value;
+        }
+        public event EventHandler<CelestialObjectCollectionChangedEventArgs> Cleared
+        {
+            add => celestialObjects.Cleared += value;
+            remove => celestialObjects.Cleared -= value;
+        }
 
         #endregion
 
