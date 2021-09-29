@@ -42,7 +42,7 @@ namespace Swoa.Tests
         public void Clear_ClearsCollection_CollectionIsEmpty()
         {
             var cleared = GetCelestialObjectArray(10);
-            var celestialObjCollection = GetCelestialObjectCollection(cleared);
+            var celestialObjCollection = GetCelestialObjectCollection(cleared) as ICollection<CelestialObject>;
 
             celestialObjCollection.Clear();
 
@@ -54,7 +54,7 @@ namespace Swoa.Tests
         {
             int count = 10;
             var items = GetCelestialObjectArray(count);
-            var celestialObjCollection = GetCelestialObjectCollection(items);
+            var celestialObjCollection = GetCelestialObjectCollection(items) as ICollection<CelestialObject>;
 
             int result = celestialObjCollection.Count;
 

@@ -1,0 +1,12 @@
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.csproj.AssemblyReference.cache
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.GeneratedMSBuildEditorConfig.editorconfig
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.AssemblyInfoInputs.cache
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.AssemblyInfo.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.csproj.CoreCompileInputs.cache
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\Swoa.ViewModel.deps.json
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\Swoa.ViewModel.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\ref\Swoa.ViewModel.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\Swoa.ViewModel.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\ref\Swoa.ViewModel.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.pdb
