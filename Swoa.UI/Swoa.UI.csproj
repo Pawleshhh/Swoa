@@ -6,4 +6,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Astronomy\Astronomy.csproj" />
+    <ProjectReference Include="..\CelestialObjects\CelestialObjects.csproj" />
+  </ItemGroup>
+
 </Project>

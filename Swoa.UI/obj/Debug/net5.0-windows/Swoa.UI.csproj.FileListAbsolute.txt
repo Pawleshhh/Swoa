@@ -5,7 +5,6 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.UI.runtimeco
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.UI.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\ref\Swoa.UI.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.UI.pdb
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.AssemblyReference.cache
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\MainWindow.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\App.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI_MarkupCompile.cache
@@ -20,3 +19,18 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\ref\Swoa.UI.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.genruntimeconfig.cache
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialMap.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialMap.baml
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialObject.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialObject.baml
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.AssemblyReference.cache
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Astronomy.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\CelestialObjects.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Utilities.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Astronomy.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\CelestialObjects.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Utilities.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete

@@ -105,3 +105,4 @@ N:\Programowanie\Ogólne\Swoa\SwoaTests\obj\Debug\.netcoreapp,version=v5.0\SwoaT
 N:\Programowanie\Ogólne\Swoa\SwoaTests\obj\Debug\.netcoreapp,version=v5.0\ref\SwoaTests.dll
 N:\Programowanie\Ogólne\Swoa\SwoaTests\obj\Debug\.netcoreapp,version=v5.0\SwoaTests.pdb
 N:\Programowanie\Ogólne\Swoa\SwoaTests\obj\Debug\.netcoreapp,version=v5.0\SwoaTests.genruntimeconfig.cache
+N:\Programowanie\Ogólne\Swoa\SwoaTests\obj\Debug\.netcoreapp,version=v5.0\SwoaTests.csproj.AssemblyReference.cache
