@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "v/E6SNwL4YPY8fZqqkOiOtLNtKDJH/2sRvLb1/Z9ku6RPZ2sP/o24GDBVLSNuuRm4FjMWyEk6E0Kozmi0eJHJA==",
+  "dgSpecHash": "0lK4TfD4Qek1WNThwU3zLGiPB6q7xrvCcITmyZyVXoyuQfM1UCtra3+X+/BidohOYeHx/4+AT8slKROBpwyxVw==",
   "success": true,
   "projectFilePath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
   "expectedPackageFiles": [
@@ -50,6 +50,7 @@
     "C:\\Users\\1\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\system.reactive\\5.0.0\\system.reactive.5.0.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",

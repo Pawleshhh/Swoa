@@ -69,7 +69,7 @@ namespace Swoa.UI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Swoa.UI;component/controls/map/celestialmap.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Swoa.UI;V1.0.0.0;component/controls/map/celestialmap.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\Map\CelestialMap.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

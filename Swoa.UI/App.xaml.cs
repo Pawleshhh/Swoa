@@ -13,5 +13,15 @@ namespace Swoa.UI
     /// </summary>
     public partial class App : Application
     {
+
+        private SwoaManager swoaManager;
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            swoaManager = new SwoaManager();
+
+            MainWindow = new MainWindow();
+            MainWindow.DataContext = swoaManager;
+        }
     }
 }
