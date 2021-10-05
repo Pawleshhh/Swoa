@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:Swoa.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="350"
-    Height="350"
+    Width="720"
+    Height="720"
     mc:Ignorable="d">
     <Grid>
         <local:CelestialMap HorizontalAlignment="Center" VerticalAlignment="Center" />

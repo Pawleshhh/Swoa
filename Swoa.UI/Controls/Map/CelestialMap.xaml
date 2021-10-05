@@ -20,30 +20,24 @@
             StrokeThickness="1" />
 
         <Ellipse
+            Canvas.Left="177.5"
+            Canvas.Top="177.5"
             Width="5"
             Height="5"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Fill="Black" />
+            Fill="Pink" />
 
         <ItemsControl x:Name="mainItemsControl">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <Canvas />
+                    <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Ellipse
-                            Width="5"
-                            Height="5"
-                            Fill="Red" />
-                        <TextBlock
-                            FontSize="20"
-                            Foreground="LightGreen"
-                            Text="{Binding}" />
-                    </Grid>
+                    <Ellipse
+                        Width="5"
+                        Height="5"
+                        Fill="Red" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>

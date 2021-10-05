@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Swoa.UI
     /// </summary>
     public partial class CelestialMap : UserControl
     {
+
         public CelestialMap()
         {
             InitializeComponent();
@@ -35,9 +37,9 @@ namespace Swoa.UI
             //    nodes.Add(new Node(x, y, alt, az));
             //}
 
-            var (alt, az) = (90, 0);
+            var (alt, az) = (0, 0);
             var (x, y) = FromHorizonCoords(alt, az);
-            nodes.Add(new Node(x, y, alt, az));
+            nodes.Add(new Node(0 - 2.5, 0 - 2.5, 0, 0));
 
             mainItemsControl.ItemsSource = nodes;
         }
