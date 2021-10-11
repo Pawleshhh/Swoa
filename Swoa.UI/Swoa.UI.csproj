@@ -9,6 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Astronomy\Astronomy.csproj" />
     <ProjectReference Include="..\CelestialObjects\CelestialObjects.csproj" />
+    <ProjectReference Include="..\Swoa.ViewModel\Swoa.ViewModel.csproj" />
+    <ProjectReference Include="..\Swoa\Swoa.csproj" />
   </ItemGroup>
 
 </Project>

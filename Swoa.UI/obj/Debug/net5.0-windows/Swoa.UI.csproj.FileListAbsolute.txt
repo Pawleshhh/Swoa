@@ -21,8 +21,6 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.genruntimeconfig.cache
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialMap.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialMap.baml
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialObject.g.cs
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialObject.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.AssemblyReference.cache
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
@@ -34,3 +32,9 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Astronomy.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\CelestialObjects.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Utilities.pdb
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\System.Reactive.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.ViewModel.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.ViewModel.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\App.baml

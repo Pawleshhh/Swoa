@@ -9,7 +9,9 @@
       "Swoa.UI/1.0.0": {
         "dependencies": {
           "Astronomy": "1.0.0",
-          "CelestialObjects": "1.0.0"
+          "CelestialObjects": "1.0.0",
+          "Swoa": "1.0.0",
+          "Swoa.ViewModel": "1.0.0"
         },
         "runtime": {
           "Swoa.UI.dll": {}
@@ -403,6 +405,14 @@
           "System.Threading": "4.3.0"
         }
       },
+      "System.Reactive/5.0.0": {
+        "runtime": {
+          "lib/net5.0/System.Reactive.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.1"
+          }
+        }
+      },
       "System.Reflection/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -734,6 +744,24 @@
         },
         "runtime": {
           "CelestialObjects.dll": {}
+        }
+      },
+      "Swoa/1.0.0": {
+        "dependencies": {
+          "CelestialObjects": "1.0.0"
+        },
+        "runtime": {
+          "Swoa.dll": {}
+        }
+      },
+      "Swoa.ViewModel/1.0.0": {
+        "dependencies": {
+          "CelestialObjects": "1.0.0",
+          "Swoa": "1.0.0",
+          "System.Reactive": "5.0.0"
+        },
+        "runtime": {
+          "Swoa.ViewModel.dll": {}
         }
       },
       "Utilities/1.0.0": {
@@ -1074,6 +1102,13 @@
       "path": "system.objectmodel/4.3.0",
       "hashPath": "system.objectmodel.4.3.0.nupkg.sha512"
     },
+    "System.Reactive/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-erBZjkQHWL9jpasCE/0qKAryzVBJFxGHVBAvgRN1bzM0q2s1S4oYREEEL0Vb+1kA/6BKb5FjUZMp5VXmy+gzkQ==",
+      "path": "system.reactive/5.0.0",
+      "hashPath": "system.reactive.5.0.0.nupkg.sha512"
+    },
     "System.Reflection/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1290,6 +1325,16 @@
       "sha512": ""
     },
     "CelestialObjects/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Swoa/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Swoa.ViewModel/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

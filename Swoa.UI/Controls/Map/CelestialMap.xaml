@@ -8,7 +8,11 @@
     x:Name="celestialMap"
     d:DesignHeight="360"
     d:DesignWidth="360"
+    RenderTransformOrigin="0.5,0.5"
     mc:Ignorable="d">
+    <UserControl.RenderTransform>
+        <ScaleTransform ScaleY="-1" />
+    </UserControl.RenderTransform>
 
     <Grid>
 
@@ -26,7 +30,7 @@
             Height="5"
             Fill="Pink" />
 
-        <ItemsControl x:Name="mainItemsControl">
+        <ItemsControl x:Name="mainItemsControl" ItemsSource="{Binding CelestialObjects}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -42,8 +46,8 @@
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
                 <Style TargetType="ContentPresenter">
-                    <Setter Property="Canvas.Left" Value="{Binding XPos}" />
-                    <Setter Property="Canvas.Top" Value="{Binding YPos}" />
+                    <Setter Property="Canvas.Left" Value="{Binding YPos}" />
+                    <Setter Property="Canvas.Top" Value="{Binding XPos}" />
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>

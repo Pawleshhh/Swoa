@@ -10,6 +10,27 @@
     Height="720"
     mc:Ignorable="d">
     <Grid>
-        <local:CelestialMap HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <local:CelestialMap
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DataContext="{Binding CelestialObjectManagerVM}" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox
+                x:Name="Alt"
+                Width="50"
+                Height="30" />
+            <TextBox
+                x:Name="Az"
+                Width="50"
+                Height="30" />
+            <Button
+                Height="30"
+                Click="Button_Click"
+                Content="Change" />
+        </StackPanel>
     </Grid>
 </Window>
