@@ -26,12 +26,12 @@ namespace Swoa.UI
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var celestialObjVM = (DataContext as SwoaManagerViewModel).CelestialObjectManagerVM.CelestialObjects[0];
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var celestialObjVM = (DataContext as SwoaManagerViewModel).CelestialObjectManagerVM.CelestialObjects[0];
 
-            celestialObjVM.XPos = double.Parse(Alt.Text) - 2.5;
-            celestialObjVM.YPos = double.Parse(Az.Text) - 2.5;
-        }
+        //    celestialObjVM.XPos = double.Parse(Alt.Text) - 2.5;
+        //    celestialObjVM.YPos = double.Parse(Az.Text) - 2.5;
+        //}
     }
 }

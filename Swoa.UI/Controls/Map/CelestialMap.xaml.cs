@@ -24,66 +24,58 @@ namespace Swoa.UI
     public partial class CelestialMap : UserControl
     {
 
+        public double Angle
+        {
+            get { return (double)GetValue(AngleProperty); }
+            set { SetValue(AngleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Angle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AngleProperty =
+            DependencyProperty.Register("Angle", typeof(double), typeof(CelestialMap));
+
         public CelestialMap()
         {
             InitializeComponent();
-            var d = DataContext;
 
-            DataContextChanged += CelestialMap_DataContextChanged;
-            //ObservableCollection<Node> nodes = new ObservableCollection<Node>();
-
-            ////var random = new Random();
-            ////for (int i = 0; i < 10; i++)
-            ////{
-            ////    var (alt, az) = (random.Next(0, 90), random.Next(0, 360));
-            ////    var (x, y) = FromHorizonCoords(alt, az);
-            ////    nodes.Add(new Node(x, y, alt, az));
-            ////}
-
-            //var (alt, az) = (0, 0);
-            //var (x, y) = FromHorizonCoords(alt, az);
-            //nodes.Add(new Node(0 - 2.5, 0 - 2.5, 0, 0));
-
-            //mainItemsControl.ItemsSource = nodes;
+            MouseLeftButtonDown += OnMouseLeftButtonDown;
+            MouseUp += OnMouseUp;
+            MouseMove += OnMouseMove;
         }
 
-        private void CelestialMap_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var d = DataContext;
+            Mouse.Capture(mainGrid);
         }
 
-        //public (double x, double y) FromHorizonCoords(double alt, double az)
-        //{
-        //    double dAlt = 180 - (alt * 2);
+        private void OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Mouse.Capture(null);
+        }
 
-        //    double x = dAlt * Math.Cos(az * Math.PI / 180.0);
-        //    double y = dAlt * Math.Sin(az * Math.PI / 180.0);
+        private void OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (Mouse.Captured == mainGrid)
+            {
+                // Get the current mouse position relative to the control
+                Point currentLocation = Mouse.GetPosition(this);
 
-        //    return (x + 180, y + 180);
-        //}
+                // We want to rotate around the center of the map, not the top corner
+                Point mapCenter = new Point(this.ActualHeight / 2, this.ActualWidth / 2);
 
+                // Calculate an angle
+                double radians = Math.Atan((currentLocation.Y - mapCenter.Y) /
+                                           (currentLocation.X - mapCenter.X));
+                this.Angle = (radians * 180 / Math.PI) - 180.0;
 
-        //class Node
-        //{
+                // Apply a 180 degree shift when X is negative so that we can rotate
+                // all of the way around
+                if (currentLocation.X - mapCenter.X < 0)
+                {
+                    this.Angle += 180;
+                }
+            }
+        }
 
-        //    public Node(double x, double y, double alt, double az)
-        //    {
-        //        XPos = x;
-        //        YPos = y;
-        //        Alt = alt;
-        //        Az = az;
-        //    }
-
-        //    public double Alt { get; set; }
-        //    public double Az { get; set; }
-
-        //    public double XPos { get; set; }
-        //    public double YPos { get; set; }
-
-        //    public override string ToString()
-        //    {
-        //        return $"({(int)Alt}, {(int)Az})";
-        //    }
-        //}
     }
 }
