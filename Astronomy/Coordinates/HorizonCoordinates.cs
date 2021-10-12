@@ -3,15 +3,25 @@ using System;
 
 namespace Astronomy.Units
 {
-    public struct HorizontalCoordinates : IEquatable<HorizontalCoordinates>, IComparable<HorizontalCoordinates>
+    public struct HorizonCoordinates : IEquatable<HorizonCoordinates>, IComparable<HorizonCoordinates>
     {
 
         #region Constructors
 
-        public HorizontalCoordinates(double alt, double az)
+        public HorizonCoordinates(double alt, double az)
         {
             (Altitude, Azimuth) = (alt, az);
         }
+
+        #endregion
+
+        #region Const
+
+        public const double MAXALTITUDE = 90.0;
+        public const double MINALTITUDE = 0.0;
+
+        public const double MAXAZIMUTH = 360.0;
+        public const double MINAZIMUTH = 0.0;
 
         #endregion
 
@@ -24,20 +34,26 @@ namespace Astronomy.Units
 
         #region Methods
 
-        public int CompareTo(HorizontalCoordinates other)
+        public int CompareTo(HorizonCoordinates other)
         {
             throw new NotImplementedException();
         }
 
-        public bool Equals(HorizontalCoordinates horizonCoordinates)
+        public bool Equals(HorizonCoordinates horizonCoordinates)
             => Altitude.Equals(horizonCoordinates.Altitude) && Azimuth.Equals(horizonCoordinates.Azimuth);
+
+        public void Deconstruct(out double alt, out double az)
+        {
+            alt = Altitude;
+            az = Azimuth;
+        }
 
         public override bool Equals(object? obj)
         {
             if (obj == null)
                 return false;
 
-            if (obj is HorizontalCoordinates coordinates)
+            if (obj is HorizonCoordinates coordinates)
                 return Equals(coordinates);
 
             return false;

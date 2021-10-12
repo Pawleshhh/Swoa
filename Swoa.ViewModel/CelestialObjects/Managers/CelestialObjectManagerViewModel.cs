@@ -1,4 +1,6 @@
-﻿using CelestialObjects;
+﻿using Astronomy;
+using Astronomy.Units;
+using CelestialObjects;
 using Swoa;
 using System;
 using System.Collections.Generic;
@@ -33,11 +35,33 @@ namespace Swoa.ViewModel
         private readonly CelestialObjectManager celestialObjectManager;
         private readonly ObservableCollection<CelestialObjectViewModel> celestialObjects;
 
+        //private double mapWidth;
+        //private double mapHeight;
+        private double mapDiameter = 360.0;
+
         #endregion
 
         #region Properties
 
         public ReadOnlyObservableCollection<CelestialObjectViewModel> CelestialObjects { get; }
+
+        public double MapDiameter
+        {
+            get => mapDiameter;
+            set => SetProperty(() => mapDiameter == value, () => mapDiameter = value);
+        }
+
+        //public double MapWidth
+        //{
+        //    get => mapWidth;
+        //    set => SetProperty(() => mapWidth == value, () => mapWidth = value);
+        //}
+
+        //public double MapHeight
+        //{
+        //    get => mapHeight;
+        //    set => SetProperty(() => mapHeight == value, () => mapHeight = value);
+        //}
 
         #endregion
 
@@ -45,8 +69,12 @@ namespace Swoa.ViewModel
 
         private void CelestialObjectManager_Added(object sender, CelestialObjectCollectionChangedEventArgs e)
         {
-            foreach(var item in e.ItemsChanged)
-                celestialObjects.Add(GetCelestialObjectVM(item));
+            foreach (var item in e.ItemsChanged)
+            {
+                var celestialObjectVM = GetCelestialObjectVM(item);
+                celestialObjects.Add(celestialObjectVM);
+                celestialObjectVM.UpdatePosition();
+            }
         }
 
         private void CelestialObjectManager_Removed(object sender, CelestialObjectCollectionChangedEventArgs e)
@@ -60,7 +88,12 @@ namespace Swoa.ViewModel
         }
 
         protected virtual CelestialObjectViewModel GetCelestialObjectVM(CelestialObject celestialObject)
-            => new CelestialObjectViewModel(celestialObject);
+        {
+            var obj = new CelestialObjectViewModel(celestialObject, mapDiameter);
+            obj.UpdatePosition();
+
+            return obj;
+        }
 
         #endregion
 

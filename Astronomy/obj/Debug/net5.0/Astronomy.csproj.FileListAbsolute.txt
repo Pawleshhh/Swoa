@@ -24,7 +24,6 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.G
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.AssemblyInfoInputs.cache
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.AssemblyInfo.cs
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.csproj.CoreCompileInputs.cache
-C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.csproj.CopyComplete
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\ref\Astronomy.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.pdb

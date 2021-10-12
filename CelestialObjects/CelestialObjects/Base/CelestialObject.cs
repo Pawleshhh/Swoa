@@ -7,7 +7,7 @@ namespace CelestialObjects
     {
         public string Name { get; init; } = string.Empty;
         public EquatorialCoordinates EquatorialCoordinates { get; init; }
-        public HorizontalCoordinates HorizontalCoordinates { get; init; }
+        public HorizonCoordinates HorizontalCoordinates { get; init; }
         public double VisualMagnitude { get; init; }
         public double DistanceToSun { get; init; }
         public double DistanceToEarth { get; init; }

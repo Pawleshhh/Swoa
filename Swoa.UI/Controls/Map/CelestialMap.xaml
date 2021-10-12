@@ -39,7 +39,6 @@
             Height="120"
             />
 
-
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <Rectangle Height="50" Width="5" Fill="Yellow" HorizontalAlignment="Center"/>
             <Rectangle Width="10" Height="5" Fill="Red"/>
@@ -70,7 +69,10 @@
                 <Style TargetType="ContentPresenter">
                     <Setter Property="Canvas.Left" Value="{Binding YPos}" />
                     <Setter Property="Canvas.Top" Value="{Binding XPos}" />
+                    <Setter Property="Width" Value="{Binding Width, Mode=TwoWay}"/>
+                    <Setter Property="Height" Value="{Binding Height, Mode=TwoWay}"/>
                     <Setter Property="Panel.ZIndex" Value="10"/>
+                    <!--<Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>-->
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>

@@ -29,7 +29,7 @@ namespace Swoa.UI
             InitializeComponent();
             var d = DataContext;
 
-            //DataContextChanged += CelestialMap_DataContextChanged;
+            DataContextChanged += CelestialMap_DataContextChanged;
             //ObservableCollection<Node> nodes = new ObservableCollection<Node>();
 
             ////var random = new Random();
