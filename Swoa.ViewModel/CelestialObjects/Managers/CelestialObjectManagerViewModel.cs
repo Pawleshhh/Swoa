@@ -5,6 +5,7 @@ using Swoa;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace Swoa.ViewModel
 
         //private double mapWidth;
         //private double mapHeight;
-        private double mapDiameter = 360.0;
+        private double mapDiameter;
 
         #endregion
 
@@ -48,7 +49,11 @@ namespace Swoa.ViewModel
         public double MapDiameter
         {
             get => mapDiameter;
-            set => SetProperty(() => mapDiameter == value, () => mapDiameter = value);
+            set
+            {
+                if (SetProperty(() => mapDiameter == value, () => mapDiameter = value))
+                    UpdateCelestialObjects();
+            }
         }
 
         //public double MapWidth
@@ -67,13 +72,43 @@ namespace Swoa.ViewModel
 
         #region Methods
 
+        public void UpdateCelestialObjects()
+        {
+            foreach(var celestialObject in celestialObjects)
+            {
+                SetPosition(celestialObject);
+            }
+        }
+
+        private void SetPosition(CelestialObjectViewModel celestialObjectVM)
+        {
+            var (alt, az) = celestialObjectVM.CelestialObject.HorizontalCoordinates;
+            var (width, height) = (celestialObjectVM.Width, celestialObjectVM.Height);
+            const double MAXALT = HorizonCoordinates.MAXALTITUDE;
+            double r = (MAXALT - alt) / MAXALT * (mapDiameter / 2.0);
+
+            var x = r * MathHelper.CosD(az) - (width / 2.0);
+            var y = r * MathHelper.SinD(az) - (height / 2.0);
+
+            celestialObjectVM.XPos = x;
+            celestialObjectVM.YPos = y;
+        }
+
         private void CelestialObjectManager_Added(object sender, CelestialObjectCollectionChangedEventArgs e)
         {
             foreach (var item in e.ItemsChanged)
             {
                 var celestialObjectVM = GetCelestialObjectVM(item);
                 celestialObjects.Add(celestialObjectVM);
-                celestialObjectVM.UpdatePosition();
+
+                SetPosition(celestialObjectVM);
+
+                //celestialObjectVM.WhenPropertyChanged.Subscribe(n =>
+                //{
+                //    if (n.Equals(nameof(celestialObjectVM.Width)) ||
+                //            n.Equals(nameof(celestialObjectVM.Height)))
+                //        ;
+                //});
             }
         }
 
@@ -82,6 +117,7 @@ namespace Swoa.ViewModel
             foreach (var item in e.ItemsChanged)
                 celestialObjects.Remove(GetCelestialObjectVM(item));
         }
+
         private void CelestialObjectManager_Cleared(object sender, CelestialObjectCollectionChangedEventArgs e)
         {
             celestialObjects.Clear();
@@ -89,8 +125,7 @@ namespace Swoa.ViewModel
 
         protected virtual CelestialObjectViewModel GetCelestialObjectVM(CelestialObject celestialObject)
         {
-            var obj = new CelestialObjectViewModel(celestialObject, mapDiameter);
-            obj.UpdatePosition();
+            var obj = new CelestialObjectViewModel(celestialObject);
 
             return obj;
         }

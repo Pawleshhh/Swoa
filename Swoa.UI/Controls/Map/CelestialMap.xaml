@@ -12,36 +12,47 @@
     mc:Ignorable="d">
     <UserControl.RenderTransform>
         <TransformGroup>
-            <ScaleTransform ScaleY="-1" ScaleX="-1" />
+            <ScaleTransform ScaleX="-1" ScaleY="-1" />
         </TransformGroup>
     </UserControl.RenderTransform>
 
     <Grid>
 
         <Ellipse
-            Width="360"
-            Height="360"
+            Width="{Binding MapDiameter, Mode=OneWayToSource}"
+            Height="{Binding MapDiameter, Mode=OneWayToSource}"
+            local:SizeObserver.Observe="True"
+            local:SizeObserver.ObservedHeight="{Binding MapDiameter, Mode=OneWayToSource}"
+            local:SizeObserver.ObservedWidth="{Binding MapDiameter, Mode=OneWayToSource}"
             Fill="#2e3f5c"
             Stroke="Yellow"
             StrokeThickness="1" />
 
         <Ellipse
+            Width="300"
+            Height="300"
             Stroke="Black"
-            StrokeThickness="1"
-            Width="180"
-            Height="180"
-            />
+            StrokeThickness="1" />
 
         <Ellipse
+            Width="200"
+            Height="200"
             Stroke="Black"
-            StrokeThickness="1"
-            Width="120"
-            Height="120"
-            />
+            StrokeThickness="1" />
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <Rectangle Height="50" Width="5" Fill="Yellow" HorizontalAlignment="Center"/>
-            <Rectangle Width="10" Height="5" Fill="Red"/>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <Rectangle
+                Width="5"
+                Height="50"
+                HorizontalAlignment="Center"
+                Fill="Yellow" />
+            <Rectangle
+                Width="10"
+                Height="5"
+                Fill="Red" />
         </StackPanel>
 
         <Ellipse
@@ -50,7 +61,7 @@
             Width="5"
             Height="5"
             Fill="Pink" />
-        
+
         <ItemsControl x:Name="mainItemsControl" ItemsSource="{Binding CelestialObjects}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -60,8 +71,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Ellipse
-                        Width="5"
-                        Height="5"
+                        Width="{Binding Width, Mode=TwoWay}"
+                        Height="{Binding Height, Mode=TwoWay}"
                         Fill="LightBlue" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -69,9 +80,8 @@
                 <Style TargetType="ContentPresenter">
                     <Setter Property="Canvas.Left" Value="{Binding YPos}" />
                     <Setter Property="Canvas.Top" Value="{Binding XPos}" />
-                    <Setter Property="Width" Value="{Binding Width, Mode=TwoWay}"/>
-                    <Setter Property="Height" Value="{Binding Height, Mode=TwoWay}"/>
-                    <Setter Property="Panel.ZIndex" Value="10"/>
+                    <!--<Setter Property="Width" Value="{Binding Width, Mode=TwoWay}" />
+                    <Setter Property="Height" Value="{Binding Height, Mode=TwoWay}" />-->
                     <!--<Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>-->
                 </Style>
             </ItemsControl.ItemContainerStyle>

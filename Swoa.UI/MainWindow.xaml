@@ -15,6 +15,8 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <local:CelestialMap
+            Width="600"
+            Height="600"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             DataContext="{Binding CelestialObjectManagerVM}" />
