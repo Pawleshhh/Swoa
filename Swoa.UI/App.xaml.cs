@@ -24,7 +24,7 @@ namespace Swoa.UI
             var swoaManagerModel = new SwoaManager();
             swoaManagerVM = new SwoaManagerViewModel(swoaManagerModel);
 
-            var horizonCoords = new HorizontalCoordinates(45, 90);
+            var horizonCoords = new HorizontalCoordinates(60, 242);
 
             swoaManagerModel.CelestialObjectManager.Add(new PlanetObject()
             {

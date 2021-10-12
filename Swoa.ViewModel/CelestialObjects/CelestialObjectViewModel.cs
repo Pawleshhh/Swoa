@@ -39,8 +39,10 @@ namespace Swoa.ViewModel
 
             double r = (90.0 - alt) / 90.0 * 180.0;
 
-            var x = r * Math.Cos(ToRadian(alt)) - 2.5;
-            var y = r * Math.Sin(ToRadian(az)) - 2.5;
+            var az_rad = ToRadian(az);
+
+            var x = r * Math.Cos(az_rad) - 2.5;
+            var y = r * Math.Sin(az_rad) - 2.5;
 
             return (x, y);
         }
