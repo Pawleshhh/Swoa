@@ -28,15 +28,17 @@
             Stroke="Yellow"
             StrokeThickness="1" />
 
+        <!--  45 degrees circle  -->
         <Ellipse
-            Width="300"
-            Height="300"
+            Width="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.5}"
+            Height="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.5}"
             Stroke="Black"
             StrokeThickness="1" />
 
+        <!--  60 degrees circle  -->
         <Ellipse
-            Width="200"
-            Height="200"
+            Width="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.33333}"
+            Height="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.33333}"
             Stroke="Black"
             StrokeThickness="1" />
 
