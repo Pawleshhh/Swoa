@@ -80,16 +80,15 @@ namespace Swoa.UI
             InitializeComponent();
 
             MouseLeftButtonDown += OnMouseLeftButtonDown;
+            MouseRightButtonDown += CelestialMap_MouseRightButtonDown;
             MouseUp += OnMouseUp;
             MouseMove += OnMouseMove;
 
             MouseWheel += CelestialMap_MouseWheel;
         }
 
-        private void CelestialMap_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void ZoomCelestialMap(double d)
         {
-            double d = e.Delta;
-
             if (ScaleFactor >= MaxScaleFactor && d > 0)
             {
                 ScaleFactor = MaxScaleFactor;
@@ -101,7 +100,7 @@ namespace Swoa.UI
                 ScaleFactor = MinScaleFactor;
                 RenderTransformOrigin = new Point(0.5, 0.5);
                 return;
-            }    
+            }
 
 
             if (ScaleFactor == MinScaleFactor && d < 0)
@@ -117,7 +116,16 @@ namespace Swoa.UI
                 ScaleFactor -= ScaleFactorStep;
         }
 
+        private void CelestialMap_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ZoomCelestialMap(e.Delta);
+        }
+
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void CelestialMap_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(mainGrid);
         }
