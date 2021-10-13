@@ -75,6 +75,26 @@ namespace Swoa.UI
         public static readonly DependencyProperty MinScaleFactorProperty =
             DependencyProperty.Register("MinScaleFactor", typeof(double), typeof(CelestialMap), new PropertyMetadata(1.0));
 
+        public double XPosition
+        {
+            get { return (double)GetValue(XPositionProperty); }
+            set { SetValue(XPositionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for XPosition.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty XPositionProperty =
+            DependencyProperty.Register("XPosition", typeof(double), typeof(CelestialMap));
+
+        public double YPosition
+        {
+            get { return (double)GetValue(YPositionProperty); }
+            set { SetValue(YPositionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for YPosition.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty YPositionProperty =
+            DependencyProperty.Register("YPosition", typeof(double), typeof(CelestialMap));
+
         public CelestialMap()
         {
             InitializeComponent();
@@ -116,27 +136,7 @@ namespace Swoa.UI
                 ScaleFactor -= ScaleFactorStep;
         }
 
-        private void CelestialMap_MouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            ZoomCelestialMap(e.Delta);
-        }
-
-        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-        }
-
-        private void CelestialMap_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Mouse.Capture(mainGrid);
-        }
-
-        private void OnMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Mouse.Capture(null);
-            mouseCaptured = false;
-        }
-
-        private void OnMouseMove(object sender, MouseEventArgs e)
+        private void RotateCelestialMap()
         {
             if (Mouse.Captured == mainGrid && !mouseCaptured)
                 mouseCaptured = true;
@@ -160,6 +160,49 @@ namespace Swoa.UI
                     Angle += 180;
                 }
             }
+        }
+
+        private void MoveCelestialMap()
+        {
+            if (Mouse.Captured == mainGrid)
+            {
+                // get the position within the container
+                var mousePosition = Mouse.GetPosition(this);
+
+                // move the usercontrol.
+                XPosition = mousePosition.X + XPosition;
+                YPosition = mousePosition.Y + YPosition;
+                //mainGrid.RenderTransform = new TranslateTransform(mousePosition.X - XPosition, mousePosition.Y - _positionInBlock.Y);
+            }
+        }
+
+        private void CelestialMap_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ZoomCelestialMap(e.Delta);
+        }
+
+        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Mouse.Capture(mainGrid);
+        }
+
+        private void CelestialMap_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Mouse.Capture(mainGrid);
+        }
+
+        private void OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Mouse.Capture(null);
+            mouseCaptured = false;
+        }
+
+        private void OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.RightButton == MouseButtonState.Pressed)
+                RotateCelestialMap();
+            else if (e.LeftButton == MouseButtonState.Pressed)
+                MoveCelestialMap();
         }
 
     }

@@ -29,8 +29,9 @@
         </Grid.Style>
         <Grid.RenderTransform>
             <TransformGroup>
+                <TranslateTransform X="{Binding ElementName=celestialMap, Path=XPosition, Mode=TwoWay}" Y="{Binding ElementName=celestialMap, Path=YPosition, Mode=TwoWay}"/>
                 <ScaleTransform ScaleX="-1" ScaleY="-1" />
-                <RotateTransform Angle="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CelestialMap}, Path=Angle}" />
+                <RotateTransform Angle="{Binding ElementName=celestialMap, Path=Angle}" />
             </TransformGroup>
         </Grid.RenderTransform>
 
