@@ -8,5 +8,6 @@
     <Application.Resources>
         <local:DivideValueConverter x:Key="divideValueConverter" />
         <local:MultipleValueConverter x:Key="multipleValueConverter" />
+        <local:SubstractValueConverter x:Key="substractValueConverter" />
     </Application.Resources>
 </Application>

@@ -12,12 +12,14 @@
     mc:Ignorable="d">
     <UserControl.RenderTransform>
         <TransformGroup>
-            <ScaleTransform ScaleX="{Binding ElementName=celestialMap, Path=ScaleFactor}"
-                            ScaleY="{Binding ElementName=celestialMap, Path=ScaleFactor}"/>
+            <ScaleTransform ScaleX="{Binding ElementName=celestialMap, Path=ScaleFactor}" ScaleY="{Binding ElementName=celestialMap, Path=ScaleFactor}" />
         </TransformGroup>
     </UserControl.RenderTransform>
 
-    <Grid x:Name="mainGrid" RenderTransformOrigin="0.5, 0.5" Margin="5">
+    <Grid
+        x:Name="mainGrid"
+        Margin="5"
+        RenderTransformOrigin="0.5, 0.5">
         <Grid.Style>
             <Style TargetType="Grid">
                 <Style.Triggers>
@@ -28,27 +30,39 @@
             </Style>
         </Grid.Style>
         <Grid.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Style x:Key="directonTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="Foreground" Value="LightBlue" />
                 <Setter Property="RenderTransform">
                     <Setter.Value>
-                        <RotateTransform Angle="180"/>
+                        <RotateTransform Angle="{Binding ElementName=celestialMap, Path=DirectionLabelsAngle, Mode=TwoWay}" />
                     </Setter.Value>
                 </Setter>
+            </Style>
+            <Style x:Key="directionEllipseStyle" TargetType="Ellipse">
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Fill" Value="#363066" />
+                <Setter Property="Stroke" Value="#30664e" />
+                <Setter Property="StrokeThickness" Value="1" />
             </Style>
         </Grid.Resources>
         <Grid.RenderTransform>
             <TransformGroup>
-                <TranslateTransform X="{Binding ElementName=celestialMap, Path=XPosition, Mode=TwoWay}" Y="{Binding ElementName=celestialMap, Path=YPosition, Mode=TwoWay}"/>
+                <TranslateTransform X="{Binding ElementName=celestialMap, Path=XPosition, Mode=TwoWay}" Y="{Binding ElementName=celestialMap, Path=YPosition, Mode=TwoWay}" />
                 <ScaleTransform ScaleX="-1" ScaleY="-1" />
                 <RotateTransform Angle="{Binding ElementName=celestialMap, Path=Angle}" />
             </TransformGroup>
         </Grid.RenderTransform>
 
-        <!-- Map -->
-        <Ellipse Margin="5"
+        <!--  Map  -->
+        <Ellipse
             Width="{Binding MapDiameter, Mode=OneWayToSource}"
             Height="{Binding MapDiameter, Mode=OneWayToSource}"
+            Margin="5"
             local:SizeObserver.Observe="True"
             local:SizeObserver.ObservedHeight="{Binding MapDiameter, Mode=OneWayToSource}"
             local:SizeObserver.ObservedWidth="{Binding MapDiameter, Mode=OneWayToSource}"
@@ -56,25 +70,25 @@
             Stroke="Yellow"
             StrokeThickness="1" />
 
-        <!--<Grid Width="10" Height="10"  HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Ellipse x:Name="northCircle" StrokeThickness="1" Stroke="#30664e"  Fill="#363066" Width="10" Height="10"/>
-            <TextBlock Text="N" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="6" Foreground="LightBlue"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Ellipse x:Name="northCircle" Style="{StaticResource directionEllipseStyle}" />
+            <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="N" />
         </Grid>
 
-        <Grid Width="10" Height="10"  HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Ellipse x:Name="westCircle" StrokeThickness="1" Stroke="#30664e"  Fill="#363066" Width="10" Height="10"/>
-            <TextBlock Text="W" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="6" Foreground="LightBlue"/>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Ellipse x:Name="westCircle" Style="{StaticResource directionEllipseStyle}" />
+            <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="W" />
         </Grid>
 
-        <Grid Width="10" Height="10"  HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Ellipse x:Name="southCircle" StrokeThickness="1" Stroke="#30664e"  Fill="#363066" Width="10" Height="10"/>
-            <TextBlock Text="S" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="6" Foreground="LightBlue"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Ellipse x:Name="southCircle" Style="{StaticResource directionEllipseStyle}" />
+            <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="S" />
         </Grid>
-        
-        <Grid Width="10" Height="10"  HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Ellipse x:Name="eastCircle" StrokeThickness="1" Stroke="#30664e"  Fill="#363066" Width="10" Height="10"/>
-            <TextBlock Text="E" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="6" Foreground="LightBlue"/>
-        </Grid>-->
+
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Ellipse x:Name="eastCircle" Style="{StaticResource directionEllipseStyle}" />
+            <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="E" />
+        </Grid>
 
         <!--  45 degrees circle  -->
         <Ellipse

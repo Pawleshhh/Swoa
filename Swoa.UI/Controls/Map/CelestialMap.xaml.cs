@@ -36,6 +36,16 @@ namespace Swoa.UI
         public static readonly DependencyProperty AngleProperty =
             DependencyProperty.Register("Angle", typeof(double), typeof(CelestialMap));
 
+        public double DirectionLabelsAngle
+        {
+            get { return (double)GetValue(DirectionLabelsAngleProperty); }
+            set { SetValue(DirectionLabelsAngleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DirectionLabelsAngle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DirectionLabelsAngleProperty =
+            DependencyProperty.Register("DirectionLabelsAngle", typeof(double), typeof(CelestialMap), new PropertyMetadata(-180.0));
+
         public double ScaleFactorStep
         {
             get { return (double)GetValue(ScaleFactorStepProperty); }
@@ -52,7 +62,7 @@ namespace Swoa.UI
             set { SetValue(ScaleFactorProperty, value); }
         }
 
-        public static readonly DependencyProperty ScaleFactorProperty = DependencyProperty.Register("ScaleFactor", typeof(double), 
+        public static readonly DependencyProperty ScaleFactorProperty = DependencyProperty.Register("ScaleFactor", typeof(double),
             typeof(CelestialMap), new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public double MaxScaleFactor
@@ -159,6 +169,8 @@ namespace Swoa.UI
                 {
                     Angle += 180;
                 }
+
+                DirectionLabelsAngle = -180.0 - Angle;
             }
         }
 

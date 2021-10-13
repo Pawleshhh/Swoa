@@ -11,10 +11,15 @@
     mc:Ignorable="d">
     <Grid>
         <local:CelestialMap
+            x:Name="celestialMap"
             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
             Height="Auto"
             MinWidth="300"
             MinHeight="300"
             DataContext="{Binding CelestialObjectManagerVM}" />
+        <TextBox
+            Width="50"
+            Height="20"
+            Text="{Binding ElementName=celestialMap, Path=DirectionLabelsAngle}" />
     </Grid>
 </Window>
