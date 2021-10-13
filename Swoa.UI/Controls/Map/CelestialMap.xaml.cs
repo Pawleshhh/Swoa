@@ -24,6 +24,8 @@ namespace Swoa.UI
     public partial class CelestialMap : UserControl
     {
 
+        private bool mouseCaptured;
+
         public double Angle
         {
             get { return (double)GetValue(AngleProperty); }
@@ -51,11 +53,14 @@ namespace Swoa.UI
         private void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(null);
+            mouseCaptured = false;
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (Mouse.Captured == mainGrid)
+            if (Mouse.Captured == mainGrid && !mouseCaptured)
+                mouseCaptured = true;
+            else if (Mouse.Captured == mainGrid)
             {
                 // Get the current mouse position relative to the control
                 Point currentLocation = Mouse.GetPosition(this);
@@ -66,13 +71,13 @@ namespace Swoa.UI
                 // Calculate an angle
                 double radians = Math.Atan((currentLocation.Y - mapCenter.Y) /
                                            (currentLocation.X - mapCenter.X));
-                this.Angle = (radians * 180 / Math.PI) - 180.0;
+                Angle = (radians * 180 / Math.PI);
 
                 // Apply a 180 degree shift when X is negative so that we can rotate
                 // all of the way around
                 if (currentLocation.X - mapCenter.X < 0)
                 {
-                    this.Angle += 180;
+                    Angle += 180;
                 }
             }
         }

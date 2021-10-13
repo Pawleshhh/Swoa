@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\
 Swoa.UI
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\App.xaml
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\App.xaml
 241850796
 
 71005484807
-201-44565128
+201288663353
 Controls\Map\CelestialMap.xaml;MainWindow.xaml;
 
 False
