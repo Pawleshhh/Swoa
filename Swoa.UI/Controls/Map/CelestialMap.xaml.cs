@@ -73,7 +73,7 @@ namespace Swoa.UI
 
         // Using a DependencyProperty as the backing store for MaxScaleFactor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxScaleFactorProperty =
-            DependencyProperty.Register("MaxScaleFactor", typeof(double), typeof(CelestialMap), new PropertyMetadata(3.0));
+            DependencyProperty.Register("MaxScaleFactor", typeof(double), typeof(CelestialMap), new PropertyMetadata(5.0));
 
         public double MinScaleFactor
         {
@@ -110,11 +110,19 @@ namespace Swoa.UI
             InitializeComponent();
 
             MouseLeftButtonDown += OnMouseLeftButtonDown;
-            MouseRightButtonDown += CelestialMap_MouseRightButtonDown;
+            MouseRightButtonDown += OnMouseRightButtonDown;
             MouseUp += OnMouseUp;
             MouseMove += OnMouseMove;
 
             MouseWheel += CelestialMap_MouseWheel;
+        }
+
+        private void ResetPosition()
+        {
+            ScaleFactor = MinScaleFactor;
+            mainGrid.RenderTransformOrigin = new Point(0.5, 0.5);
+
+            XPosition = YPosition = 0;
         }
 
         private void ZoomCelestialMap(double d)
@@ -125,20 +133,15 @@ namespace Swoa.UI
                 return;
             }
 
-            if (ScaleFactor < MinScaleFactor)
+            if (ScaleFactor < MinScaleFactor || (ScaleFactor == MinScaleFactor && d < 0))
             {
-                ScaleFactor = MinScaleFactor;
-                RenderTransformOrigin = new Point(0.5, 0.5);
+                ResetPosition();
                 return;
             }
 
-
-            if (ScaleFactor == MinScaleFactor && d < 0)
-                return;
-
             var currentPosition = Mouse.GetPosition(this);
 
-            RenderTransformOrigin = new Point(currentPosition.X / ActualHeight, currentPosition.Y / ActualWidth);
+            //RenderTransformOrigin = new Point(currentPosition.X / ActualHeight, currentPosition.Y / ActualWidth);
 
             if (d > 0)
                 ScaleFactor += ScaleFactorStep;
@@ -174,17 +177,54 @@ namespace Swoa.UI
             }
         }
 
+        private bool firstMove;
+        private Point startPoint;
+
         private void MoveCelestialMap()
         {
+            if (ScaleFactor == MinScaleFactor)
+                return;
+
             if (Mouse.Captured == mainGrid)
             {
-                // get the position within the container
+                //if (firstMove)
+                //{
+                //    firstMove = false;
+                //    return;
+                //}
+
+                startPoint = Mouse.GetPosition(mainGrid);
                 var mousePosition = Mouse.GetPosition(this);
 
-                // move the usercontrol.
-                XPosition = mousePosition.X + XPosition;
-                YPosition = mousePosition.Y + YPosition;
-                //mainGrid.RenderTransform = new TranslateTransform(mousePosition.X - XPosition, mousePosition.Y - _positionInBlock.Y);
+                var (rx, ry) = (RenderTransformOrigin.X, RenderTransformOrigin.Y);
+                var maxX = (ActualWidth * (1.0 - rx));
+                var minX = -(ActualWidth * rx);
+                var maxY = (ActualHeight * (1.0 - ry));
+                var minY = -(ActualHeight * ry);
+
+                //if (XPosition > maxX || XPosition < minX)
+                //{
+                //    if (XPosition > maxX)
+                //        XPosition = maxX;
+                //    else
+                //        XPosition = minX;
+                //}
+                //else
+                    XPosition += (startPoint.X - mousePosition.X) * 0.001;
+
+                //if (YPosition > maxY || YPosition < minY)
+                //{
+                //    if (YPosition > maxY)
+                //        YPosition = maxY;
+                //    else
+                //        YPosition = minY;
+                //}
+                //else
+                    YPosition += (startPoint.Y - mousePosition.Y) * 0.001;
+
+
+                var (originX, originY) = (0.0, 0.0);
+
             }
         }
 
@@ -196,9 +236,11 @@ namespace Swoa.UI
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(mainGrid);
+
+            RenderTransformOrigin = new Point(XPosition / ActualHeight, YPosition / ActualWidth);
         }
 
-        private void CelestialMap_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(mainGrid);
         }
@@ -207,13 +249,14 @@ namespace Swoa.UI
         {
             Mouse.Capture(null);
             mouseCaptured = false;
+            firstMove = true;
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (e.RightButton == MouseButtonState.Pressed)
+            if (e.RightButton == MouseButtonState.Pressed && e.LeftButton != MouseButtonState.Pressed)
                 RotateCelestialMap();
-            else if (e.LeftButton == MouseButtonState.Pressed)
+            else if (e.LeftButton == MouseButtonState.Pressed && e.RightButton != MouseButtonState.Pressed)
                 MoveCelestialMap();
         }
 

@@ -10,16 +10,39 @@
     Height="720"
     mc:Ignorable="d">
     <Grid>
-        <local:CelestialMap
-            x:Name="celestialMap"
-            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-            Height="Auto"
-            MinWidth="300"
-            MinHeight="300"
-            DataContext="{Binding CelestialObjectManagerVM}" />
-        <TextBox
-            Width="50"
-            Height="20"
-            Text="{Binding ElementName=celestialMap, Path=DirectionLabelsAngle}" />
+        <Border BorderBrush="Red" BorderThickness="2">
+            <local:CelestialMap
+                x:Name="celestialMap"
+                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                Height="Auto"
+                MinWidth="300"
+                MinHeight="300"
+                DataContext="{Binding CelestialObjectManagerVM}" />
+        </Border>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBox
+                Width="50"
+                Height="20"
+                Text="{Binding ElementName=celestialMap, Path=XPosition}" />
+            <TextBox
+                Width="50"
+                Height="20"
+                Text="{Binding ElementName=celestialMap, Path=YPosition}" />
+            <TextBox
+                Width="50"
+                Height="20"
+                Text="{Binding ElementName=celestialMap, Path=ScaleFactor}" />
+            <TextBox
+                Width="50"
+                Height="20"
+                Text="{Binding ElementName=celestialMap, Path=ActualHeight, Mode=OneWay}" />
+            <TextBox
+                Width="50"
+                Height="20"
+                Text="{Binding ElementName=celestialMap, Path=ActualWidth, Mode=OneWay}" />
+        </StackPanel>
     </Grid>
 </Window>
