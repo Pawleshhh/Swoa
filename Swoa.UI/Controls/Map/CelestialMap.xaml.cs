@@ -202,29 +202,77 @@ namespace Swoa.UI
             {
                 var mousePosition = Mouse.GetPosition(this);
 
-                var moveFactor = 0.01;
+                var (xorigin, yorigin) = (RenderTransformOrigin.X, RenderTransformOrigin.Y);
 
-                XPosition += (startPoint.X - mousePosition.X) * moveFactor;
-                YPosition += (startPoint.Y - mousePosition.Y) * moveFactor;
+                var (xPos, yPos) = (XPosition + (startPoint.X - mousePosition.X), YPosition + (startPoint.Y - mousePosition.Y));
 
-                var (xorigin, yorigin) = (0.0, 0.0);
+                bool xMove = true, yMove = true;
 
-                if (XPosition < 0)
+                if (xorigin <= 0.25 || xorigin >= 0.75)
                 {
-                    xorigin = 0.5 - (-XPosition / ActualWidth);
+                    if (xorigin <= 0.25)
+                    {
+                        xorigin = 0.25;
+                        if (xPos <= XPosition)
+                            xMove = false;
+                    }
+                    else
+                    {
+                        xorigin = 0.75;
+                        if (xPos >= XPosition)
+                            xMove = false;
+                    }
+
+                    //if (xMove)
+                    //    startPoint = Mouse.GetPosition(this);
                 }
-                else
+
+                if (yorigin <= 0.25 || yorigin >= 0.75)
                 {
-                    xorigin = (XPosition / ActualWidth) + 0.5;
+                    if (yorigin <= 0.25)
+                    {
+                        yorigin = 0.25;
+                        if (yPos <= YPosition)
+                            yMove = false;
+                    }
+                    else
+                    {
+                        yorigin = 0.75;
+                        if (yPos >= YPosition)
+                            yMove = false;
+                    }
+
+                    //if (yMove)
+                    //    startPoint = Mouse.GetPosition(this);
                 }
 
-                if (YPosition < 0)
+
+                if (xMove)
                 {
-                    yorigin = 0.5 - (-YPosition / ActualHeight);
+                    XPosition = xPos;
+
+                    if (XPosition < 0)
+                    {
+                        xorigin = 0.5 - (-XPosition / ActualWidth);
+                    }
+                    else
+                    {
+                        xorigin = (XPosition / ActualWidth) + 0.5;
+                    }
                 }
-                else
+
+                if (yMove)
                 {
-                    yorigin = (YPosition / ActualHeight) + 0.5;
+                    YPosition = yPos;
+
+                    if (YPosition < 0)
+                    {
+                        yorigin = 0.5 - (-YPosition / ActualHeight);
+                    }
+                    else
+                    {
+                        yorigin = (YPosition / ActualHeight) + 0.5;
+                    }
                 }
 
                 RenderTransformOrigin = new Point(xorigin, yorigin);
