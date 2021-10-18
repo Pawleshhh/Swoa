@@ -24,7 +24,12 @@ namespace Swoa.UI
     public partial class CelestialMap : UserControl
     {
 
+        private readonly double maxOrigin = 0.75;
+        private readonly double minOrigin = 0.25;
+
         private bool mouseCaptured;
+
+        private Point startPoint;
 
         public double Angle
         {
@@ -162,6 +167,11 @@ namespace Swoa.UI
                 ScaleFactor -= ScaleFactorStep;
         }
 
+        private void PreRotateCelestialMap()
+        {
+            Mouse.Capture(mainGrid);
+        }
+
         private void RotateCelestialMap()
         {
             if (Mouse.Captured == mainGrid && !mouseCaptured)
@@ -190,13 +200,55 @@ namespace Swoa.UI
             }
         }
 
-        private bool firstMove;
-        private Point startPoint;
+        private void PreMoveCelestialMap()
+        {
+            startPoint = Mouse.GetPosition(this);
+            Mouse.Capture(mainGrid);
+        }
 
         private void MoveCelestialMap()
         {
             if (ScaleFactor == MinScaleFactor)
                 return;
+
+            (bool, double) setForLimit(double origin, double currentPos, double prevPos)
+            {
+                bool result = true;
+
+                if (origin <= minOrigin || origin >= maxOrigin)
+                {
+                    if (origin <= minOrigin)
+                    {
+                        origin = minOrigin;
+                        if (currentPos <= prevPos)
+                            result = false;
+                    }
+                    else
+                    {
+                        origin = maxOrigin;
+                        if (currentPos >= prevPos)
+                            result = false;
+                    }
+                }
+
+                return (result, origin);
+            }
+
+            (double, double) setNewPositionAndOrigin(double currentPos, double origin, double length)
+            {
+                double newPos = currentPos;
+
+                if (newPos < 0)
+                {
+                    origin = 0.5 - (-newPos / length);
+                }
+                else
+                {
+                    origin = (newPos / length) + 0.5;
+                }
+
+                return (newPos, origin);
+            }
 
             if (Mouse.Captured == mainGrid)
             {
@@ -206,108 +258,19 @@ namespace Swoa.UI
 
                 var (xPos, yPos) = (XPosition + (startPoint.X - mousePosition.X), YPosition + (startPoint.Y - mousePosition.Y));
 
-                bool xMove = true, yMove = true;
-
-                if (xorigin <= 0.25 || xorigin >= 0.75)
-                {
-                    if (xorigin <= 0.25)
-                    {
-                        xorigin = 0.25;
-                        if (xPos <= XPosition)
-                            xMove = false;
-                    }
-                    else
-                    {
-                        xorigin = 0.75;
-                        if (xPos >= XPosition)
-                            xMove = false;
-                    }
-
-                    //if (xMove)
-                    //    startPoint = Mouse.GetPosition(this);
-                }
-
-                if (yorigin <= 0.25 || yorigin >= 0.75)
-                {
-                    if (yorigin <= 0.25)
-                    {
-                        yorigin = 0.25;
-                        if (yPos <= YPosition)
-                            yMove = false;
-                    }
-                    else
-                    {
-                        yorigin = 0.75;
-                        if (yPos >= YPosition)
-                            yMove = false;
-                    }
-
-                    //if (yMove)
-                    //    startPoint = Mouse.GetPosition(this);
-                }
-
+                bool xMove, yMove;
+                (xMove, xorigin) = setForLimit(xorigin, xPos, XPosition);
+                (yMove, yorigin) = setForLimit(yorigin, yPos, YPosition);
 
                 if (xMove)
-                {
-                    XPosition = xPos;
-
-                    if (XPosition < 0)
-                    {
-                        xorigin = 0.5 - (-XPosition / ActualWidth);
-                    }
-                    else
-                    {
-                        xorigin = (XPosition / ActualWidth) + 0.5;
-                    }
-                }
+                    (XPosition, xorigin) = setNewPositionAndOrigin(xPos, xorigin, ActualWidth);
 
                 if (yMove)
-                {
-                    YPosition = yPos;
-
-                    if (YPosition < 0)
-                    {
-                        yorigin = 0.5 - (-YPosition / ActualHeight);
-                    }
-                    else
-                    {
-                        yorigin = (YPosition / ActualHeight) + 0.5;
-                    }
-                }
+                    (YPosition, yorigin) = setNewPositionAndOrigin(yPos, yorigin, ActualHeight);
 
                 RenderTransformOrigin = new Point(xorigin, yorigin);
 
                 Origin = $"{xorigin}, {yorigin}";
-                //if (firstMove)
-                //{
-                //    firstMove = false;
-                //    return;
-                //}
-
-                //var (rx, ry) = (RenderTransformOrigin.X, RenderTransformOrigin.Y);
-                //var maxX = (ActualWidth * (1.0 - rx));
-                //var minX = -(ActualWidth * rx);
-                //var maxY = (ActualHeight * (1.0 - ry));
-                //var minY = -(ActualHeight * ry);
-
-                //if (XPosition > maxX || XPosition < minX)
-                //{
-                //    if (XPosition > maxX)
-                //        XPosition = maxX;
-                //    else
-                //        XPosition = minX;
-                //}
-                //else
-
-                //if (YPosition > maxY || YPosition < minY)
-                //{
-                //    if (YPosition > maxY)
-                //        YPosition = maxY;
-                //    else
-                //        YPosition = minY;
-                //}
-                //else
-
             }
         }
 
@@ -318,23 +281,18 @@ namespace Swoa.UI
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            startPoint = Mouse.GetPosition(this);
-            Mouse.Capture(mainGrid);
-
-            //RenderTransformOrigin = new Point(XPosition / ActualHeight, YPosition / ActualWidth);
+            PreMoveCelestialMap();
         }
 
         private void OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Mouse.Capture(mainGrid);
+            PreRotateCelestialMap();
         }
 
         private void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             Mouse.Capture(null);
             mouseCaptured = false;
-            firstMove = true;
-
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
