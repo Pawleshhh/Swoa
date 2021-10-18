@@ -10,6 +10,11 @@
     Height="720"
     mc:Ignorable="d">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
         <Border BorderBrush="Red" BorderThickness="2">
             <local:CelestialMap
                 x:Name="celestialMap"
@@ -20,6 +25,7 @@
                 DataContext="{Binding CelestialObjectManagerVM}" />
         </Border>
         <StackPanel
+            Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Orientation="Horizontal">
@@ -43,6 +49,10 @@
                 Width="50"
                 Height="20"
                 Text="{Binding ElementName=celestialMap, Path=ActualWidth, Mode=OneWay}" />
+            <TextBox
+                Width="300"
+                Height="20"
+                Text="{Binding ElementName=celestialMap, Path=Origin, Mode=OneWay}" />
         </StackPanel>
     </Grid>
 </Window>

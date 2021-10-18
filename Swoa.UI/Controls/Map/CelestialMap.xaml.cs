@@ -105,6 +105,16 @@ namespace Swoa.UI
         public static readonly DependencyProperty YPositionProperty =
             DependencyProperty.Register("YPosition", typeof(double), typeof(CelestialMap));
 
+        public string Origin
+        {
+            get { return (string)GetValue(OriginProperty); }
+            set { SetValue(OriginProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Origin.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OriginProperty =
+            DependencyProperty.Register("Origin", typeof(string), typeof(CelestialMap));
+
         public CelestialMap()
         {
             InitializeComponent();
@@ -121,8 +131,11 @@ namespace Swoa.UI
         {
             ScaleFactor = MinScaleFactor;
             mainGrid.RenderTransformOrigin = new Point(0.5, 0.5);
+            RenderTransformOrigin = new Point(0.5, 0.5);
 
             XPosition = YPosition = 0;
+
+            Origin = "0.0, 0.0";
         }
 
         private void ZoomCelestialMap(double d)
@@ -187,20 +200,47 @@ namespace Swoa.UI
 
             if (Mouse.Captured == mainGrid)
             {
+                var mousePosition = Mouse.GetPosition(this);
+
+                var moveFactor = 0.01;
+
+                XPosition += (startPoint.X - mousePosition.X) * moveFactor;
+                YPosition += (startPoint.Y - mousePosition.Y) * moveFactor;
+
+                var (xorigin, yorigin) = (0.0, 0.0);
+
+                if (XPosition < 0)
+                {
+                    xorigin = 0.5 - (-XPosition / ActualWidth);
+                }
+                else
+                {
+                    xorigin = (XPosition / ActualWidth) + 0.5;
+                }
+
+                if (YPosition < 0)
+                {
+                    yorigin = 0.5 - (-YPosition / ActualHeight);
+                }
+                else
+                {
+                    yorigin = (YPosition / ActualHeight) + 0.5;
+                }
+
+                RenderTransformOrigin = new Point(xorigin, yorigin);
+
+                Origin = $"{xorigin}, {yorigin}";
                 //if (firstMove)
                 //{
                 //    firstMove = false;
                 //    return;
                 //}
 
-                startPoint = Mouse.GetPosition(mainGrid);
-                var mousePosition = Mouse.GetPosition(this);
-
-                var (rx, ry) = (RenderTransformOrigin.X, RenderTransformOrigin.Y);
-                var maxX = (ActualWidth * (1.0 - rx));
-                var minX = -(ActualWidth * rx);
-                var maxY = (ActualHeight * (1.0 - ry));
-                var minY = -(ActualHeight * ry);
+                //var (rx, ry) = (RenderTransformOrigin.X, RenderTransformOrigin.Y);
+                //var maxX = (ActualWidth * (1.0 - rx));
+                //var minX = -(ActualWidth * rx);
+                //var maxY = (ActualHeight * (1.0 - ry));
+                //var minY = -(ActualHeight * ry);
 
                 //if (XPosition > maxX || XPosition < minX)
                 //{
@@ -210,7 +250,6 @@ namespace Swoa.UI
                 //        XPosition = minX;
                 //}
                 //else
-                    XPosition += (startPoint.X - mousePosition.X) * 0.001;
 
                 //if (YPosition > maxY || YPosition < minY)
                 //{
@@ -220,10 +259,6 @@ namespace Swoa.UI
                 //        YPosition = minY;
                 //}
                 //else
-                    YPosition += (startPoint.Y - mousePosition.Y) * 0.001;
-
-
-                var (originX, originY) = (0.0, 0.0);
 
             }
         }
@@ -235,9 +270,10 @@ namespace Swoa.UI
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            startPoint = Mouse.GetPosition(this);
             Mouse.Capture(mainGrid);
 
-            RenderTransformOrigin = new Point(XPosition / ActualHeight, YPosition / ActualWidth);
+            //RenderTransformOrigin = new Point(XPosition / ActualHeight, YPosition / ActualWidth);
         }
 
         private void OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -250,6 +286,7 @@ namespace Swoa.UI
             Mouse.Capture(null);
             mouseCaptured = false;
             firstMove = true;
+
         }
 
         private void OnMouseMove(object sender, MouseEventArgs e)
