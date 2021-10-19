@@ -167,10 +167,15 @@ namespace Swoa.UI
                 ScaleFactor -= ScaleFactorStep;
         }
 
+        private Point rotateStart;
+
         private void PreRotateCelestialMap()
         {
+            //rotateStart = Mouse.GetPosition(mainGrid);
             Mouse.Capture(mainGrid);
         }
+
+        private Line line;
 
         private void RotateCelestialMap()
         {
@@ -179,15 +184,16 @@ namespace Swoa.UI
             else if (Mouse.Captured == mainGrid)
             {
                 // Get the current mouse position relative to the control
-                Point currentLocation = Mouse.GetPosition(this);
+                Point currentLocation = Mouse.GetPosition(outerGrid);
 
                 // We want to rotate around the center of the map, not the top corner
-                Point mapCenter = new Point(this.ActualHeight / 2, this.ActualWidth / 2);
+                Point mapCenter = new Point((this.ActualWidth) / 2, (this.ActualHeight) / 2);
+                //Point mapCenter = mainGrid.TranslatePoint(new Point(-(this.ActualWidth / 2), -(this.ActualHeight / 2)), outerGrid);
 
                 // Calculate an angle
                 double radians = Math.Atan((currentLocation.Y - mapCenter.Y) /
                                            (currentLocation.X - mapCenter.X));
-                Angle = (radians * 180 / Math.PI) - 180.0;
+                Angle = (radians * 180 / Math.PI);
 
                 // Apply a 180 degree shift when X is negative so that we can rotate
                 // all of the way around
@@ -197,6 +203,20 @@ namespace Swoa.UI
                 }
 
                 DirectionLabelsAngle = -180.0 - Angle;
+
+                //if (line != null)
+                //    mainGrid.Children.Remove(line);
+
+                //line = new Line();
+                //line.StrokeThickness = 2;
+                //line.Stroke = Brushes.Red;
+
+                //line.X1 = currentLocation.X;
+                //line.Y1 = currentLocation.Y;
+                //line.X2 = mapCenter.X;
+                //line.Y2 = mapCenter.Y;
+
+                //mainGrid.Children.Add(line);
             }
         }
 
@@ -254,7 +274,7 @@ namespace Swoa.UI
             {
                 var mousePosition = Mouse.GetPosition(this);
 
-                var (xorigin, yorigin) = (RenderTransformOrigin.X, RenderTransformOrigin.Y);
+                var (xorigin, yorigin) = (this.RenderTransformOrigin.X, this.RenderTransformOrigin.Y);
 
                 var (xPos, yPos) = (XPosition + (startPoint.X - mousePosition.X), YPosition + (startPoint.Y - mousePosition.Y));
 
@@ -268,7 +288,7 @@ namespace Swoa.UI
                 if (yMove)
                     (YPosition, yorigin) = setNewPositionAndOrigin(yPos, yorigin, ActualHeight);
 
-                RenderTransformOrigin = new Point(xorigin, yorigin);
+                this.RenderTransformOrigin = new Point(xorigin, yorigin);
 
                 Origin = $"{xorigin}, {yorigin}";
             }

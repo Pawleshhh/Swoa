@@ -40,7 +40,7 @@
             <TextBox
                 Width="50"
                 Height="20"
-                Text="{Binding ElementName=celestialMap, Path=ScaleFactor}" />
+                Text="{Binding ElementName=celestialMap, Path=Angle}" />
             <TextBox
                 Width="50"
                 Height="20"
