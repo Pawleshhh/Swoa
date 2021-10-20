@@ -268,7 +268,9 @@ namespace Swoa.UI
 
                 var (xorigin, yorigin) = (this.RenderTransformOrigin.X, this.RenderTransformOrigin.Y);
 
-                var (xPos, yPos) = (XPosition + (startPoint.X - mousePosition.X), YPosition + (startPoint.Y - mousePosition.Y));
+                double factor = 0.1;
+
+                var (xPos, yPos) = (XPosition + ((startPoint.X - mousePosition.X) * factor), YPosition + ((startPoint.Y - mousePosition.Y) * factor));
 
                 bool xMove, yMove;
                 (xMove, xorigin) = setForLimit(xorigin, xPos, XPosition);
@@ -276,9 +278,13 @@ namespace Swoa.UI
 
                 if (xMove)
                     (XPosition, xorigin) = setNewPositionAndOrigin(xPos, xorigin, ActualWidth);
+                else
+                    startPoint.X = mousePosition.X;
 
                 if (yMove)
                     (YPosition, yorigin) = setNewPositionAndOrigin(yPos, yorigin, ActualHeight);
+                else
+                    startPoint.Y = mousePosition.Y;
 
                 this.RenderTransformOrigin = new Point(xorigin, yorigin);
 
