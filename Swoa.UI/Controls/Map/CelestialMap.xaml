@@ -36,7 +36,7 @@
             </Grid.Style>
             <Grid.Resources>
                 <Style x:Key="directonTextBlockStyle" TargetType="TextBlock">
-                    <Setter Property="FontSize" Value="11" />
+                    <Setter Property="FontSize" Value="14" />
                     <Setter Property="HorizontalAlignment" Value="Center" />
                     <Setter Property="VerticalAlignment" Value="Center" />
                     <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
@@ -48,8 +48,8 @@
                     </Setter>
                 </Style>
                 <Style x:Key="directionEllipseStyle" TargetType="Ellipse">
-                    <Setter Property="Width" Value="20" />
-                    <Setter Property="Height" Value="20" />
+                    <Setter Property="Width" Value="25" />
+                    <Setter Property="Height" Value="25" />
                     <Setter Property="Fill" Value="#363066" />
                     <Setter Property="Stroke" Value="#30664e" />
                     <Setter Property="StrokeThickness" Value="1" />
@@ -61,11 +61,37 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.75*" />
+                <RowDefinition Height="2.25*" />
+                <RowDefinition Height="1.0*" />
+                <RowDefinition Height="1.25*" />
+                <RowDefinition Height="0.75*" />
+                <RowDefinition Height="0.75*" />
+                <RowDefinition Height="1.25*" />
+                <RowDefinition Height="1.0*" />
+                <RowDefinition Height="2.25*" />
+                <RowDefinition Height="0.75*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.75*" />
+                <ColumnDefinition Width="2.25*" />
+                <ColumnDefinition Width="1.0*" />
+                <ColumnDefinition Width="1.25*" />
+                <ColumnDefinition Width="0.75*" />
+                <ColumnDefinition Width="0.75*" />
+                <ColumnDefinition Width="1.25*" />
+                <ColumnDefinition Width="1.0*" />
+                <ColumnDefinition Width="2.25*" />
+                <ColumnDefinition Width="0.75*" />
+            </Grid.ColumnDefinitions>
+
             <!--  Map  -->
             <Ellipse
+                Grid.RowSpan="10"
+                Grid.ColumnSpan="10"
                 Width="{Binding MapDiameter, Mode=OneWayToSource}"
                 Height="{Binding MapDiameter, Mode=OneWayToSource}"
-                Margin="5"
                 local:SizeObserver.Observe="True"
                 local:SizeObserver.ObservedHeight="{Binding MapDiameter, Mode=OneWayToSource}"
                 local:SizeObserver.ObservedWidth="{Binding MapDiameter, Mode=OneWayToSource}"
@@ -73,47 +99,95 @@
                 Stroke="Yellow"
                 StrokeThickness="1" />
 
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <!--  Lines  -->
+
+            <Line
+                x:Name="line1"
+                Grid.RowSpan="10"
+                Grid.ColumnSpan="10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Fill="Black"
+                RenderTransformOrigin="0.5, 0.5"
+                StrokeThickness="2"
+                X1="{Binding ElementName=celestialMap, Converter={StaticResource divideValueConverter}, ConverterParameter=2.0, Path=ActualWidth}"
+                X2="{Binding ElementName=celestialMap, Converter={StaticResource divideValueConverter}, ConverterParameter=2.0, Path=ActualWidth}"
+                Y1="0"
+                Y2="{Binding ElementName=celestialMap, Path=ActualWidth}" />
+
+            <!--  North direction  -->
+            <Grid
+                Grid.Row="9"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom">
                 <Ellipse x:Name="northCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="N" />
             </Grid>
 
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
+            <!--  West direction  -->
+            <Grid
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
                 <Ellipse x:Name="westCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="W" />
             </Grid>
 
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+            <!--  South direction  -->
+            <Grid
+                Grid.Row="0"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top">
                 <Ellipse x:Name="southCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="S" />
             </Grid>
 
-            <Grid HorizontalAlignment="Right" VerticalAlignment="Center">
+            <!--  East direction  -->
+            <Grid
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="9"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
                 <Ellipse x:Name="eastCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="E" />
             </Grid>
 
             <!--  45 degrees circle  -->
             <Ellipse
-                Width="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.5}"
-                Height="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.5}"
+                Grid.Row="2"
+                Grid.RowSpan="6"
+                Grid.Column="2"
+                Grid.ColumnSpan="6"
                 Stroke="Black"
                 StrokeThickness="1" />
 
             <!--  60 degrees circle  -->
             <Ellipse
-                Width="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.33333}"
-                Height="{Binding MapDiameter, Converter={StaticResource multipleValueConverter}, ConverterParameter=0.33333}"
+                Grid.Row="3"
+                Grid.RowSpan="4"
+                Grid.Column="3"
+                Grid.ColumnSpan="4"
                 Stroke="Black"
                 StrokeThickness="1" />
 
             <StackPanel
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Orientation="Vertical">
                 <Rectangle
                     Width="5"
-                    Height="50"
+                    Height="40"
                     HorizontalAlignment="Center"
                     Fill="Yellow" />
                 <Rectangle
@@ -123,13 +197,19 @@
             </StackPanel>
 
             <Ellipse
-                Canvas.Left="177.5"
-                Canvas.Top="177.5"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="4"
+                Grid.ColumnSpan="2"
                 Width="5"
                 Height="5"
                 Fill="Pink" />
 
-            <ItemsControl x:Name="mainItemsControl" ItemsSource="{Binding CelestialObjects}">
+            <ItemsControl
+                x:Name="mainItemsControl"
+                Grid.RowSpan="10"
+                Grid.ColumnSpan="10"
+                ItemsSource="{Binding CelestialObjects}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" />
