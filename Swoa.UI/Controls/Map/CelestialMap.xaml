@@ -12,7 +12,6 @@
     mc:Ignorable="d">
     <UserControl.RenderTransform>
         <TransformGroup>
-
             <ScaleTransform ScaleX="{Binding ElementName=celestialMap, Path=ScaleFactor}" ScaleY="{Binding ElementName=celestialMap, Path=ScaleFactor}" />
         </TransformGroup>
     </UserControl.RenderTransform>

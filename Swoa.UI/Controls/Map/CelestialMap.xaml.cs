@@ -27,6 +27,8 @@ namespace Swoa.UI
         private readonly double maxOrigin = 0.75;
         private readonly double minOrigin = 0.25;
 
+        private double firstAngle;
+
         private bool mouseCaptured;
 
         private Point startPoint;
@@ -167,57 +169,47 @@ namespace Swoa.UI
                 ScaleFactor -= ScaleFactorStep;
         }
 
-        private Point rotateStart;
-
         private void PreRotateCelestialMap()
         {
             //rotateStart = Mouse.GetPosition(mainGrid);
             Mouse.Capture(mainGrid);
         }
 
-        private Line line;
-
         private void RotateCelestialMap()
         {
             if (Mouse.Captured == mainGrid && !mouseCaptured)
+            {
                 mouseCaptured = true;
+                firstAngle = GetAngle() - Angle;
+            }
             else if (Mouse.Captured == mainGrid)
             {
-                // Get the current mouse position relative to the control
-                Point currentLocation = Mouse.GetPosition(outerGrid);
-
-                // We want to rotate around the center of the map, not the top corner
-                Point mapCenter = new Point((this.ActualWidth) / 2, (this.ActualHeight) / 2);
-                //Point mapCenter = mainGrid.TranslatePoint(new Point(-(this.ActualWidth / 2), -(this.ActualHeight / 2)), outerGrid);
-
-                // Calculate an angle
-                double radians = Math.Atan((currentLocation.Y - mapCenter.Y) /
-                                           (currentLocation.X - mapCenter.X));
-                Angle = (radians * 180 / Math.PI);
-
-                // Apply a 180 degree shift when X is negative so that we can rotate
-                // all of the way around
-                if (currentLocation.X - mapCenter.X < 0)
-                {
-                    Angle += 180;
-                }
+                Angle = GetAngle() - firstAngle;
 
                 DirectionLabelsAngle = -180.0 - Angle;
-
-                //if (line != null)
-                //    mainGrid.Children.Remove(line);
-
-                //line = new Line();
-                //line.StrokeThickness = 2;
-                //line.Stroke = Brushes.Red;
-
-                //line.X1 = currentLocation.X;
-                //line.Y1 = currentLocation.Y;
-                //line.X2 = mapCenter.X;
-                //line.Y2 = mapCenter.Y;
-
-                //mainGrid.Children.Add(line);
             }
+        }
+
+        private double GetAngle()
+        {
+            Point currentLocation = Mouse.GetPosition(outerGrid);
+
+            // We want to rotate around the center of the map, not the top corner
+            Point mapCenter = new Point((this.ActualWidth) / 2, (this.ActualHeight) / 2);
+
+            // Calculate an angle
+            double radians = Math.Atan((currentLocation.Y - mapCenter.Y) /
+                                       (currentLocation.X - mapCenter.X));
+            double angle = radians * 180 / Math.PI;
+
+            // Apply a 180 degree shift when X is negative so that we can rotate
+            // all of the way around
+            if (currentLocation.X - mapCenter.X < 0)
+            {
+                angle += 180;
+            }
+
+            return angle;
         }
 
         private void PreMoveCelestialMap()
