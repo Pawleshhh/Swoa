@@ -24,12 +24,19 @@ namespace Swoa.UI
             var swoaManagerModel = new SwoaManager();
             swoaManagerVM = new SwoaManagerViewModel(swoaManagerModel);
 
-            var horizonCoords = new HorizonCoordinates(45, 90);
-
-            swoaManagerModel.CelestialObjectManager.Add(new PlanetObject()
+            var random = new Random();
+            for (int i = 0; i < 1000; i++)
             {
-                HorizontalCoordinates = horizonCoords
-            });
+                double alt = random.Next(0, 91);
+                double az = random.Next(0, 360);
+
+                var horizonCoords = new HorizonCoordinates(alt, az);
+
+                swoaManagerModel.CelestialObjectManager.Add(new PlanetObject()
+                {
+                    HorizontalCoordinates = horizonCoords
+                });
+            }
 
             MainWindow = new MainWindow();
             MainWindow.DataContext = swoaManagerVM;

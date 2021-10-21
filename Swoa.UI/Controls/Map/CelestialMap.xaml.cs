@@ -268,7 +268,7 @@ namespace Swoa.UI
 
                 var (xorigin, yorigin) = (this.RenderTransformOrigin.X, this.RenderTransformOrigin.Y);
 
-                double factor = 0.1;
+                double factor = 1;
 
                 var (xPos, yPos) = (XPosition + ((startPoint.X - mousePosition.X) * factor), YPosition + ((startPoint.Y - mousePosition.Y) * factor));
 

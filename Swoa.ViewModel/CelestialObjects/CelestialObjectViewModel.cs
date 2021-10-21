@@ -22,8 +22,8 @@ namespace Swoa.ViewModel
         private double x;
         private double y;
 
-        private double height = 12;
-        private double width = 12;
+        private double height = 2;
+        private double width = 2;
 
         public double XPos
         {

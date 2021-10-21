@@ -77,3 +77,4 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\ref\Swoa.UI.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.genruntimeconfig.cache
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\CelestialMapResources.baml
