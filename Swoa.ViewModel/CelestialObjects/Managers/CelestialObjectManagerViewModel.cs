@@ -40,6 +40,10 @@ namespace Swoa.ViewModel
         //private double mapHeight;
         private double mapDiameter;
 
+        private bool isAzGridVisible = true;
+        private bool isAltGridVisible = true;
+        private bool areDirectionsVisible = true;
+
         #endregion
 
         #region Properties
@@ -51,9 +55,27 @@ namespace Swoa.ViewModel
             get => mapDiameter;
             set
             {
-                if (SetProperty(() => mapDiameter == value, () => mapDiameter = value))
+                if (SetProperty(ref mapDiameter, value))
                     UpdateCelestialObjects();
             }
+        }
+
+        public bool IsAzGridVisible
+        {
+            get => isAzGridVisible;
+            set => SetProperty(ref isAzGridVisible, value);
+        }
+
+        public bool IsAltGridVisible
+        {
+            get => isAltGridVisible;
+            set => SetProperty(ref isAltGridVisible, value);
+        }
+
+        public bool AreDirectionsVisible
+        {
+            get => areDirectionsVisible;
+            set => SetProperty(ref areDirectionsVisible, areDirectionsVisible);
         }
 
         //public double MapWidth

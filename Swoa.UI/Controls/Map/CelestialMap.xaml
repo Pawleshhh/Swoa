@@ -137,7 +137,8 @@
                 x:Name="linesGrid"
                 Grid.RowSpan="12"
                 Grid.ColumnSpan="12"
-                RenderTransformOrigin="0.5, 0.5">
+                RenderTransformOrigin="0.5, 0.5"
+                Visibility="{Binding IsAzGridVisible, Mode=TwoWay, Converter={StaticResource booleanToVisibilityConverter}}">
                 <Grid.RenderTransform>
                     <ScaleTransform ScaleX="-1" ScaleY="1" />
                 </Grid.RenderTransform>
@@ -231,7 +232,8 @@
                 Grid.Column="5"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom">
+                VerticalAlignment="Bottom"
+                Visibility="{Binding AreDirectionsVisible, Mode=TwoWay, Converter={StaticResource booleanToVisibilityConverter}}">
                 <Ellipse x:Name="northCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="N" />
             </Grid>
@@ -242,7 +244,8 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                Visibility="{Binding AreDirectionsVisible, Mode=TwoWay, Converter={StaticResource booleanToVisibilityConverter}}">
                 <Ellipse x:Name="westCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="W" />
             </Grid>
@@ -253,7 +256,8 @@
                 Grid.Column="5"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Top">
+                VerticalAlignment="Top"
+                Visibility="{Binding AreDirectionsVisible, Mode=TwoWay, Converter={StaticResource booleanToVisibilityConverter}}">
                 <Ellipse x:Name="southCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="S" />
             </Grid>
@@ -264,7 +268,8 @@
                 Grid.RowSpan="2"
                 Grid.Column="12"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                Visibility="{Binding AreDirectionsVisible, Mode=TwoWay, Converter={StaticResource booleanToVisibilityConverter}}">
                 <Ellipse x:Name="eastCircle" Style="{StaticResource directionEllipseStyle}" />
                 <TextBlock Style="{StaticResource directonTextBlockStyle}" Text="E" />
             </Grid>
@@ -276,7 +281,8 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="8"
                 Stroke="{StaticResource CelestialMapGridColor}"
-                StrokeThickness="1" />
+                StrokeThickness="1"
+                Visibility="{Binding IsAltGridVisible, Mode=TwoWay, Converter={StaticResource booleanToVisibilityConverter}}" />
 
             <!--  60 degrees circle  -->
             <Ellipse
@@ -285,7 +291,8 @@
                 Grid.Column="4"
                 Grid.ColumnSpan="4"
                 Stroke="{StaticResource CelestialMapGridColor}"
-                StrokeThickness="1" />
+                StrokeThickness="1"
+                Visibility="{Binding IsAltGridVisible, Mode=TwoWay, Converter={StaticResource booleanToVisibilityConverter}}" />
 
             <!--<StackPanel
                 Grid.Row="4"

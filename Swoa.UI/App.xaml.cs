@@ -27,8 +27,8 @@ namespace Swoa.UI
             var random = new Random();
             for (int i = 0; i < 1000; i++)
             {
-                double alt = random.Next(0, 91);
-                double az = random.Next(0, 360);
+                double alt = random.NextDouble() * 90.0;
+                double az = random.NextDouble() * 360.0;
 
                 var horizonCoords = new HorizonCoordinates(alt, az);
 
