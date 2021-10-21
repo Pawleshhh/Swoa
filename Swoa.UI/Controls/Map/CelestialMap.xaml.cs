@@ -184,7 +184,14 @@ namespace Swoa.UI
             }
             else if (Mouse.Captured == mainGrid)
             {
-                Angle = GetAngle() - firstAngle;
+                var angle = GetAngle() - firstAngle;
+
+                if (angle > 360)
+                    angle = angle - 360;
+                else if (angle < 0)
+                    angle = angle + 360;
+
+                Angle = angle;
 
                 DirectionLabelsAngle = -180.0 - Angle;
             }
