@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CelestialObjects;
 using Astronomy.Units;
+using SwoaDatabaseAPI;
 
 namespace Swoa.UI
 {
@@ -24,6 +25,17 @@ namespace Swoa.UI
             var swoaManagerModel = new SwoaManager();
             swoaManagerVM = new SwoaManagerViewModel(swoaManagerModel);
 
+            //AddRandomObjs(swoaManagerModel);
+            AddDbObjs(swoaManagerModel);
+
+            MainWindow = new MainWindow();
+            MainWindow.DataContext = swoaManagerVM;
+            MainWindow.Show();
+        }
+
+
+        private void AddRandomObjs(SwoaManager swoaManager)
+        {
             var random = new Random();
             for (int i = 0; i < 1000; i++)
             {
@@ -32,15 +44,21 @@ namespace Swoa.UI
 
                 var horizonCoords = new HorizonCoordinates(alt, az);
 
-                swoaManagerModel.CelestialObjectManager.Add(new PlanetObject()
+                swoaManager.CelestialObjectManager.Add(new PlanetObject()
                 {
                     HorizontalCoordinates = horizonCoords
                 });
             }
+        }
 
-            MainWindow = new MainWindow();
-            MainWindow.DataContext = swoaManagerVM;
-            MainWindow.Show();
+        private void AddDbObjs(SwoaManager swoaManager)
+        {
+            var celestialObjs = SwoaSqliteDb.SwoaSqliteDbSingleton.GetCelestialObjects("SELECT * FROM stars WHERE mag < 7");
+
+            foreach(var obj in celestialObjs)
+            {
+                swoaManager.CelestialObjectManager.Add(obj);
+            }
         }
 
     }
