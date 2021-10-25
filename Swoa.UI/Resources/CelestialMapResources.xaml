@@ -5,6 +5,6 @@
     <SolidColorBrush x:Key="CelestialMapBackground" Color="#363066" />
     <SolidColorBrush x:Key="CelestialMapBorderBrush" Color="#30664e" />
     <SolidColorBrush x:Key="CelestialMapGridColor" Color="#253b7d" />
-    <SolidColorBrush x:Key="CelestialMapCenterColor" Color="Pink" />
+    <SolidColorBrush x:Key="CelestialMapCenterColor" Color="Yellow" />
 
 </ResourceDictionary>
