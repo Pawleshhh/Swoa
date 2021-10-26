@@ -25,7 +25,7 @@ namespace Swoa.UI
             var swoaManagerModel = new SwoaManager();
             swoaManagerVM = new SwoaManagerViewModel(swoaManagerModel);
 
-            AddRandomObjs(swoaManagerModel);
+            //AddRandomObjs(swoaManagerModel);
             //AddDbObjs(swoaManagerModel);
 
             MainWindow = new MainWindow();

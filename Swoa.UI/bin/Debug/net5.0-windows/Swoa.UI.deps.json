@@ -881,7 +881,8 @@
       },
       "Swoa/1.0.0": {
         "dependencies": {
-          "CelestialObjects": "1.0.0"
+          "CelestialObjects": "1.0.0",
+          "SwoaDatabaseAPI": "1.0.0"
         },
         "runtime": {
           "Swoa.dll": {}

@@ -23,7 +23,7 @@ namespace Astronomy
         /// <param name="date">Date and UTC time in given location.</param>
         /// <param name="latitude">Latitude of given location in degrees.</param>
         /// <param name="longitude">Longitude of given location in degrees (east positive).</param>
-        private static (double alt, double az) EquatorialToHorizonCoords(double ra, double dec, DateTime date, double latitude, double longitude)
+        public static (double alt, double az) EquatorialToHorizonCoords(double ra, double dec, DateTime date, double latitude, double longitude)
         {
             double daysFromJ2000 = (date - J2000).TotalDays;
 

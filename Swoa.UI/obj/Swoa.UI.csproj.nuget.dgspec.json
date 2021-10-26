@@ -392,6 +392,9 @@
             "projectReferences": {
               "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
                 "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
+              },
+              "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj": {
+                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj"
               }
             }
           }

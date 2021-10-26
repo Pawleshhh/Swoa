@@ -36,3 +36,5 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net5.0\Swoa.csproj.Copy
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net5.0\Swoa.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net5.0\ref\Swoa.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net5.0\Swoa.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net5.0\SwoaDatabaseAPI.dll
+N:\Programowanie\Ogólne\Swoa\Swoa\bin\Debug\net5.0\SwoaDatabaseAPI.pdb
