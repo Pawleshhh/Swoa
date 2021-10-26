@@ -37,60 +37,101 @@ namespace SwoaDatabaseAPI
 
         #region Methods
 
-        public override IEnumerable<CelestialObject> GetCelestialObjects(string query)
+        public override IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType)
         {
             using(var connection = new SqliteConnection($"Data Source={path}"))
             {
                 connection.Open();
 
                 var command = connection.CreateCommand();
-                command.CommandText = query;
+                command.CommandText = CreateQuery(dbRecordType, condition);
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        //double x = reader.GetDouble(7);
-                        //double ra = (x / 24.0) * 360.0;
-                        //EquatorialCoordinates eqCoords = new EquatorialCoordinates(reader.GetDouble(8), ra);
-                        //var (alt, az) = CoordinatesConverter(ra, eqCoords.Declination, DateTime.UtcNow, 53.44101976999434, 14.55075611865506);
-                        //HorizonCoordinates horizonCoords = new HorizonCoordinates(alt, az);
-
-                        //if (alt > 0)
-                        //{
-                        //    var name = GetName(reader);
-                        //    double sundist = reader.GetDouble(9);
-                        //    double mag = reader.GetDouble(11);
-                        //    double absmag = reader.GetDouble(12);
-                        //    //string spect = reader.GetString(13);
-                        //    //string con = reader.GetString(14);
-                        //    OutsideStarObject outsideStarObject = new OutsideStarObject()
-                        //    {
-                        //        Name = name,
-                        //        EquatorialCoordinates = eqCoords,
-                        //        HorizontalCoordinates = horizonCoords,
-                        //        VisualMagnitude = mag
-                        //    };
-
-                            yield return null;
-                        }
-
+                        yield return GetSwoaDbRecord(reader, dbRecordType);
                     }
+
                 }
             }
         }
 
-        private string GetName(SqliteDataReader reader)
+        public override IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(int magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
         {
-            for (int i = 6; i >= 1; i--)
-            {
-                if (!reader.IsDBNull(i))
-                    return reader.GetString(i);
-            }
+            string condition = $"mag {GetOperator(compareOperator)} {magnitude}";
 
-            return string.Empty;
+            return GetSwoaDbRecords(condition, dbRecordType);
         }
 
+        private SwoaDbRecord GetSwoaDbRecord(SqliteDataReader reader, SwoaDbRecordType dbRecordType)
+        {
+            if (dbRecordType == SwoaDbRecordType.Star)
+            {
+                var swoaDbRecord = new SwoaDbStarRecord()
+                {
+                    Id = GetDataOrDefault(reader, reader.GetInt64, 0),
+                    Hip = GetDataOrDefault(reader, reader.GetString, 1),
+                    Hd = GetDataOrDefault(reader, reader.GetString, 2),
+                    Hr = GetDataOrDefault(reader, reader.GetString, 3),
+                    Gl = GetDataOrDefault(reader, reader.GetString, 4),
+                    Bf = GetDataOrDefault(reader, reader.GetString, 5),
+                    Proper = GetDataOrDefault(reader, reader.GetString, 6),
+                    Ra = GetDataOrDefault(reader, reader.GetDouble, 7),
+                    Dec = GetDataOrDefault(reader, reader.GetDouble, 8),
+                    SunDist = GetDataOrDefault(reader, reader.GetDouble, 9),
+                    EarthDist = GetDataOrDefault(reader, reader.GetDouble, 10),
+                    Mag = GetDataOrDefault(reader, reader.GetDouble, 11),
+                    AbsMag = GetDataOrDefault(reader, reader.GetDouble, 12),
+                    Spect = GetDataOrDefault(reader, reader.GetString, 13),
+                    Con = GetDataOrDefault(reader, reader.GetString, 14),
+                };
+
+                return swoaDbRecord;
+            }
+
+            throw new ArgumentException(nameof(dbRecordType));
+        }
+
+        private T GetDataOrDefault<T>(SqliteDataReader reader, Func<int, T> getData, int column)
+        {
+            if (reader.IsDBNull(column))
+                return default;
+            else
+                return getData(column);
+        }
+
+        private string GetTableName(SwoaDbRecordType dbRecordType)
+        {
+            if (dbRecordType == SwoaDbRecordType.Star)
+                return "stars";
+            else
+                throw new ArgumentException(nameof(dbRecordType));
+        }
+
+        private string CreateQuery(SwoaDbRecordType dbRecordType, string condition)
+        => $"SELECT * FROM {GetTableName(dbRecordType)} WHERE {condition}";
+
+        private string GetOperator(DbCompareOperator compareOperator)
+        {
+            switch(compareOperator)
+            {
+                case DbCompareOperator.Equal:
+                    return "=";
+                case DbCompareOperator.NotEqual:
+                    return "<>";
+                case DbCompareOperator.Greater:
+                    return ">";
+                case DbCompareOperator.Less:
+                    return "<";
+                case DbCompareOperator.GreaterEqual:
+                    return ">=";
+                case DbCompareOperator.LessEqual:
+                    return "<=";
+            }
+
+            throw new ArgumentException(nameof(compareOperator));
+        }
 
         #endregion
 

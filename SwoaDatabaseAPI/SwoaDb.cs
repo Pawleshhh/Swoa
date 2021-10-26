@@ -29,10 +29,15 @@ namespace SwoaDatabaseAPI
 
         #region Methods
 
-        public abstract IEnumerable<CelestialObject> GetCelestialObjects(string query);
+        public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType);
 
-        public virtual Task<IEnumerable<CelestialObject>> GetCelestialObjectsAsync(string query)
-            => Task.Run(() => GetCelestialObjects(query));
+        public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(int magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType);
+
+        public virtual Task<IEnumerable<SwoaDbRecord>> GetSwoaDbRecordsAsync(string condition, SwoaDbRecordType dbRecordType)
+            => Task.Run(() => GetSwoaDbRecords(condition, dbRecordType));
+
+        public virtual Task<IEnumerable<SwoaDbRecord>> GetSwoaDbRecordsByMagnitudeAsync(int magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
+            => Task.Run(() => GetSwoaDbRecordsByMagnitude(magnitude, compareOperator, dbRecordType));
 
         #endregion
     }

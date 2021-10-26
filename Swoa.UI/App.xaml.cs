@@ -25,8 +25,8 @@ namespace Swoa.UI
             var swoaManagerModel = new SwoaManager();
             swoaManagerVM = new SwoaManagerViewModel(swoaManagerModel);
 
-            //AddRandomObjs(swoaManagerModel);
-            AddDbObjs(swoaManagerModel);
+            AddRandomObjs(swoaManagerModel);
+            //AddDbObjs(swoaManagerModel);
 
             MainWindow = new MainWindow();
             MainWindow.DataContext = swoaManagerVM;
@@ -51,15 +51,15 @@ namespace Swoa.UI
             }
         }
 
-        private void AddDbObjs(SwoaManager swoaManager)
-        {
-            var celestialObjs = SwoaSqliteDb.SwoaSqliteDbSingleton.GetCelestialObjects("SELECT * FROM stars WHERE mag < 7");
+        //private void AddDbObjs(SwoaManager swoaManager)
+        //{
+        //    var celestialObjs = SwoaSqliteDb.SwoaSqliteDbSingleton.GetSwoaDbRecords("SELECT * FROM stars WHERE mag < 7");
 
-            foreach(var obj in celestialObjs)
-            {
-                swoaManager.CelestialObjectManager.Add(obj);
-            }
-        }
+        //    foreach(var obj in celestialObjs)
+        //    {
+        //        swoaManager.CelestialObjectManager.Add(obj);
+        //    }
+        //}
 
     }
 }
