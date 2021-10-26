@@ -15,6 +15,18 @@ namespace Swoa.ViewModel
         public CelestialObjectViewModel(CelestialObject celestialObject)
         {
             CelestialObject = celestialObject;
+
+            double size = 0;
+            if (celestialObject.VisualMagnitude > 4)
+                size = 0.5;
+            else if (celestialObject.VisualMagnitude > 2)
+                size = 1.0;
+            else if (celestialObject.VisualMagnitude > 0)
+                size = 2.0;
+            else
+                size = 3.0;
+
+            height = width = size;
         }
 
         public CelestialObject CelestialObject { get; }
