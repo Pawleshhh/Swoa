@@ -1,4 +1,6 @@
-﻿using CelestialObjects;
+﻿using Astronomy;
+using CelestialObjects;
+using SwoaDatabaseAPI;
 using System;
 using System.Collections.Generic;
 
@@ -8,15 +10,20 @@ namespace Swoa
     {
 
         #region Constructors
-        public CelestialObjectManager(ICelestialObjectCollection celestialObjects)
+        public CelestialObjectManager(ICelestialObjectCollection celestialObjects, SwoaDb swoaDb)
         {
             this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
+            this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
         }
         #endregion
 
         #region Fields
 
         private readonly ICelestialObjectCollection celestialObjects;
+        private readonly SwoaDb swoaDb;
+
+        private readonly CelestialObjectReviewer mainReviewer = new CelestialObjectReviewer();
+        //private readonly CelestialObjectReviewer customReviewer = new CelestialObjectReviewer();
 
         #endregion
 
@@ -68,6 +75,29 @@ namespace Swoa
         public bool CanBeAdded(CelestialObject celestialObject)
         {
             return celestialObject != null;
+        }
+
+        public void Update()
+        {
+            var records = SwoaSqliteDb.SwoaSqliteDbSingleton.GetSwoaDbRecordsByMagnitude(mainReviewer.MaxMagnitude, DbCompareOperator.Less, SwoaDbRecordType.Star);
+
+            foreach (var record in records)
+            {
+                var ra = record.Ra / 24.0 * 360.0;
+
+                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, DateTime.UtcNow, 53.4410141708595, 14.550730731716628);
+
+                if (alt <= 0)
+                    continue;
+
+                var celestialObj = new OutsideStarObject()
+                {
+                    HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
+                    VisualMagnitude = record.Mag
+                };
+
+                Add(celestialObj);
+            }
         }
 
         #endregion

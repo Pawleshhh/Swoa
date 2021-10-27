@@ -42,3 +42,5 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.V
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.csproj.CopyComplete
 N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\SwoaDatabaseAPI.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\SwoaDatabaseAPI.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\SwoaDatabaseAPI.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\SwoaDatabaseAPI.pdb

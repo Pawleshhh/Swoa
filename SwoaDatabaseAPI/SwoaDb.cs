@@ -23,7 +23,7 @@ namespace SwoaDatabaseAPI
 
         #region Fields
 
-        protected readonly string path = @"N:\Programowanie\Ogólne\Swoa\Database\swoa.db";
+        protected readonly string path = @"..\..\..\..\Database\swoa.db";
 
         #endregion
 
@@ -31,12 +31,12 @@ namespace SwoaDatabaseAPI
 
         public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType);
 
-        public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(int magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType);
+        public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(double magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType);
 
         public virtual Task<IEnumerable<SwoaDbRecord>> GetSwoaDbRecordsAsync(string condition, SwoaDbRecordType dbRecordType)
             => Task.Run(() => GetSwoaDbRecords(condition, dbRecordType));
 
-        public virtual Task<IEnumerable<SwoaDbRecord>> GetSwoaDbRecordsByMagnitudeAsync(int magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
+        public virtual Task<IEnumerable<SwoaDbRecord>> GetSwoaDbRecordsByMagnitudeAsync(double magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
             => Task.Run(() => GetSwoaDbRecordsByMagnitude(magnitude, compareOperator, dbRecordType));
 
         #endregion

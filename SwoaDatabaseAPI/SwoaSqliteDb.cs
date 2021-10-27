@@ -57,7 +57,7 @@ namespace SwoaDatabaseAPI
             }
         }
 
-        public override IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(int magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
+        public override IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(double magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
         {
             string condition = $"mag {GetOperator(compareOperator)} {magnitude}";
 

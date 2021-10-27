@@ -11,14 +11,21 @@ namespace Swoa
 
         #region Constructors
 
-        public SwoaManager()
+        public SwoaManager(SwoaDb swoaDb)
         {
+            this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
+
             ICelestialObjectCollection celestialObjects = new CelestialObjectList();
+            CelestialObjectManager = new CelestialObjectManager(celestialObjects, swoaDb);
 
-            CelestialObjectManager = new CelestialObjectManager(celestialObjects);
-
-            Initialize();
+            CelestialObjectManager.Update();
         }
+
+        #endregion
+
+        #region Fields
+
+        private readonly SwoaDb swoaDb;
 
         #endregion
 
@@ -29,26 +36,6 @@ namespace Swoa
         #endregion
 
         #region Methods
-
-        private void Initialize()
-        {
-            var records = SwoaSqliteDb.SwoaSqliteDbSingleton.GetSwoaDbRecordsByMagnitude(7, DbCompareOperator.Less, SwoaDbRecordType.Star);
-
-            foreach (var record in records)
-            {
-                var ra = record.Ra / 24.0 * 360.0;
-
-                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, DateTime.UtcNow, 53.4410141708595, 14.550730731716628);
-
-                var celestialObj = new OutsideStarObject()
-                {
-                    HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
-                    VisualMagnitude = record.Mag
-                };
-
-                CelestialObjectManager.Add(celestialObj);
-            }
-        }
 
         #endregion
 
