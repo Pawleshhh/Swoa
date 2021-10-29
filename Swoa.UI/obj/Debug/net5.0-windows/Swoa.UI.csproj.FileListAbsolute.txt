@@ -122,3 +122,7 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\SwoaD
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\SwoaDatabaseAPI.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\CelestialMapResources.baml
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\Values.baml
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\TimeMachine\TimeMachine.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\DotNetProjects.Wpf.Extended.Toolkit.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\TimeMachine\TimeMachine.baml

@@ -6,6 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
+      "DotNetProjects.Extended.Wpf.Toolkit/4.6.97": {
+        "runtime": {
+          "lib/netcoreapp3.0/DotNetProjects.Wpf.Extended.Toolkit.dll": {
+            "assemblyVersion": "4.6.97.0",
+            "fileVersion": "4.6.97.0"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
         "dependencies": {
           "Microsoft.Data.Sqlite.Core": "6.0.0-rc.2.21480.5",
@@ -1234,6 +1242,13 @@
     }
   },
   "libraries": {
+    "DotNetProjects.Extended.Wpf.Toolkit/4.6.97": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xEKmDYltHOwgrYYdJn6mtEXMWbguuCDgTwdrjJ6OeYGP9FQTWjkaF/SH7MLX/9F/8e126zXv/W70gGHFgOAhLQ==",
+      "path": "dotnetprojects.extended.wpf.toolkit/4.6.97",
+      "hashPath": "dotnetprojects.extended.wpf.toolkit.4.6.97.nupkg.sha512"
+    },
     "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
       "type": "package",
       "serviceable": true,

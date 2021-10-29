@@ -10,15 +10,24 @@
     <Compile Update="Controls\Map\CelestialMap.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\TimeMachine\TimeMachine.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\Map\CelestialMap.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\TimeMachine\TimeMachine.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\CelestialMapResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Values.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

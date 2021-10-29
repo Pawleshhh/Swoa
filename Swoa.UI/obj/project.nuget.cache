@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "klDIhHbZEr+rDCv8G1sRTX1UGA+ShcvFdIXUMXIejvZwyJItMoA0edu2PAJLINe6TfGZOqPvSQcM/tG2Jwq7DQ==",
+  "dgSpecHash": "D7YKRJ1qlk7BWLuxYZ4EgOetFKldbUEDGiu0GkS6Ikmf1cwOWfY9RKzgR+tISp7p5mnduyVjZgzhv3TAQHTbWA==",
   "success": true,
   "projectFilePath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\1\\.nuget\\packages\\dotnetprojects.extended.wpf.toolkit\\4.6.97\\dotnetprojects.extended.wpf.toolkit.4.6.97.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.data.sqlite\\6.0.0-rc.2.21480.5\\microsoft.data.sqlite.6.0.0-rc.2.21480.5.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0-rc.2.21480.5\\microsoft.data.sqlite.core.6.0.0-rc.2.21480.5.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

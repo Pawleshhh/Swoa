@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "DotNetProjects.Extended.Wpf.Toolkit/4.6.97": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/DotNetProjects.Wpf.Extended.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/DotNetProjects.Wpf.Extended.Toolkit.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
         "type": "package",
         "dependencies": {
@@ -1489,6 +1501,19 @@
     }
   },
   "libraries": {
+    "DotNetProjects.Extended.Wpf.Toolkit/4.6.97": {
+      "sha512": "xEKmDYltHOwgrYYdJn6mtEXMWbguuCDgTwdrjJ6OeYGP9FQTWjkaF/SH7MLX/9F/8e126zXv/W70gGHFgOAhLQ==",
+      "type": "package",
+      "path": "dotnetprojects.extended.wpf.toolkit/4.6.97",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotnetprojects.extended.wpf.toolkit.4.6.97.nupkg.sha512",
+        "dotnetprojects.extended.wpf.toolkit.nuspec",
+        "lib/net40/DotNetProjects.Wpf.Extended.Toolkit.dll",
+        "lib/netcoreapp3.0/DotNetProjects.Wpf.Extended.Toolkit.dll"
+      ]
+    },
     "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
       "sha512": "KFv2u/ipZ4+TAVEZF46ZE0htb0Ge7A8jvsRiNnIAXSoOyVvXCrpp/eI/IWZavNl5arVM2BmrIX6H7dCllIRoMQ==",
       "type": "package",
@@ -5061,6 +5086,7 @@
     "net5.0-windows7.0": [
       "Astronomy >= 1.0.0",
       "CelestialObjects >= 1.0.0",
+      "DotNetProjects.Extended.Wpf.Toolkit >= 4.6.97",
       "Swoa >= 1.0.0",
       "Swoa.ViewModel >= 1.0.0",
       "SwoaDatabaseAPI >= 1.0.0"
@@ -5129,6 +5155,12 @@
     "frameworks": {
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
+        "dependencies": {
+          "DotNetProjects.Extended.Wpf.Toolkit": {
+            "target": "Package",
+            "version": "[4.6.97, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

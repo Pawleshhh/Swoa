@@ -79,7 +79,7 @@ namespace Swoa
 
         public void Update()
         {
-            var records = SwoaSqliteDb.SwoaSqliteDbSingleton.GetAllSwoaDbRecords("mag <= 7");
+            var records = SwoaSqliteDb.SwoaSqliteDbSingleton.GetAllSwoaDbRecords("mag <= 4");
 
             foreach (var record in records)
             {

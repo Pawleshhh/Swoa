@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\App.xaml
-31560146044
+5-1025134989
 
-10920669857
-2061262395596
-Controls\Map\CelestialMap.xaml;MainWindow.xaml;Resources\CelestialMapResources.xaml;
+111640260222
+207-828187940
+Controls\Map\CelestialMap.xaml;Controls\TimeMachine\TimeMachine.xaml;MainWindow.xaml;Resources\CelestialMapResources.xaml;Resources\Values.xaml;
 
 True
 
