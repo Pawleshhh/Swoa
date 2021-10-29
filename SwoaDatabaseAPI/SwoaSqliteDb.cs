@@ -18,7 +18,7 @@ namespace SwoaDatabaseAPI
 
         private SwoaSqliteDb() : base()
         {
-
+            CreateSwoaDbRecordFactory();
         }
 
         #endregion
@@ -26,6 +26,8 @@ namespace SwoaDatabaseAPI
         #region Fields
 
         private static SwoaSqliteDb swoaSqliteDb;
+
+        private SwoaSqliteDbRecordFactory factory;
 
         #endregion
 
@@ -39,6 +41,7 @@ namespace SwoaDatabaseAPI
 
         public override IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType)
         {
+
             using(var connection = new SqliteConnection($"Data Source={path}"))
             {
                 connection.Open();
@@ -50,58 +53,21 @@ namespace SwoaDatabaseAPI
                 {
                     while (reader.Read())
                     {
-                        yield return GetSwoaDbRecord(reader, dbRecordType);
+                        yield return factory.CreateSwoaDbRecord(reader, dbRecordType);
                     }
 
                 }
             }
         }
 
-        public override IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(double magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
-        {
-            string condition = $"mag {GetOperator(compareOperator)} {magnitude}";
+        //public override IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(double magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType)
+        //{
+        //    string condition = $"mag {GetOperator(compareOperator)} {magnitude}";
 
-            return GetSwoaDbRecords(condition, dbRecordType);
-        }
+        //    return GetSwoaDbRecords(condition, dbRecordType);
+        //}
 
-        private SwoaDbRecord GetSwoaDbRecord(SqliteDataReader reader, SwoaDbRecordType dbRecordType)
-        {
-            if (dbRecordType == SwoaDbRecordType.Star)
-            {
-                var swoaDbRecord = new SwoaDbStarRecord()
-                {
-                    Id = GetDataOrDefault(reader, reader.GetInt64, 0),
-                    Hip = GetDataOrDefault(reader, reader.GetString, 1),
-                    Hd = GetDataOrDefault(reader, reader.GetString, 2),
-                    Hr = GetDataOrDefault(reader, reader.GetString, 3),
-                    Gl = GetDataOrDefault(reader, reader.GetString, 4),
-                    Bf = GetDataOrDefault(reader, reader.GetString, 5),
-                    Proper = GetDataOrDefault(reader, reader.GetString, 6),
-                    Ra = GetDataOrDefault(reader, reader.GetDouble, 7),
-                    Dec = GetDataOrDefault(reader, reader.GetDouble, 8),
-                    SunDist = GetDataOrDefault(reader, reader.GetDouble, 9),
-                    EarthDist = GetDataOrDefault(reader, reader.GetDouble, 10),
-                    Mag = GetDataOrDefault(reader, reader.GetDouble, 11),
-                    AbsMag = GetDataOrDefault(reader, reader.GetDouble, 12),
-                    Spect = GetDataOrDefault(reader, reader.GetString, 13),
-                    Con = GetDataOrDefault(reader, reader.GetString, 14),
-                };
-
-                return swoaDbRecord;
-            }
-
-            throw new ArgumentException(nameof(dbRecordType));
-        }
-
-        private T GetDataOrDefault<T>(SqliteDataReader reader, Func<int, T> getData, int column)
-        {
-            if (reader.IsDBNull(column))
-                return default;
-            else
-                return getData(column);
-        }
-
-        private string GetTableName(SwoaDbRecordType dbRecordType)
+        public override string GetTableName(SwoaDbRecordType dbRecordType)
         {
             if (dbRecordType == SwoaDbRecordType.Star)
                 return "stars";
@@ -109,29 +75,34 @@ namespace SwoaDatabaseAPI
                 throw new ArgumentException(nameof(dbRecordType));
         }
 
+        protected override SwoaDbRecordFactory CreateSwoaDbRecordFactory()
+        {
+            return factory ??= new SwoaSqliteDbRecordFactory();
+        }
+
         private string CreateQuery(SwoaDbRecordType dbRecordType, string condition)
         => $"SELECT * FROM {GetTableName(dbRecordType)} WHERE {condition}";
 
-        private string GetOperator(DbCompareOperator compareOperator)
-        {
-            switch(compareOperator)
-            {
-                case DbCompareOperator.Equal:
-                    return "=";
-                case DbCompareOperator.NotEqual:
-                    return "<>";
-                case DbCompareOperator.Greater:
-                    return ">";
-                case DbCompareOperator.Less:
-                    return "<";
-                case DbCompareOperator.GreaterEqual:
-                    return ">=";
-                case DbCompareOperator.LessEqual:
-                    return "<=";
-            }
+        //private string GetOperator(DbCompareOperator compareOperator)
+        //{
+        //    switch(compareOperator)
+        //    {
+        //        case DbCompareOperator.Equal:
+        //            return "=";
+        //        case DbCompareOperator.NotEqual:
+        //            return "<>";
+        //        case DbCompareOperator.Greater:
+        //            return ">";
+        //        case DbCompareOperator.Less:
+        //            return "<";
+        //        case DbCompareOperator.GreaterEqual:
+        //            return ">=";
+        //        case DbCompareOperator.LessEqual:
+        //            return "<=";
+        //    }
 
-            throw new ArgumentException(nameof(compareOperator));
-        }
+        //    throw new ArgumentException(nameof(compareOperator));
+        //}
 
         #endregion
 
