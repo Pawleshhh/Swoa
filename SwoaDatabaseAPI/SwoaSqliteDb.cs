@@ -39,24 +39,27 @@ namespace SwoaDatabaseAPI
 
         #region Methods
 
+        public override IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition)
+        {
+            using (var connection = GetSqliteConnection())
+            {
+                IEnumerable<SwoaDbRecord> result = Enumerable.Empty<SwoaDbRecord>();
+                foreach (SwoaDbRecordType dbRecordType in Enum.GetValues(typeof(SwoaDbRecordType)))
+                {
+                    result = result.Concat(GetDbRecordsByType(connection, condition, dbRecordType));
+                }
+
+                return result;
+            }
+        }
+
         public override IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType)
         {
-
-            using(var connection = new SqliteConnection($"Data Source={path}"))
+            using(var connection = GetSqliteConnection())
             {
-                connection.Open();
+                var result = GetDbRecordsByType(connection, condition, dbRecordType);
 
-                var command = connection.CreateCommand();
-                command.CommandText = CreateQuery(dbRecordType, condition);
-
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        yield return factory.CreateSwoaDbRecord(reader, dbRecordType);
-                    }
-
-                }
+                return result;
             }
         }
 
@@ -75,6 +78,21 @@ namespace SwoaDatabaseAPI
                 throw new ArgumentException(nameof(dbRecordType));
         }
 
+        protected IEnumerable<SwoaDbRecord> GetDbRecordsByType(SqliteConnection connection, string condition, SwoaDbRecordType dbRecordType)
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = CreateQuery(dbRecordType, condition);
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    yield return factory.CreateSwoaDbRecord(reader, dbRecordType);
+                }
+            }
+        }
+
         protected override SwoaDbRecordFactory CreateSwoaDbRecordFactory()
         {
             return factory ??= new SwoaSqliteDbRecordFactory();
@@ -82,6 +100,10 @@ namespace SwoaDatabaseAPI
 
         private string CreateQuery(SwoaDbRecordType dbRecordType, string condition)
         => $"SELECT * FROM {GetTableName(dbRecordType)} WHERE {condition}";
+
+        private SqliteConnection GetSqliteConnection()
+            => new SqliteConnection($"Data Source={path}");
+
 
         //private string GetOperator(DbCompareOperator compareOperator)
         //{

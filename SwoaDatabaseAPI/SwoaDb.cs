@@ -29,9 +29,14 @@ namespace SwoaDatabaseAPI
 
         #region Methods
 
+        public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition);
+
         public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType);
 
         //public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecordsByMagnitude(double magnitude, DbCompareOperator compareOperator, SwoaDbRecordType dbRecordType);
+
+        public virtual Task<IEnumerable<SwoaDbRecord>> GetAllSwoaDbRecordsAsync(string condition)
+            => Task.Run(() => GetAllSwoaDbRecords(condition));
 
         public virtual Task<IEnumerable<SwoaDbRecord>> GetSwoaDbRecordsAsync(string condition, SwoaDbRecordType dbRecordType)
             => Task.Run(() => GetSwoaDbRecords(condition, dbRecordType));
