@@ -6,28 +6,50 @@
     xmlns:extwpf="http://schemas.xceed.com/wpf/xaml/toolkit"
     xmlns:local="clr-namespace:Swoa.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="50"
-    d:DesignWidth="500"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    Height="40"
+    d:DesignWidth="600"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="pack://application:,,,/Resources/Values.xaml" />-->
                 <ResourceDictionary Source="pack://application:,,,/Resources/Values.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/ToolBarTemplateResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+
+            <!--<sys:Double x:Key="MaximumLongitude">180.0</sys:Double>
+            <sys:Double x:Key="MinimumLongitude">-180.0</sys:Double>
+
+            <sys:Double x:Key="MaximumLatitude">90.0</sys:Double>
+            <sys:Double x:Key="MinimumLatitude">-90.0</sys:Double>-->
         </ResourceDictionary>
     </UserControl.Resources>
 
 
     <Grid>
-        <ToolBar x:Name="mainToolBar">
+        <ToolBar
+            x:Name="mainToolBar"
+            Background="{StaticResource SubToolBarBackground}"
+            Style="{StaticResource ToolBarAppStyle}">
             <ToolBar.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="HorizontalAlignment" Value="Center" />
                     <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="Margin" Value="0,0,5,0" />
                 </Style>
                 <Style TargetType="extwpf:DoubleUpDown">
-                    <Setter Property="MinWidth" Value="50" />
+                    <Setter Property="MinWidth" Value="80" />
+                    <Setter Property="MaxWidth" Value="80" />
                     <Setter Property="Margin" Value="5,0,5,0" />
+                </Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="Margin" Value="5,0,5,0" />
+                    <Setter Property="Orientation" Value="Horizontal" />
                 </Style>
             </ToolBar.Resources>
             <ToolBar.ItemsPanel>
@@ -37,24 +59,24 @@
             </ToolBar.ItemsPanel>
 
             <!--  Latitude  -->
-            <TextBlock Text="Lat" />
-            <extwpf:DoubleUpDown
-                x:Name="latitudeUpDown"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Maximum="{StaticResource MaximumLatitude}"
-                Minimum="{StaticResource MinimumLatitude}"
-                Value="{Binding Latitude, Mode=TwoWay, FallbackValue=0}" />
+            <StackPanel>
+                <TextBlock Text="Lat" />
+                <extwpf:DoubleUpDown
+                    x:Name="latitudeUpDown"
+                    Maximum="{StaticResource MaximumLatitude}"
+                    Minimum="{StaticResource MinimumLatitude}"
+                    Value="{Binding Latitude, Mode=TwoWay, FallbackValue=0}" />
+            </StackPanel>
 
             <!--  Longitude  -->
-            <TextBlock Text="Long" />
-            <extwpf:DoubleUpDown
-                x:Name="longitudeUpDown"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Maximum="{StaticResource MaximumLongitude}"
-                Minimum="{StaticResource MinimumLongitude}"
-                Value="{Binding Longitude, Mode=TwoWay, FallbackValue=0}" />
+            <StackPanel>
+                <TextBlock Text="Long" />
+                <extwpf:DoubleUpDown
+                    x:Name="longitudeUpDown"
+                    Maximum="{StaticResource MaximumLongitude}"
+                    Minimum="{StaticResource MinimumLongitude}"
+                    Value="{Binding Longitude, Mode=TwoWay, FallbackValue=0}" />
+            </StackPanel>
 
             <Separator />
 
@@ -63,19 +85,19 @@
                 MaxWidth="120"
                 Margin="5,0,5,0"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
-
-            <TextBlock Text="Time" />
-
-            <extwpf:TimeSpanUpDown
-                MinWidth="70"
-                MaxWidth="70"
-                Margin="5,0,5,0"
-                HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Maximum="{StaticResource MaximumTimeMachineTime}"
-                Minimum="{StaticResource MinimumTimeMachineTime}"
-                Value="0" />
+                SelectedDateFormat="Short" />
+
+            <StackPanel>
+                <TextBlock Text="Time" />
+
+                <extwpf:TimeSpanUpDown
+                    MinWidth="70"
+                    MaxWidth="70"
+                    Maximum="{StaticResource MaximumTimeMachineTime}"
+                    Minimum="{StaticResource MinimumTimeMachineTime}"
+                    Value="0" />
+            </StackPanel>
         </ToolBar>
     </Grid>
 </UserControl>

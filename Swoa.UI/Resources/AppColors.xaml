@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="MainToolBarBackground" Color="#1d1d24" />
+    <SolidColorBrush x:Key="SubToolBarBackground" Color="#35353d" />
+
+    <SolidColorBrush x:Key="ToolBarForeground" Color="White" />
+
+
+    <SolidColorBrush x:Key="SoundboardToolBarTemplate.OverflowButton.Static.Background" Color="#52525c" />
+    <SolidColorBrush x:Key="SoundboardToolBarTemplate.OverflowButton.MouseOver.Background" Color="#6d6d7a" />
+
+</ResourceDictionary>
