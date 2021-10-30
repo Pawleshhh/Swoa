@@ -5,8 +5,9 @@
 
     <SolidColorBrush x:Key="AppForeground" Color="White" />
 
-
     <SolidColorBrush x:Key="SoundboardToolBarTemplate.OverflowButton.Static.Background" Color="#52525c" />
     <SolidColorBrush x:Key="SoundboardToolBarTemplate.OverflowButton.MouseOver.Background" Color="#6d6d7a" />
+
+    <SolidColorBrush x:Key="TextBoxBackground" Color="#454d59" />
 
 </ResourceDictionary>

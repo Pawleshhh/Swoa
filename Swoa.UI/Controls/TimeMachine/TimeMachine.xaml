@@ -19,6 +19,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/ToolBarTemplateResources.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/NumericUpDownResources.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/DatePickerResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--<sys:Double x:Key="MaximumLongitude">180.0</sys:Double>
@@ -96,7 +97,8 @@
                 Margin="5,0,5,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                SelectedDateFormat="Short" />
+                SelectedDateFormat="Short"
+                Style="{StaticResource AppDatePickerStyle}" />
 
             <StackPanel>
                 <TextBlock Text="Time" />

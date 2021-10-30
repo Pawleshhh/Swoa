@@ -129,3 +129,4 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\AppColo
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\Values.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ToolBarTemplateResources.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\NumericUpDownResources.baml
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\DatePickerResources.baml
