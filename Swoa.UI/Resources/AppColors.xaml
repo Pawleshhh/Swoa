@@ -3,7 +3,7 @@
     <SolidColorBrush x:Key="MainToolBarBackground" Color="#1d1d24" />
     <SolidColorBrush x:Key="SubToolBarBackground" Color="#35353d" />
 
-    <SolidColorBrush x:Key="ToolBarForeground" Color="White" />
+    <SolidColorBrush x:Key="AppForeground" Color="White" />
 
 
     <SolidColorBrush x:Key="SoundboardToolBarTemplate.OverflowButton.Static.Background" Color="#52525c" />

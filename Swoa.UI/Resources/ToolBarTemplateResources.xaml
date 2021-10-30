@@ -9,7 +9,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="ToolBarAppStyle" TargetType="ToolBar">
-        <Setter Property="Foreground" Value="{StaticResource ToolBarForeground}" />
+        <Setter Property="Foreground" Value="{StaticResource AppForeground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToolBar}">

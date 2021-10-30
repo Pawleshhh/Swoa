@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:Swoa.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=DotNetProjects.Wpf.Extended.Toolkit"
     Height="40"
     d:DesignWidth="600"
     mc:Ignorable="d">
@@ -17,8 +18,8 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/Values.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/ToolBarTemplateResources.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/NumericUpDownResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
 
             <!--<sys:Double x:Key="MaximumLongitude">180.0</sys:Double>
             <sys:Double x:Key="MinimumLongitude">-180.0</sys:Double>
@@ -40,7 +41,16 @@
                     <Setter Property="VerticalAlignment" Value="Center" />
                     <Setter Property="Margin" Value="0,0,5,0" />
                 </Style>
-                <Style TargetType="extwpf:DoubleUpDown">
+                <Style
+                    x:Key="{x:Static themes:ResourceKeys.SpinnerButtonStyleKey}"
+                    BasedOn="{StaticResource AppNumericUpDownButtonStyle}"
+                    TargetType="RepeatButton" />
+                <Style BasedOn="{StaticResource AppNumericUpDownStyle}" TargetType="extwpf:DoubleUpDown">
+                    <Setter Property="MinWidth" Value="80" />
+                    <Setter Property="MaxWidth" Value="80" />
+                    <Setter Property="Margin" Value="5,0,5,0" />
+                </Style>
+                <Style BasedOn="{StaticResource AppTimeSpanUpDownStyle}" TargetType="extwpf:TimeSpanUpDown">
                     <Setter Property="MinWidth" Value="80" />
                     <Setter Property="MaxWidth" Value="80" />
                     <Setter Property="Margin" Value="5,0,5,0" />

@@ -1,0 +1,54 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extwpf="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:local="clr-namespace:Xceed.Wpf.Toolkit;assembly=DotNetProjects.Wpf.Extended.Toolkit"
+    xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=DotNetProjects.Wpf.Extended.Toolkit">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--  Colors  -->
+    <SolidColorBrush x:Key="AppNumericUpDown.Static.Background" Color="#454d59" />
+    <SolidColorBrush x:Key="AppNumericUpDown.Static.BorderBrush" Color="Black" />
+    <SolidColorBrush x:Key="AppNumericUpDown.MouseOver.Background" Color="LightGray" />
+
+    <SolidColorBrush x:Key="AppNumericUpDown.Button.Static.Background" Color="#515157" />
+    <SolidColorBrush x:Key="AppNumericUpDown.Button.Static.Foreground" Color="White" />
+    <SolidColorBrush x:Key="AppNumericUpDown.Button.Static.BorderBrush" />
+
+    <Style x:Key="AppNumericUpDownStyle" TargetType="extwpf:DoubleUpDown">
+        <Setter Property="Background" Value="{StaticResource AppNumericUpDown.Static.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource AppForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AppNumericUpDown.Static.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+
+    </Style>
+
+    <Style x:Key="AppTimeSpanUpDownStyle" TargetType="extwpf:TimeSpanUpDown">
+        <Setter Property="Background" Value="{StaticResource AppNumericUpDown.Static.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource AppForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AppNumericUpDown.Static.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style x:Key="AppNumericUpDownButtonStyle" TargetType="RepeatButton">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource AppNumericUpDown.Button.Static.Foreground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AppNumericUpDown.Button.Static.BorderBrush}" />
+        <Setter Property="Background" Value="{StaticResource AppNumericUpDown.Button.Static.Background}" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource AppNumericUpDown.MouseOver.Background}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource AppNumericUpDown.MouseOver.Background}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" Value="{StaticResource AppNumericUpDown.MouseOver.Background}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
