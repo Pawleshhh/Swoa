@@ -18,7 +18,7 @@ namespace Swoa
             ICelestialObjectCollection celestialObjects = new CelestialObjectList();
             CelestialObjectManager = new CelestialObjectManager(celestialObjects, swoaDb);
 
-            CelestialObjectManager.Update();
+            //CelestialObjectManager.Update();
         }
 
         #endregion

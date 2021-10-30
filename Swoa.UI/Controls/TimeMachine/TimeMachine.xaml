@@ -97,6 +97,7 @@
                 Margin="5,0,5,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                SelectedDate="{Binding Date, Mode=TwoWay}"
                 SelectedDateFormat="Short"
                 Style="{StaticResource AppDatePickerStyle}" />
 
@@ -108,7 +109,7 @@
                     MaxWidth="70"
                     Maximum="{StaticResource MaximumTimeMachineTime}"
                     Minimum="{StaticResource MinimumTimeMachineTime}"
-                    Value="0" />
+                    Value="{Binding Time, Mode=TwoWay, FallbackValue=0}" />
             </StackPanel>
         </ToolBar>
     </Grid>

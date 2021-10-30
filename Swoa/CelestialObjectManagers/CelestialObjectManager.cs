@@ -14,7 +14,14 @@ namespace Swoa
         {
             this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
             this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
+
+            TimeMachine = new TimeMachine(swoaDb);
+
+            TimeMachine.DateChanged += TimeMachine_DateChanged;
+            TimeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
+            TimeMachine.LatitudeChanged += TimeMachine_LatitudeChanged;
         }
+
         #endregion
 
         #region Fields
@@ -30,6 +37,8 @@ namespace Swoa
         #region Properties
 
         public IReadOnlyCollection<CelestialObject> CelestialObjects => celestialObjects;
+
+        public TimeMachine TimeMachine { get; }
 
         #endregion
 
@@ -79,25 +88,26 @@ namespace Swoa
 
         public void Update()
         {
-            var records = SwoaSqliteDb.SwoaSqliteDbSingleton.GetAllSwoaDbRecords("mag <= 4");
-
-            foreach (var record in records)
+            Clear();
+            foreach (var item in TimeMachine.GetCurrentMap())
             {
-                var ra = record.Ra / 24.0 * 360.0;
-
-                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, DateTime.UtcNow, 53.4410141708595, 14.550730731716628);
-
-                if (alt <= 0)
-                    continue;
-
-                var celestialObj = new OutsideStarObject()
-                {
-                    HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
-                    VisualMagnitude = record.Mag
-                };
-
-                Add(celestialObj);
+                Add(item);
             }
+        }
+
+        private void TimeMachine_LatitudeChanged(object? sender, Utilities.DataChangedEventArgs<double> e)
+        {
+            Update();
+        }
+
+        private void TimeMachine_LongitudeChanged(object? sender, Utilities.DataChangedEventArgs<double> e)
+        {
+            Update();
+        }
+
+        private void TimeMachine_DateChanged(object? sender, Utilities.DataChangedEventArgs<DateTime> e)
+        {
+            Update();
         }
 
         #endregion

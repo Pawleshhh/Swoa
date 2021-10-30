@@ -366,7 +366,17 @@
                         <Ellipse
                             Width="{Binding Width, Mode=TwoWay}"
                             Height="{Binding Height, Mode=TwoWay}"
-                            Fill="LightBlue" />
+                            Fill="LightBlue">
+                            <Ellipse.ToolTip>
+                                <TextBlock>
+                                    <Run Text="{Binding CelestialObject.HorizontalCoordinates.Altitude, Mode=OneWay}" />
+                                    ,<Run Text="{Binding CelestialObject.HorizontalCoordinates.Azimuth, Mode=OneWay}" />
+                                    <LineBreak />
+                                    <Run Text="{Binding CelestialObject.EquatorialCoordinates.Declination, Mode=OneWay}" />
+                                    ,<Run Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, Mode=OneWay}" />
+                                </TextBlock>
+                            </Ellipse.ToolTip>
+                        </Ellipse>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemContainerStyle>

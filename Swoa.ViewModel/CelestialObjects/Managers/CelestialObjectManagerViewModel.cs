@@ -24,6 +24,8 @@ namespace Swoa.ViewModel
             celestialObjects = new ObservableCollection<CelestialObjectViewModel>(celestialObjectManager.CelestialObjects.Select(n => GetCelestialObjectVM(n)));
             CelestialObjects = new ReadOnlyObservableCollection<CelestialObjectViewModel>(celestialObjects);
 
+            TimeMachineVM = new TimeMachineViewModel(celestialObjectManager.TimeMachine);
+
             celestialObjectManager.Added += CelestialObjectManager_Added;
             celestialObjectManager.Removed += CelestialObjectManager_Removed;
             celestialObjectManager.Cleared += CelestialObjectManager_Cleared;
@@ -47,6 +49,8 @@ namespace Swoa.ViewModel
         #endregion
 
         #region Properties
+
+        public TimeMachineViewModel TimeMachineVM { get; }
 
         public ReadOnlyObservableCollection<CelestialObjectViewModel> CelestialObjects { get; }
 

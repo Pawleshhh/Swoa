@@ -15,7 +15,10 @@
             <RowDefinition Height="9.5*" />
         </Grid.RowDefinitions>
 
-        <local:TimeMachine VerticalAlignment="Top" Panel.ZIndex="10" />
+        <local:TimeMachine
+            VerticalAlignment="Top"
+            Panel.ZIndex="10"
+            DataContext="{Binding CelestialObjectManagerVM.TimeMachineVM}" />
 
         <local:CelestialMap
             x:Name="celestialMap"
