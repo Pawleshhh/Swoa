@@ -90,7 +90,8 @@ namespace Swoa
                 {
                     EquatorialCoordinates = new Astronomy.Units.EquatorialCoordinates(record.Dec, record.Ra),
                     HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
-                    VisualMagnitude = record.Mag
+                    VisualMagnitude = record.Mag,
+                    SpectralClass = ((SwoaDbStarRecord)record).Spect
                 };
 
                 yield return celestialObj;

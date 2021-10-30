@@ -27,6 +27,8 @@ namespace Swoa.ViewModel
                 size = 3.0;
 
             height = width = size;
+
+            SetColor();
         }
 
         public CelestialObject CelestialObject { get; }
@@ -58,6 +60,48 @@ namespace Swoa.ViewModel
         {
             get => width;
             set => SetProperty(() => width == value, () => width = value);
+        }
+
+        private string color;
+
+        public string Color
+        {
+            get => color;
+            set => SetProperty(ref color, value);
+        }
+
+        private void SetColor()
+        {
+            try
+            {
+                var spectralClass = ((StarObject)CelestialObject).SpectralClass;
+
+                if (spectralClass != null && spectralClass.Length > 0)
+                {
+                    var c = spectralClass[0];
+
+                    if (c == 'O')
+                        color = "DeepSkyBlue";
+                    else if (c == 'B')
+                        color = "LightSkyBlue";
+                    else if (c == 'A')
+                        color = "LightBlue";
+                    else if (c == 'F')
+                        color = "White";
+                    else if (c == 'G')
+                        color = "PapayaWhip";
+                    else if (c == 'K')
+                        color = "Gold";
+                    else if (c == 'M')
+                        color = "Orange";
+                    else
+                        color = "Red";
+                }
+            }
+            catch(Exception ex)
+            {
+                color = "Red";
+            }
         }
 
     }
