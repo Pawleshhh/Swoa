@@ -30,6 +30,7 @@ namespace SwoaDatabaseAPI
         #region Methods
 
         public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition);
+        public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition, Func<bool> cancel);
 
         public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType);
 

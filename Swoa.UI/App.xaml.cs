@@ -23,7 +23,7 @@ namespace Swoa.UI
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             var swoaManagerModel = new SwoaManager(SwoaSqliteDb.SwoaSqliteDbSingleton);
-            swoaManagerVM = new SwoaManagerViewModel(swoaManagerModel);
+            swoaManagerVM = new SwoaManagerViewModel(swoaManagerModel, new WpfThread());
 
             //AddRandomObjs(swoaManagerModel);
             //AddDbObjs(swoaManagerModel);

@@ -3,6 +3,7 @@ using CelestialObjects;
 using SwoaDatabaseAPI;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Swoa
 {
@@ -28,6 +29,8 @@ namespace Swoa
 
         private readonly ICelestialObjectCollection celestialObjects;
         private readonly SwoaDb swoaDb;
+
+        private readonly bool asyncUpdate = true;
 
         private readonly CelestialObjectReviewer mainReviewer = new CelestialObjectReviewer();
         //private readonly CelestialObjectReviewer customReviewer = new CelestialObjectReviewer();
@@ -95,19 +98,44 @@ namespace Swoa
             }
         }
 
+        public async void UpdateAsync()
+        {
+            if (TimeMachine.IsWorking)
+                TimeMachine.CancelWork();
+
+            await Task.Run(async () =>
+            {
+                Clear();
+                var map = await TimeMachine.GetCurrentMapAsync();
+                foreach (var item in map)
+                {
+                    Add(item);
+                }
+            });
+        }
+
         private void TimeMachine_LatitudeChanged(object? sender, Utilities.DataChangedEventArgs<double> e)
         {
-            Update();
+            if (asyncUpdate)
+                UpdateAsync();
+            else
+                Update();
         }
 
         private void TimeMachine_LongitudeChanged(object? sender, Utilities.DataChangedEventArgs<double> e)
         {
-            Update();
+            if (asyncUpdate)
+                UpdateAsync();
+            else
+                Update();
         }
 
         private void TimeMachine_DateChanged(object? sender, Utilities.DataChangedEventArgs<DateTime> e)
         {
-            Update();
+            if (asyncUpdate)
+                UpdateAsync();
+            else
+                Update();
         }
 
         #endregion

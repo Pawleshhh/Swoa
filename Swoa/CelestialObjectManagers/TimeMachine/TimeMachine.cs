@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Utilities;
 using static Utilities.PropertyChangedHelper;
@@ -32,6 +33,10 @@ namespace Swoa
 
         private DateTime date;
 
+        private bool isWorking;
+
+        private CancellationTokenSource tokenSource;
+
         #endregion
 
         #region Properties
@@ -54,6 +59,11 @@ namespace Swoa
             set => SetProperty(ref date, value, OnDateChanged);
         }
 
+        public bool IsWorking
+        {
+            get => isWorking;
+            set => SetProperty(ref isWorking, value, OnIsWorkingChanged);
+        }
         #endregion
 
         #region Events
@@ -61,6 +71,7 @@ namespace Swoa
         public event EventHandler<DataChangedEventArgs<DateTime>>? DateChanged;
         public event EventHandler<DataChangedEventArgs<double>>? LatitudeChanged;
         public event EventHandler<DataChangedEventArgs<double>>? LongitudeChanged;
+        public event EventHandler<DataChangedEventArgs<bool>>? IsWorkingChanged;
 
         protected void OnDateChanged(DateTime previous, DateTime current)
             => DateChanged?.Invoke(this, new DataChangedEventArgs<DateTime>(previous, current));
@@ -68,6 +79,8 @@ namespace Swoa
             => LatitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
         protected void OnLongitudeChanged(double previous, double current)
             => LongitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
+        protected void OnIsWorkingChanged(bool previous, bool current)
+            => IsWorkingChanged?.Invoke(this, new DataChangedEventArgs<bool>(previous, current));
 
         #endregion
 
@@ -75,7 +88,43 @@ namespace Swoa
 
         public IEnumerable<CelestialObject> GetCurrentMap()
         {
-            var records = swoaDb.GetAllSwoaDbRecords("mag <= 4");
+            return GetCurrentMap(null);
+        }
+
+        public async Task<IEnumerable<CelestialObject>> GetCurrentMapAsync()
+        {
+            if (!IsWorking)
+            {
+                IsWorking = true;
+            }
+
+            tokenSource = new CancellationTokenSource();
+            var ct = tokenSource.Token;
+
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    ct.ThrowIfCancellationRequested();
+
+                    return GetCurrentMap(() => ct.IsCancellationRequested);
+                }, tokenSource.Token);
+            }
+            finally
+            {
+                IsWorking = false;
+            }
+        }
+
+        public void CancelWork()
+        {
+            tokenSource.Cancel();
+            IsWorking = false;
+        }
+
+        private IEnumerable<CelestialObject> GetCurrentMap(Func<bool>? cancel)
+        {
+            var records = swoaDb.GetAllSwoaDbRecords("mag <= 5", cancel);
 
             foreach (var record in records)
             {
@@ -95,6 +144,9 @@ namespace Swoa
                 };
 
                 yield return celestialObj;
+
+                if (cancel != null && cancel())
+                    yield break;
             }
         }
 

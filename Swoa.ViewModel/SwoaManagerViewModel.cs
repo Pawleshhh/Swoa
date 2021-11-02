@@ -10,11 +10,11 @@ namespace Swoa.ViewModel
     {
 
         #region Constructors
-        public SwoaManagerViewModel(SwoaManager swoaManager)
+        public SwoaManagerViewModel(SwoaManager swoaManager, IUiThread uiThread)
         {
             this.swoaManager = swoaManager ?? throw new ArgumentNullException(nameof(swoaManager));
 
-            CelestialObjectManagerVM = new CelestialObjectManagerViewModel(swoaManager.CelestialObjectManager);
+            CelestialObjectManagerVM = new CelestialObjectManagerViewModel(swoaManager.CelestialObjectManager, uiThread);
         }
         #endregion
 

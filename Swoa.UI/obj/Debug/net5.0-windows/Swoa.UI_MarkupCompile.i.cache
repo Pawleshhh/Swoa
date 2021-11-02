@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\App.xaml
 9-711638204
 
-111640260222
+12-2108951419
 207-828187940
 Controls\Map\CelestialMap.xaml;Controls\TimeMachine\TimeMachine.xaml;MainWindow.xaml;Resources\AppColors.xaml;Resources\CelestialMapResources.xaml;Resources\DatePickerResources.xaml;Resources\NumericUpDownResources.xaml;Resources\ToolBarTemplateResources.xaml;Resources\Values.xaml;
 
-False
+True
 

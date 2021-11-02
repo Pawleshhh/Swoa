@@ -41,12 +41,22 @@ namespace SwoaDatabaseAPI
 
         public override IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition)
         {
+            return GetAllSwoaDbRecords(condition, null);
+        }
+
+        public override IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition, Func<bool> cancel)
+        {
             using (var connection = GetSqliteConnection())
             {
                 IEnumerable<SwoaDbRecord> result = Enumerable.Empty<SwoaDbRecord>();
                 foreach (SwoaDbRecordType dbRecordType in Enum.GetValues(typeof(SwoaDbRecordType)))
                 {
-                    result = result.Concat(GetDbRecordsByType(connection, condition, dbRecordType));
+                    result = result.Concat(GetDbRecordsByType(connection, condition, dbRecordType, cancel));
+
+                    if (cancel != null && cancel())
+                    {
+                        return Enumerable.Empty<SwoaDbRecord>();
+                    }
                 }
 
                 return result;
@@ -57,7 +67,7 @@ namespace SwoaDatabaseAPI
         {
             using(var connection = GetSqliteConnection())
             {
-                var result = GetDbRecordsByType(connection, condition, dbRecordType);
+                var result = GetDbRecordsByType(connection, condition, dbRecordType, null);
 
                 return result;
             }
@@ -78,7 +88,7 @@ namespace SwoaDatabaseAPI
                 throw new ArgumentException(nameof(dbRecordType));
         }
 
-        protected IEnumerable<SwoaDbRecord> GetDbRecordsByType(SqliteConnection connection, string condition, SwoaDbRecordType dbRecordType)
+        protected IEnumerable<SwoaDbRecord> GetDbRecordsByType(SqliteConnection connection, string condition, SwoaDbRecordType dbRecordType, Func<bool> cancel)
         {
             connection.Open();
             var command = connection.CreateCommand();
@@ -89,6 +99,9 @@ namespace SwoaDatabaseAPI
                 while (reader.Read())
                 {
                     yield return factory.CreateSwoaDbRecord(reader, dbRecordType);
+
+                    if (cancel != null && cancel())
+                        yield break;
                 }
             }
         }

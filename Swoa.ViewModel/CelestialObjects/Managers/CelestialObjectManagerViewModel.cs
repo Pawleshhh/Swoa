@@ -17,9 +17,10 @@ namespace Swoa.ViewModel
 
         #region Constructors
 
-        public CelestialObjectManagerViewModel(CelestialObjectManager celestialObjectManager)
+        public CelestialObjectManagerViewModel(CelestialObjectManager celestialObjectManager, IUiThread uiThread)
         {
             this.celestialObjectManager = celestialObjectManager ?? throw new ArgumentNullException(nameof(celestialObjectManager));
+            this.uiThread = uiThread ?? throw new ArgumentNullException(nameof(uiThread));
 
             celestialObjects = new ObservableCollection<CelestialObjectViewModel>(celestialObjectManager.CelestialObjects.Select(n => GetCelestialObjectVM(n)));
             CelestialObjects = new ReadOnlyObservableCollection<CelestialObjectViewModel>(celestialObjects);
@@ -29,11 +30,16 @@ namespace Swoa.ViewModel
             celestialObjectManager.Added += CelestialObjectManager_Added;
             celestialObjectManager.Removed += CelestialObjectManager_Removed;
             celestialObjectManager.Cleared += CelestialObjectManager_Cleared;
+
+            itemsLock = uiThread.OnUiThread(CelestialObjects);
         }
 
         #endregion
 
         #region Fields
+
+        private readonly object itemsLock;
+        private readonly IUiThread uiThread;
 
         private readonly CelestialObjectManager celestialObjectManager;
         private readonly ObservableCollection<CelestialObjectViewModel> celestialObjects;
@@ -122,31 +128,40 @@ namespace Swoa.ViewModel
 
         private void CelestialObjectManager_Added(object sender, CelestialObjectCollectionChangedEventArgs e)
         {
-            foreach (var item in e.ItemsChanged)
+            lock (itemsLock)
             {
-                var celestialObjectVM = GetCelestialObjectVM(item);
-                celestialObjects.Add(celestialObjectVM);
+                foreach (var item in e.ItemsChanged)
+                {
+                    var celestialObjectVM = GetCelestialObjectVM(item);
+                    celestialObjects.Add(celestialObjectVM);
 
-                SetPosition(celestialObjectVM);
+                    SetPosition(celestialObjectVM);
 
-                //celestialObjectVM.WhenPropertyChanged.Subscribe(n =>
-                //{
-                //    if (n.Equals(nameof(celestialObjectVM.Width)) ||
-                //            n.Equals(nameof(celestialObjectVM.Height)))
-                //        ;
-                //});
+                    //celestialObjectVM.WhenPropertyChanged.Subscribe(n =>
+                    //{
+                    //    if (n.Equals(nameof(celestialObjectVM.Width)) ||
+                    //            n.Equals(nameof(celestialObjectVM.Height)))
+                    //        ;
+                    //});
+                }
             }
         }
 
         private void CelestialObjectManager_Removed(object sender, CelestialObjectCollectionChangedEventArgs e)
         {
-            foreach (var item in e.ItemsChanged)
-                celestialObjects.Remove(GetCelestialObjectVM(item));
+            lock (itemsLock)
+            {
+                foreach (var item in e.ItemsChanged)
+                    celestialObjects.Remove(GetCelestialObjectVM(item));
+            }
         }
 
         private void CelestialObjectManager_Cleared(object sender, CelestialObjectCollectionChangedEventArgs e)
         {
-            celestialObjects.Clear();
+            lock (itemsLock)
+            {
+                celestialObjects.Clear();
+            }
         }
 
         protected virtual CelestialObjectViewModel GetCelestialObjectVM(CelestialObject celestialObject)
