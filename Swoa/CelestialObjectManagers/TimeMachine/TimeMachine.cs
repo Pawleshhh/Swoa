@@ -17,9 +17,10 @@ namespace Swoa
 
         #region Constructors
 
-        public TimeMachine(SwoaDb swoaDb)
+        public TimeMachine(SwoaDb swoaDb, ICelestialObjectCollection celestialObjects)
         {
             this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
+            this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
         }
 
         #endregion
@@ -27,11 +28,16 @@ namespace Swoa
         #region Fields
 
         private readonly SwoaDb swoaDb;
+        private readonly ICelestialObjectCollection celestialObjects;
 
         private double latitude;
         private double longitude;
 
         private DateTime date;
+
+        private bool isWorking;
+
+        private CancellationTokenSource? tokenSource;
 
         #endregion
 
@@ -55,6 +61,12 @@ namespace Swoa
             set => SetProperty(ref date, value, OnDateChanged);
         }
 
+        public bool IsWorking
+        {
+            get => isWorking;
+            set => SetProperty(ref isWorking, value, OnIsWorkingChanged);
+        }
+
         #endregion
 
         #region Events
@@ -62,6 +74,7 @@ namespace Swoa
         public event EventHandler<DataChangedEventArgs<DateTime>>? DateChanged;
         public event EventHandler<DataChangedEventArgs<double>>? LatitudeChanged;
         public event EventHandler<DataChangedEventArgs<double>>? LongitudeChanged;
+        public event EventHandler<DataChangedEventArgs<bool>>? IsWorkingChanged;
 
         protected void OnDateChanged(DateTime previous, DateTime current)
             => DateChanged?.Invoke(this, new DataChangedEventArgs<DateTime>(previous, current));
@@ -69,17 +82,59 @@ namespace Swoa
             => LatitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
         protected void OnLongitudeChanged(double previous, double current)
             => LongitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
+        protected void OnIsWorkingChanged(bool previous, bool current)
+            => IsWorkingChanged?.Invoke(this, new DataChangedEventArgs<bool>(previous, current));
+
 
         #endregion
 
         #region Methods
 
-        public IEnumerable<CelestialObject> GetCurrentMap()
+        //public void UpdateCurrentMap()
+        //{
+        //    LoadCurrentMap(null);
+        //}
+
+        public async void UpdateCurrentMapAsync()
         {
-            return GetCurrentMap(null);
+            if (IsWorking)
+                CancelWork();
+            else
+                IsWorking = true;
+
+            tokenSource = new CancellationTokenSource();
+            var ct = tokenSource.Token;
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    ct.ThrowIfCancellationRequested();
+
+                    celestialObjects.Clear();
+                    var map = LoadCurrentMap(() => ct.IsCancellationRequested);
+
+                    foreach (var obj in map)
+                    {
+                        celestialObjects.Add(obj);
+                        if (ct.IsCancellationRequested)
+                            break;
+                    }
+                }, tokenSource.Token);
+            }
+            finally
+            {
+                IsWorking = false;
+            }
         }
 
-        public IEnumerable<CelestialObject> GetCurrentMap(Func<bool>? cancel)
+        public void CancelWork()
+        {
+            tokenSource?.Cancel();
+            IsWorking = false;
+        }
+
+        private IEnumerable<CelestialObject> LoadCurrentMap(Func<bool>? cancel)
         {
             var records = swoaDb.GetAllSwoaDbRecords("mag <= 6", cancel);
 

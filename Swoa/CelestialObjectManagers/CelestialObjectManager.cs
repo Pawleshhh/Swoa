@@ -19,7 +19,7 @@ namespace Swoa
             this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
             this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
 
-            TimeMachine = new TimeMachine(swoaDb);
+            TimeMachine = new TimeMachine(swoaDb, celestialObjects);
 
             TimeMachine.DateChanged += TimeMachine_DateChanged;
             TimeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
@@ -34,12 +34,9 @@ namespace Swoa
         private readonly SwoaDb swoaDb;
 
         private readonly bool asyncUpdate = true;
-        private bool isWorking;
 
         private readonly CelestialObjectReviewer mainReviewer = new CelestialObjectReviewer();
         //private readonly CelestialObjectReviewer customReviewer = new CelestialObjectReviewer();
-
-        private CancellationTokenSource? tokenSource;
 
         #endregion
 
@@ -48,12 +45,6 @@ namespace Swoa
         public IReadOnlyCollection<CelestialObject> CelestialObjects => celestialObjects;
 
         public TimeMachine TimeMachine { get; }
-
-        public bool IsWorking
-        {
-            get => isWorking;
-            set => SetProperty(ref isWorking, value, OnIsWorkingChanged);
-        }
 
         #endregion
 
@@ -74,11 +65,6 @@ namespace Swoa
             add => celestialObjects.Cleared += value;
             remove => celestialObjects.Cleared -= value;
         }
-
-        public event EventHandler<DataChangedEventArgs<bool>>? IsWorkingChanged;
-
-        protected void OnIsWorkingChanged(bool previous, bool current)
-            => IsWorkingChanged?.Invoke(this, new DataChangedEventArgs<bool>(previous, current));
 
         #endregion
 
@@ -106,76 +92,31 @@ namespace Swoa
             return celestialObject != null;
         }
 
-        public void Update()
-        {
-            Clear();
-            foreach (var item in TimeMachine.GetCurrentMap())
-            {
-                Add(item);
-            }
-        }
-
-        public async void UpdateAsync()
-        {
-            if (IsWorking)
-                CancelWork();
-            else
-                IsWorking = true;
-
-            tokenSource = new CancellationTokenSource();
-            var ct = tokenSource.Token;
-
-            try
-            {
-                await Task.Run(() =>
-                {
-                    ct.ThrowIfCancellationRequested();
-
-                    Clear();
-                    var map = TimeMachine.GetCurrentMap(() => ct.IsCancellationRequested);
-
-                    foreach(var obj in map)
-                    {
-                        Add(obj);
-                        if (ct.IsCancellationRequested)
-                            break;
-                    }
-                }, tokenSource.Token);
-            }
-            finally
-            {
-                IsWorking = false;
-            }
-        }
-
-        public void CancelWork()
-        {
-            tokenSource?.Cancel();
-            IsWorking = false;
-        }
-
         private void TimeMachine_LatitudeChanged(object? sender, Utilities.DataChangedEventArgs<double> e)
         {
-            if (asyncUpdate)
-                UpdateAsync();
-            else
-                Update();
+            //if (asyncUpdate)
+            //    UpdateAsync();
+            //else
+            //    Update();
+            TimeMachine.UpdateCurrentMapAsync();
         }
 
         private void TimeMachine_LongitudeChanged(object? sender, Utilities.DataChangedEventArgs<double> e)
         {
-            if (asyncUpdate)
-                UpdateAsync();
-            else
-                Update();
+            //if (asyncUpdate)
+            //    UpdateAsync();
+            //else
+            //    Update();
+            TimeMachine.UpdateCurrentMapAsync();
         }
 
         private void TimeMachine_DateChanged(object? sender, Utilities.DataChangedEventArgs<DateTime> e)
         {
-            if (asyncUpdate)
-                UpdateAsync();
-            else
-                Update();
+            //if (asyncUpdate)
+            //    UpdateAsync();
+            //else
+            //    Update();
+            TimeMachine.UpdateCurrentMapAsync();
         }
 
         #endregion
