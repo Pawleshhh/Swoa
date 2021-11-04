@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Swoa.ViewModel
@@ -52,6 +53,9 @@ namespace Swoa.ViewModel
         private bool isAltGridVisible = true;
         private bool areDirectionsVisible = true;
 
+        private bool isWorking;
+        private CancellationTokenSource tokenSource;
+
         #endregion
 
         #region Properties
@@ -66,7 +70,7 @@ namespace Swoa.ViewModel
             set
             {
                 if (SetProperty(ref mapDiameter, value))
-                    UpdateCelestialObjects();
+                    UpdateCelestialObjectsPositionAsync();
             }
         }
 
@@ -85,7 +89,13 @@ namespace Swoa.ViewModel
         public bool AreDirectionsVisible
         {
             get => areDirectionsVisible;
-            set => SetProperty(ref areDirectionsVisible, areDirectionsVisible);
+            set => SetProperty(ref areDirectionsVisible, value);
+        }
+
+        public bool IsWorking
+        {
+            get => isWorking;
+            set => SetProperty(ref isWorking, value);
         }
 
         //public double MapWidth
@@ -104,12 +114,28 @@ namespace Swoa.ViewModel
 
         #region Methods
 
-        public void UpdateCelestialObjects()
+        public async void UpdateCelestialObjectsPositionAsync()
         {
-            foreach(var celestialObject in celestialObjects)
+            if (IsWorking)
+                tokenSource.Cancel();
+            else
+                IsWorking = true;
+
+            tokenSource = new CancellationTokenSource();
+            var ct = tokenSource.Token;
+
+            await Task.Run(() =>
             {
-                SetPosition(celestialObject);
-            }
+                foreach (var celestialObject in celestialObjects)
+                {
+                    SetPosition(celestialObject);
+
+                    if (ct.IsCancellationRequested)
+                        break;
+                }
+            }, ct);
+
+            IsWorking = false;
         }
 
         private void SetPosition(CelestialObjectViewModel celestialObjectVM)
