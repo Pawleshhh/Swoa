@@ -122,6 +122,7 @@ namespace Swoa
                     }
                 }, tokenSource.Token);
             }
+            catch { }
             finally
             {
                 IsWorking = false;
