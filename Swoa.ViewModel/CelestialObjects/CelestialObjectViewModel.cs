@@ -18,13 +18,13 @@ namespace Swoa.ViewModel
 
             double size = 0;
             if (celestialObject.VisualMagnitude > 4)
-                size = 0.5;
-            else if (celestialObject.VisualMagnitude > 2)
                 size = 1.0;
+            else if (celestialObject.VisualMagnitude > 2)
+                size = 1.5;
             else if (celestialObject.VisualMagnitude > 0)
-                size = 2.0;
+                size = 2.5;
             else
-                size = 3.0;
+                size = 3.5;
 
             height = width = size;
 
@@ -98,7 +98,7 @@ namespace Swoa.ViewModel
                         color = "Red";
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 color = "Red";
             }

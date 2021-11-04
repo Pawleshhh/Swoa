@@ -3,7 +3,10 @@ using CelestialObjects;
 using SwoaDatabaseAPI;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Utilities;
+using static Utilities.PropertyChangedHelper;
 
 namespace Swoa
 {
@@ -31,9 +34,12 @@ namespace Swoa
         private readonly SwoaDb swoaDb;
 
         private readonly bool asyncUpdate = true;
+        private bool isWorking;
 
         private readonly CelestialObjectReviewer mainReviewer = new CelestialObjectReviewer();
         //private readonly CelestialObjectReviewer customReviewer = new CelestialObjectReviewer();
+
+        private CancellationTokenSource? tokenSource;
 
         #endregion
 
@@ -42,6 +48,12 @@ namespace Swoa
         public IReadOnlyCollection<CelestialObject> CelestialObjects => celestialObjects;
 
         public TimeMachine TimeMachine { get; }
+
+        public bool IsWorking
+        {
+            get => isWorking;
+            set => SetProperty(ref isWorking, value, OnIsWorkingChanged);
+        }
 
         #endregion
 
@@ -62,6 +74,11 @@ namespace Swoa
             add => celestialObjects.Cleared += value;
             remove => celestialObjects.Cleared -= value;
         }
+
+        public event EventHandler<DataChangedEventArgs<bool>>? IsWorkingChanged;
+
+        protected void OnIsWorkingChanged(bool previous, bool current)
+            => IsWorkingChanged?.Invoke(this, new DataChangedEventArgs<bool>(previous, current));
 
         #endregion
 
@@ -100,18 +117,41 @@ namespace Swoa
 
         public async void UpdateAsync()
         {
-            if (TimeMachine.IsWorking)
-                TimeMachine.CancelWork();
+            if (IsWorking)
+                CancelWork();
+            else
+                IsWorking = true;
 
-            await Task.Run(async () =>
+            tokenSource = new CancellationTokenSource();
+            var ct = tokenSource.Token;
+
+            try
             {
-                Clear();
-                var map = await TimeMachine.GetCurrentMapAsync();
-                foreach (var item in map)
+                await Task.Run(() =>
                 {
-                    Add(item);
-                }
-            });
+                    ct.ThrowIfCancellationRequested();
+
+                    Clear();
+                    var map = TimeMachine.GetCurrentMap(() => ct.IsCancellationRequested);
+
+                    foreach(var obj in map)
+                    {
+                        Add(obj);
+                        if (ct.IsCancellationRequested)
+                            break;
+                    }
+                }, tokenSource.Token);
+            }
+            finally
+            {
+                IsWorking = false;
+            }
+        }
+
+        public void CancelWork()
+        {
+            tokenSource?.Cancel();
+            IsWorking = false;
         }
 
         private void TimeMachine_LatitudeChanged(object? sender, Utilities.DataChangedEventArgs<double> e)
