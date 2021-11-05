@@ -106,7 +106,7 @@ namespace Swoa.Tests
         public void Added_AddsItem_AddedEventArgsAreAsExpected()
         {
             var celestialObject = GetCelestialObject(1);
-            var expectedEventArgs = new CelestialObjectCollectionChangedEventArgs(new CelestialObject[] { celestialObject } );
+            var expectedEventArgs = new CelestialObjectCollectionChangedEventArgs(new CelestialObject[] { celestialObject }, new int[] { -1 });
             var celestialObjCollection = GetCelestialObjectCollection();
 
             EventAssert.EventArgsEqual<CelestialObjectCollectionChangedEventArgs>(e => celestialObjCollection.Added += e,

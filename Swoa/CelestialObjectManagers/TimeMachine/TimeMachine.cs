@@ -30,6 +30,8 @@ namespace Swoa
         private readonly SwoaDb swoaDb;
         private readonly ICelestialObjectCollection celestialObjects;
 
+        private readonly HashSet<long> keptObjects = new HashSet<long>();
+
         private double latitude;
         private double longitude;
 
@@ -111,7 +113,9 @@ namespace Swoa
                 {
                     ct.ThrowIfCancellationRequested();
 
-                    celestialObjects.Clear();
+                    Filter(() => ct.IsCancellationRequested);
+                    ct.ThrowIfCancellationRequested();
+                    //celestialObjects.Clear();
                     LoadCurrentMap(() => ct.IsCancellationRequested);
                 }, tokenSource.Token);
             }
@@ -128,6 +132,31 @@ namespace Swoa
             IsWorking = false;
         }
 
+        private void Filter(Func<bool>? cancel)
+        {
+            keptObjects.Clear();
+            for(int i = 0; i < ((ICollection<CelestialObject>)celestialObjects).Count; i++)
+            {
+                var obj = celestialObjects.ElementAt(i);
+                var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
+                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, Date.ToUniversalTime(), latitude, longitude);
+
+                if (alt >= 0)
+                {
+                    keptObjects.Add(obj.Id);
+                    obj.HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
+                }
+                else
+                {
+                    celestialObjects.Remove(obj);
+                    i--;
+                }
+
+                if (cancel != null && cancel())
+                    return;
+            }
+        }
+
         private void LoadCurrentMap(Func<bool>? cancel)
         {
             var str_query = $"mag <= 6 AND (90 - {Latitude} + dec) >= 0 AND skycontains(ra, dec, '{Date.ToString("dd/MM/yyyy HH:mm:ss")}', {Latitude}, {Longitude})";
@@ -135,13 +164,17 @@ namespace Swoa
 
             foreach (var record in records)
             {
+                if (keptObjects.Contains(record.Id))
+                    continue;
+
                 var ra = record.Ra / 24.0 * 360.0;
 
                 var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, Date.ToUniversalTime(), latitude, longitude);
 
                 var celestialObj = new OutsideStarObject()
                 {
-                    EquatorialCoordinates = new Astronomy.Units.EquatorialCoordinates(record.Dec, record.Ra),
+                    Id = record.Id,
+                    EquatorialCoordinates = new Astronomy.Units.EquatorialCoordinates(record.Dec, ra),
                     HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
                     VisualMagnitude = record.Mag,
                     SpectralClass = ((SwoaDbStarRecord)record).Spect

@@ -38,8 +38,8 @@ namespace Swoa
             {
                 var previous = celestialObjects[index];
                 celestialObjects[index] = value;
-                OnRemoved(previous);
-                OnAdded(value);
+                OnRemoved(index, previous);
+                OnAdded(index, value);
             }
         }
 
@@ -54,16 +54,16 @@ namespace Swoa
         public event EventHandler<CelestialObjectCollectionChangedEventArgs>? Removed;
         public event EventHandler<CelestialObjectCollectionChangedEventArgs>? Cleared;
 
-        protected virtual void OnAdded(params CelestialObject[] itemsChanged)
-            => InvokeEvent(Added, itemsChanged);
-        protected virtual void OnRemoved(params CelestialObject[] itemsChanged)
-            => InvokeEvent(Removed, itemsChanged);
+        protected virtual void OnAdded(int index, params CelestialObject[] itemsChanged)
+            => InvokeEvent(Added, index, itemsChanged);
+        protected virtual void OnRemoved(int index, params CelestialObject[] itemsChanged)
+            => InvokeEvent(Removed, index, itemsChanged);
         protected virtual void OnCleared(params CelestialObject[] itemsChanged)
-            => InvokeEvent(Cleared, itemsChanged);
+            => InvokeEvent(Cleared, -1, itemsChanged);
 
-        private void InvokeEvent(EventHandler<CelestialObjectCollectionChangedEventArgs>? eventHandler,
+        private void InvokeEvent(EventHandler<CelestialObjectCollectionChangedEventArgs>? eventHandler, int index,
             params CelestialObject[] itemsChanged)
-            => eventHandler?.Invoke(this, new CelestialObjectCollectionChangedEventArgs(itemsChanged));
+            => eventHandler?.Invoke(this, new CelestialObjectCollectionChangedEventArgs(itemsChanged, new int[] { index }));
         #endregion
 
         #region Methods
@@ -75,7 +75,7 @@ namespace Swoa
 
             celestialObjects.Add(item);
 
-            OnAdded(item);
+            OnAdded(celestialObjects.Count - 1, item);
         }
 
         public void Insert(int index, CelestialObject item)
@@ -85,17 +85,20 @@ namespace Swoa
 
             celestialObjects.Insert(index, item);
 
-            OnAdded(item);
+            OnAdded(index, item);
         }
 
         public bool Remove(CelestialObject item)
         {
-            bool isRemoved = celestialObjects.Remove(item);
+            int index = celestialObjects.IndexOf(item);
+            if (index < 0)
+                return false;
 
-            if (isRemoved)
-                OnRemoved(item);
+            celestialObjects.RemoveAt(index);
 
-            return isRemoved;
+            OnRemoved(index, item);
+
+            return true;
         }
 
         public void RemoveAt(int index)
@@ -104,7 +107,7 @@ namespace Swoa
 
             celestialObjects.RemoveAt(index);
 
-            OnRemoved(removed);
+            OnRemoved(index, removed);
         }
 
         public void Clear()

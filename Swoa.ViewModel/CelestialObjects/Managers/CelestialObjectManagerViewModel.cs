@@ -159,16 +159,11 @@ namespace Swoa.ViewModel
                 foreach (var item in e.ItemsChanged)
                 {
                     var celestialObjectVM = GetCelestialObjectVM(item);
+                    celestialObjectVM.HorizonCoordsChanged += CelestialObjectVM_HorizonCoordsChanged;
+
                     celestialObjects.Add(celestialObjectVM);
 
                     SetPosition(celestialObjectVM);
-
-                    //celestialObjectVM.WhenPropertyChanged.Subscribe(n =>
-                    //{
-                    //    if (n.Equals(nameof(celestialObjectVM.Width)) ||
-                    //            n.Equals(nameof(celestialObjectVM.Height)))
-                    //        ;
-                    //});
                 }
             }
         }
@@ -177,8 +172,11 @@ namespace Swoa.ViewModel
         {
             lock (itemsLock)
             {
-                foreach (var item in e.ItemsChanged)
-                    celestialObjects.Remove(GetCelestialObjectVM(item));
+                foreach (var index in e.Indexes)
+                {
+                    celestialObjects[index].HorizonCoordsChanged -= CelestialObjectVM_HorizonCoordsChanged;
+                    celestialObjects.RemoveAt(index);
+                }
             }
         }
 
@@ -186,8 +184,16 @@ namespace Swoa.ViewModel
         {
             lock (itemsLock)
             {
+                foreach (var item in celestialObjects)
+                    item.HorizonCoordsChanged -= CelestialObjectVM_HorizonCoordsChanged;
+
                 celestialObjects.Clear();
             }
+        }
+
+        private void CelestialObjectVM_HorizonCoordsChanged(object sender, Utilities.DataChangedEventArgs<HorizonCoordinates> e)
+        {
+            SetPosition((CelestialObjectViewModel)sender);
         }
 
         protected virtual CelestialObjectViewModel GetCelestialObjectVM(CelestialObject celestialObject)
