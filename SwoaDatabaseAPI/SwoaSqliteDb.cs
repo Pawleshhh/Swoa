@@ -1,4 +1,5 @@
-﻿using Astronomy.Units;
+﻿using Astronomy;
+using Astronomy.Units;
 using CelestialObjects;
 using Microsoft.Data.Sqlite;
 using System;
@@ -115,7 +116,21 @@ namespace SwoaDatabaseAPI
         => $"SELECT * FROM {GetTableName(dbRecordType)} WHERE {condition}";
 
         private SqliteConnection GetSqliteConnection()
-            => new SqliteConnection($"Data Source={path}");
+        {
+            var connection = new SqliteConnection($"Data Source={path}");
+
+            connection.CreateFunction("skycontains",
+                (double ra, double dec, string date, double latitude, double longitude) =>
+                {
+                    var dateTime = DateTime.ParseExact(date, "dd/MM/yyyy HH:mm:ss", null);
+
+                    var result = CoordinatesConverter.EquatorialToHorizonCoords(ra / 24.0 * 360.0, dec, dateTime.ToUniversalTime(), latitude, longitude);
+
+                    return result.alt > 0.0;
+                });
+
+            return connection;
+        }
 
 
         //private string GetOperator(DbCompareOperator compareOperator)

@@ -122,7 +122,7 @@ namespace Swoa
                     }
                 }, tokenSource.Token);
             }
-            catch { }
+            catch(OperationCanceledException) { }
             finally
             {
                 IsWorking = false;
@@ -137,7 +137,7 @@ namespace Swoa
 
         private IEnumerable<CelestialObject> LoadCurrentMap(Func<bool>? cancel)
         {
-            var str_query = $"mag <= 6 AND (90 - {Latitude} + dec) >= 0";
+            var str_query = $"mag <= 6 AND (90 - {Latitude} + dec) >= 0 AND skycontains(ra, dec, '{Date.ToString("dd/MM/yyyy HH:mm:ss")}', {Latitude}, {Longitude})";
             var records = swoaDb.GetAllSwoaDbRecords(str_query, cancel);
 
             foreach (var record in records)
@@ -145,9 +145,6 @@ namespace Swoa
                 var ra = record.Ra / 24.0 * 360.0;
 
                 var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, Date.ToUniversalTime(), latitude, longitude);
-
-                if (alt <= 0)
-                    continue;
 
                 var celestialObj = new OutsideStarObject()
                 {
