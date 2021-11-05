@@ -137,7 +137,8 @@ namespace Swoa
 
         private IEnumerable<CelestialObject> LoadCurrentMap(Func<bool>? cancel)
         {
-            var records = swoaDb.GetAllSwoaDbRecords("mag <= 6", cancel);
+            var str_query = $"mag <= 6 AND (90 - {Latitude} + dec) >= 0";
+            var records = swoaDb.GetAllSwoaDbRecords(str_query, cancel);
 
             foreach (var record in records)
             {
