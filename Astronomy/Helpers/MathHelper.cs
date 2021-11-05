@@ -18,6 +18,15 @@ namespace Astronomy
         public static double TanD(double a)
             => Math.Tan(DegreesToRadians(a));
 
+        public static double AsinD(double a)
+            => RadiansToDegrees(Math.Asin(a));
+
+        public static double AcosD(double a)
+            => RadiansToDegrees(Math.Acos(a));
+
+        public static double AtanD(double a)
+            => RadiansToDegrees(Math.Atan(a));
+
         public static double DegreesToRadians(double degrees)
             => degrees * Math.PI / 180.0;
 
