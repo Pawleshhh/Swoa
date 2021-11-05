@@ -112,14 +112,7 @@ namespace Swoa
                     ct.ThrowIfCancellationRequested();
 
                     celestialObjects.Clear();
-                    var map = LoadCurrentMap(() => ct.IsCancellationRequested);
-
-                    foreach (var obj in map)
-                    {
-                        celestialObjects.Add(obj);
-                        if (ct.IsCancellationRequested)
-                            break;
-                    }
+                    LoadCurrentMap(() => ct.IsCancellationRequested);
                 }, tokenSource.Token);
             }
             catch(OperationCanceledException) { }
@@ -135,7 +128,7 @@ namespace Swoa
             IsWorking = false;
         }
 
-        private IEnumerable<CelestialObject> LoadCurrentMap(Func<bool>? cancel)
+        private void LoadCurrentMap(Func<bool>? cancel)
         {
             var str_query = $"mag <= 6 AND (90 - {Latitude} + dec) >= 0 AND skycontains(ra, dec, '{Date.ToString("dd/MM/yyyy HH:mm:ss")}', {Latitude}, {Longitude})";
             var records = swoaDb.GetAllSwoaDbRecords(str_query, cancel);
@@ -154,10 +147,10 @@ namespace Swoa
                     SpectralClass = ((SwoaDbStarRecord)record).Spect
                 };
 
-                yield return celestialObj;
+                celestialObjects.Add(celestialObj);
 
                 if (cancel != null && cancel())
-                    yield break;
+                    return;
             }
         }
 
