@@ -41,6 +41,8 @@ namespace Swoa
 
         private CancellationTokenSource? tokenSource;
 
+        private object _filterLocker = new object();
+
         #endregion
 
         #region Properties
@@ -101,8 +103,8 @@ namespace Swoa
         {
             if (IsWorking)
                 CancelWork();
-            else
-                IsWorking = true;
+
+            IsWorking = true;
 
             tokenSource = new CancellationTokenSource();
             var ct = tokenSource.Token;
@@ -134,26 +136,30 @@ namespace Swoa
 
         private void Filter(Func<bool>? cancel)
         {
-            keptObjects.Clear();
-            for(int i = 0; i < ((ICollection<CelestialObject>)celestialObjects).Count; i++)
+            lock (_filterLocker)
             {
-                var obj = celestialObjects.ElementAt(i);
-                var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
-                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, Date.ToUniversalTime(), latitude, longitude);
-
-                if (alt >= 0)
+                keptObjects.Clear();
+                for (int i = 0; i < ((ICollection<CelestialObject>)celestialObjects).Count; i++)
                 {
-                    keptObjects.Add(obj.Id);
-                    obj.HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
-                }
-                else
-                {
-                    celestialObjects.Remove(obj);
-                    i--;
-                }
+                    var obj = celestialObjects.ElementAt(i);
+                    if (obj == null) continue;
+                    var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
+                    var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, Date.ToUniversalTime(), latitude, longitude);
 
-                if (cancel != null && cancel())
-                    return;
+                    if (alt >= 0)
+                    {
+                        keptObjects.Add(obj.Id);
+                        obj.HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
+                    }
+                    else
+                    {
+                        celestialObjects.Remove(obj);
+                        i--;
+                    }
+
+                    if (cancel != null && cancel())
+                        return;
+                }
             }
         }
 
