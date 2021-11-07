@@ -128,6 +128,8 @@ namespace SwoaDatabaseAPI
 
                     return result.alt > 0.0;
                 });
+            connection.CreateFunction("notblacklisted",
+                (long id) => !dbBlackList.Contains(id));
 
             return connection;
         }

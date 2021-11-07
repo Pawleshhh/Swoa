@@ -7,7 +7,7 @@ using Utilities;
 
 namespace Swoa.ViewModel
 {
-    public class TimeMachineViewModel : NotifyPropertyChanges
+    public class TimeMachineViewModel : NotifyPropertyChanges, IAsyncTaskDirector
     {
 
         #region Constructors
@@ -19,6 +19,7 @@ namespace Swoa.ViewModel
             timeMachine.DateChanged += TimeMachine_DateChanged;
             timeMachine.LatitudeChanged += TimeMachine_LatitudeChanged;
             timeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
+            timeMachine.IsWorkingChanged += TimeMachine_IsWorkingChanged;
         }
 
         #endregion
@@ -32,6 +33,8 @@ namespace Swoa.ViewModel
         #endregion
 
         #region Properties
+
+        public bool IsWorking => timeMachine.IsWorking;
 
         public double Latitude
         {
@@ -86,6 +89,26 @@ namespace Swoa.ViewModel
         {
             Date = e.Current;
             Time = new TimeSpan(e.Current.Hour, e.Current.Minute, e.Current.Second);
+        }
+
+        private void TimeMachine_IsWorkingChanged(object sender, DataChangedEventArgs<bool> e)
+        {
+            OnPropertyChanged(nameof(IsWorking));
+        }
+
+        public void CancelTask()
+        {
+            timeMachine.CancelTask();
+        }
+
+        public void WaitForTask()
+        {
+            timeMachine.WaitForTask();
+        }
+
+        public TaskStatus GetTaskStatus()
+        {
+            return timeMachine.GetTaskStatus();
         }
 
         #endregion

@@ -10,10 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace Swoa.ViewModel
 {
-    public class CelestialObjectManagerViewModel : NotifyPropertyChanges
+    public class CelestialObjectManagerViewModel : NotifyPropertyChanges, IAsyncTaskDirector
     {
 
         #region Constructors
@@ -55,6 +56,7 @@ namespace Swoa.ViewModel
 
         private bool isWorking;
         private CancellationTokenSource tokenSource;
+        private Task updatePositionTask;
 
         #endregion
 
@@ -116,15 +118,17 @@ namespace Swoa.ViewModel
 
         public async void UpdateCelestialObjectsPositionAsync()
         {
-            if (IsWorking)
-                tokenSource.Cancel();
-            else
-                IsWorking = true;
+            if (updatePositionTask != null && updatePositionTask.Status == TaskStatus.Running)
+                CancelTask();
+
+            TimeMachineVM.WaitForTask();
+
+            IsWorking = true;
 
             tokenSource = new CancellationTokenSource();
             var ct = tokenSource.Token;
 
-            await Task.Run(() =>
+            updatePositionTask = Task.Run(() =>
             {
                 foreach (var celestialObject in celestialObjects)
                 {
@@ -134,6 +138,7 @@ namespace Swoa.ViewModel
                         break;
                 }
             }, ct);
+            await updatePositionTask;
 
             IsWorking = false;
         }
@@ -201,6 +206,23 @@ namespace Swoa.ViewModel
             var obj = new CelestialObjectViewModel(celestialObject);
 
             return obj;
+        }
+
+        public void CancelTask()
+        {
+            tokenSource?.Cancel();
+            WaitForTask();
+            IsWorking = false;
+        }
+
+        public void WaitForTask()
+        {
+            updatePositionTask?.Wait();
+        }
+
+        public TaskStatus GetTaskStatus()
+        {
+            return updatePositionTask?.Status ?? TaskStatus.RanToCompletion;
         }
 
         #endregion

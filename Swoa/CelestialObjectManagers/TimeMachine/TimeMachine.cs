@@ -12,7 +12,7 @@ using static Utilities.PropertyChangedHelper;
 
 namespace Swoa
 {
-    public class TimeMachine
+    public class TimeMachine : IAsyncTaskDirector
     {
 
         #region Constructors
@@ -40,8 +40,7 @@ namespace Swoa
         private bool isWorking;
 
         private CancellationTokenSource? tokenSource;
-
-        private object _filterLocker = new object();
+        private Task? updateCurrentMapTask;
 
         #endregion
 
@@ -101,8 +100,8 @@ namespace Swoa
 
         public async void UpdateCurrentMapAsync()
         {
-            if (IsWorking)
-                CancelWork();
+            if (updateCurrentMapTask != null && updateCurrentMapTask.Status == TaskStatus.Running)
+                CancelTask();
 
             IsWorking = true;
 
@@ -111,7 +110,7 @@ namespace Swoa
 
             try
             {
-                await Task.Run(() =>
+                updateCurrentMapTask = Task.Run(() =>
                 {
                     ct.ThrowIfCancellationRequested();
 
@@ -120,6 +119,8 @@ namespace Swoa
                     //celestialObjects.Clear();
                     LoadCurrentMap(() => ct.IsCancellationRequested);
                 }, tokenSource.Token);
+
+                await updateCurrentMapTask;
             }
             catch(OperationCanceledException) { }
             finally
@@ -128,50 +129,42 @@ namespace Swoa
             }
         }
 
-        public void CancelWork()
-        {
-            tokenSource?.Cancel();
-            IsWorking = false;
-        }
-
         private void Filter(Func<bool>? cancel)
         {
-            lock (_filterLocker)
+            //keptObjects.Clear();
+            swoaDb.ClearBlackList();
+            for (int i = 0; i < ((ICollection<CelestialObject>)celestialObjects).Count; i++)
             {
-                keptObjects.Clear();
-                for (int i = 0; i < ((ICollection<CelestialObject>)celestialObjects).Count; i++)
+                var obj = celestialObjects.ElementAt(i);
+                //if (obj == null) continue;
+                var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
+                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, Date.ToUniversalTime(), latitude, longitude);
+
+                if (alt >= 0)
                 {
-                    var obj = celestialObjects.ElementAt(i);
-                    if (obj == null) continue;
-                    var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
-                    var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, Date.ToUniversalTime(), latitude, longitude);
-
-                    if (alt >= 0)
-                    {
-                        keptObjects.Add(obj.Id);
-                        obj.HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
-                    }
-                    else
-                    {
-                        celestialObjects.Remove(obj);
-                        i--;
-                    }
-
-                    if (cancel != null && cancel())
-                        return;
+                    swoaDb.AddBlackListId(obj.Id);
+                    obj.HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
                 }
+                else
+                {
+                    celestialObjects.Remove(obj);
+                    i--;
+                }
+
+                if (cancel != null && cancel())
+                    return;
             }
         }
 
         private void LoadCurrentMap(Func<bool>? cancel)
         {
-            var str_query = $"mag <= 6 AND (90 - {Latitude} + dec) >= 0 AND skycontains(ra, dec, '{Date.ToString("dd/MM/yyyy HH:mm:ss")}', {Latitude}, {Longitude})";
+            var str_query = $"notblacklisted(id) AND mag <= 8 AND (90 - {Latitude} + dec) >= 0 AND skycontains(ra, dec, '{Date.ToString("dd/MM/yyyy HH:mm:ss")}', {Latitude}, {Longitude})";
             var records = swoaDb.GetAllSwoaDbRecords(str_query, cancel);
 
             foreach (var record in records)
             {
-                if (keptObjects.Contains(record.Id))
-                    continue;
+                //if (keptObjects.Contains(record.Id))
+                //    continue;
 
                 var ra = record.Ra / 24.0 * 360.0;
 
@@ -191,6 +184,30 @@ namespace Swoa
                 if (cancel != null && cancel())
                     return;
             }
+        }
+
+        public void CancelTask()
+        {
+            tokenSource?.Cancel();
+            WaitForTask();
+            IsWorking = false;
+        }
+
+        public void WaitForTask()
+        {
+            try
+            {
+                updateCurrentMapTask?.Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is TaskCanceledException) { }
+        }
+
+        public TaskStatus GetTaskStatus()
+        {
+            if (updateCurrentMapTask != null)
+                return updateCurrentMapTask.Status;
+            else
+                return TaskStatus.RanToCompletion;
         }
 
         #endregion

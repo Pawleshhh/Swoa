@@ -25,9 +25,20 @@ namespace SwoaDatabaseAPI
 
         protected readonly string path = @"..\..\..\..\Database\swoa.db";
 
+        protected readonly HashSet<long> dbBlackList = new HashSet<long>();
+
         #endregion
 
         #region Methods
+
+        public bool AddBlackListId(long id)
+            => dbBlackList.Add(id);
+        public bool RemoveBlackListId(long id)
+            => dbBlackList.Remove(id);
+        public void ClearBlackList()
+            => dbBlackList.Clear();
+        public bool ContainsBlackListId(long id)
+            => dbBlackList.Contains(id);
 
         public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition);
         public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition, Func<bool> cancel);
