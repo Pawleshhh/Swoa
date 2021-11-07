@@ -4,7 +4,6 @@ using SwoaDatabaseAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Utilities;
@@ -14,16 +13,17 @@ namespace Swoa
 {
     public class TimeMachine : IAsyncTaskDirector
     {
-
         #region Constructors
 
         public TimeMachine(SwoaDb swoaDb, ICelestialObjectCollection celestialObjects)
         {
             this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
             this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
+
+            TimeMachinePlayer = new TimeMachinePlayer(this);
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Fields
 
@@ -42,9 +42,11 @@ namespace Swoa
         private CancellationTokenSource? tokenSource;
         private Task? updateCurrentMapTask;
 
-        #endregion
+        #endregion Fields
 
         #region Properties
+
+        public TimeMachinePlayer TimeMachinePlayer { get; }
 
         public double Latitude
         {
@@ -70,26 +72,31 @@ namespace Swoa
             set => SetProperty(ref isWorking, value, OnIsWorkingChanged);
         }
 
-        #endregion
+        #endregion Properties
 
         #region Events
 
         public event EventHandler<DataChangedEventArgs<DateTime>>? DateChanged;
+
         public event EventHandler<DataChangedEventArgs<double>>? LatitudeChanged;
+
         public event EventHandler<DataChangedEventArgs<double>>? LongitudeChanged;
+
         public event EventHandler<DataChangedEventArgs<bool>>? IsWorkingChanged;
 
         protected void OnDateChanged(DateTime previous, DateTime current)
             => DateChanged?.Invoke(this, new DataChangedEventArgs<DateTime>(previous, current));
+
         protected void OnLatitudeChanged(double previous, double current)
             => LatitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
+
         protected void OnLongitudeChanged(double previous, double current)
             => LongitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
+
         protected void OnIsWorkingChanged(bool previous, bool current)
             => IsWorkingChanged?.Invoke(this, new DataChangedEventArgs<bool>(previous, current));
 
-
-        #endregion
+        #endregion Events
 
         #region Methods
 
@@ -122,7 +129,7 @@ namespace Swoa
 
                 await updateCurrentMapTask;
             }
-            catch(OperationCanceledException) { }
+            catch (OperationCanceledException) { }
             finally
             {
                 IsWorking = false;
@@ -158,7 +165,7 @@ namespace Swoa
 
         private void LoadCurrentMap(Func<bool>? cancel)
         {
-            var str_query = $"notblacklisted(id) AND mag <= 8 AND (90 - {Latitude} + dec) >= 0 AND skycontains(ra, dec, '{Date.ToString("dd/MM/yyyy HH:mm:ss")}', {Latitude}, {Longitude})";
+            var str_query = $"notblacklisted(id) AND mag <= 4 AND (90 - {Latitude} + dec) >= 0 AND skycontains(ra, dec, '{Date.ToString("dd/MM/yyyy HH:mm:ss")}', {Latitude}, {Longitude})";
             var records = swoaDb.GetAllSwoaDbRecords(str_query, cancel);
 
             foreach (var record in records)
@@ -210,7 +217,6 @@ namespace Swoa
                 return TaskStatus.RanToCompletion;
         }
 
-        #endregion
-
+        #endregion Methods
     }
 }

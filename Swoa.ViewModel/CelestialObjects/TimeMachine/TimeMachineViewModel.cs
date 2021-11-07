@@ -20,6 +20,8 @@ namespace Swoa.ViewModel
             timeMachine.LatitudeChanged += TimeMachine_LatitudeChanged;
             timeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
             timeMachine.IsWorkingChanged += TimeMachine_IsWorkingChanged;
+
+            TimeMachinePlayerVM = new TimeMachinePlayerViewModel(timeMachine.TimeMachinePlayer);
         }
 
         #endregion
@@ -33,6 +35,8 @@ namespace Swoa.ViewModel
         #endregion
 
         #region Properties
+
+        public TimeMachinePlayerViewModel TimeMachinePlayerVM { get; }
 
         public bool IsWorking => timeMachine.IsWorking;
 
