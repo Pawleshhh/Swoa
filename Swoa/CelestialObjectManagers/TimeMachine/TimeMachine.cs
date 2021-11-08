@@ -108,6 +108,11 @@ namespace Swoa
 
         public void SetCurrentDate()
         {
+            if (TimeMachinePlayer.IsPlaying)
+                TimeMachinePlayer.Stop();
+
+            WaitForTask();
+
             Date = dateTimeService.GetLocalDateTime();
         }
 

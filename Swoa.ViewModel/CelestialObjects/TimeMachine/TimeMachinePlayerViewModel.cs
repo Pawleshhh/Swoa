@@ -16,6 +16,7 @@ namespace Swoa.ViewModel
             this.timeMachinePlayer = timeMachinePlayer ?? throw new ArgumentNullException(nameof(timeMachinePlayer));
             timeMachinePlayer.IsPlayingChanged += TimeMachinePlayer_IsPlayingChanged;
             timeMachinePlayer.PlayerSpeedChanged += TimeMachinePlayer_PlayerSpeedChanged;
+            timeMachinePlayer.TimeForwardChanged += TimeMachinePlayer_TimeForwardChanged;
         }
 
         #endregion
@@ -50,6 +51,11 @@ namespace Swoa.ViewModel
         private void TimeMachinePlayer_IsPlayingChanged(object sender, Utilities.DataChangedEventArgs<bool> e)
         {
             OnPropertyChanged(nameof(IsPlaying));
+        }
+
+        private void TimeMachinePlayer_TimeForwardChanged(object sender, Utilities.DataChangedEventArgs<bool> e)
+        {
+            OnPropertyChanged(nameof(TimeForward));
         }
 
         #endregion
