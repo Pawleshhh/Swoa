@@ -106,6 +106,11 @@ namespace Swoa
         //    LoadCurrentMap(null);
         //}
 
+        public void SetCurrentDate()
+        {
+            Date = dateTimeService.GetLocalDateTime();
+        }
+
         public async void UpdateCurrentMapAsync()
         {
             if (updateCurrentMapTask != null && updateCurrentMapTask.Status == TaskStatus.Running)

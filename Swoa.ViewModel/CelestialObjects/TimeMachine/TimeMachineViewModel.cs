@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Utilities;
 
 namespace Swoa.ViewModel
@@ -115,6 +116,13 @@ namespace Swoa.ViewModel
         {
             return timeMachine.GetTaskStatus();
         }
+
+        #endregion
+
+        #region Commands
+
+        private ICommand setCurrentDate;
+        public ICommand SetCurrentDate => RelayCommand.Create(ref setCurrentDate, _ => timeMachine.SetCurrentDate());
 
         #endregion
 

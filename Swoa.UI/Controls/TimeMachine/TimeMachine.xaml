@@ -149,6 +149,10 @@
                     Value="{Binding Time, Mode=TwoWay, FallbackValue=0}" />
             </StackPanel>
 
+            <Button Style="{StaticResource AppCircleButtonBaseStyle}" Command="{Binding SetCurrentDate, Mode=OneWay}">
+                <fnt:FontAwesome Margin="2" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Icon="ClockOutline"/>
+            </Button>
+
             <Separator />
 
             <Button Style="{StaticResource buttonStyle}" Command="{Binding TimeMachinePlayerVM.SetTimeBackward, Mode=OneWay}">
