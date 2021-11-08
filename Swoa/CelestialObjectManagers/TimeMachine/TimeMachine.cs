@@ -15,12 +15,14 @@ namespace Swoa
     {
         #region Constructors
 
-        public TimeMachine(SwoaDb swoaDb, ICelestialObjectCollection celestialObjects)
+        public TimeMachine(SwoaDb swoaDb, ICelestialObjectCollection celestialObjects, IDateTimeService dateTimeService)
         {
             this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
             this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
+            this.dateTimeService = dateTimeService ?? throw new ArgumentNullException(nameof(dateTimeService));
 
             TimeMachinePlayer = new TimeMachinePlayer(this);
+            Date = dateTimeService.GetLocalDateTime();
         }
 
         #endregion Constructors
@@ -29,8 +31,7 @@ namespace Swoa
 
         private readonly SwoaDb swoaDb;
         private readonly ICelestialObjectCollection celestialObjects;
-
-        private readonly HashSet<long> keptObjects = new HashSet<long>();
+        private readonly IDateTimeService dateTimeService;
 
         private double latitude;
         private double longitude;

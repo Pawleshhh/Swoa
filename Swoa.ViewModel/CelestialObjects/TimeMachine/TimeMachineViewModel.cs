@@ -60,7 +60,7 @@ namespace Swoa.ViewModel
 
         public TimeSpan Time
         {
-            get => time;
+            get => Date.TimeOfDay;
             set
             {
                 if (SetProperty(ref time, value))
@@ -93,6 +93,7 @@ namespace Swoa.ViewModel
         {
             Date = e.Current;
             Time = new TimeSpan(e.Current.Hour, e.Current.Minute, e.Current.Second);
+            OnPropertyChanged(nameof(Time), nameof(Date));
         }
 
         private void TimeMachine_IsWorkingChanged(object sender, DataChangedEventArgs<bool> e)

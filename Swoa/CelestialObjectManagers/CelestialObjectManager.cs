@@ -14,12 +14,13 @@ namespace Swoa
     {
 
         #region Constructors
-        public CelestialObjectManager(ICelestialObjectCollection celestialObjects, SwoaDb swoaDb)
+        public CelestialObjectManager(ICelestialObjectCollection celestialObjects, SwoaDb swoaDb, IDateTimeService dateTimeService)
         {
             this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
             this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
+            this.dateTimeService = dateTimeService ?? throw new ArgumentNullException(nameof(dateTimeService));
 
-            TimeMachine = new TimeMachine(swoaDb, celestialObjects);
+            TimeMachine = new TimeMachine(swoaDb, celestialObjects, dateTimeService);
 
             TimeMachine.DateChanged += TimeMachine_DateChanged;
             TimeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
@@ -32,10 +33,12 @@ namespace Swoa
 
         private readonly ICelestialObjectCollection celestialObjects;
         private readonly SwoaDb swoaDb;
+        private readonly IDateTimeService dateTimeService;
 
         private readonly bool asyncUpdate = true;
 
         private readonly CelestialObjectReviewer mainReviewer = new CelestialObjectReviewer();
+
         //private readonly CelestialObjectReviewer customReviewer = new CelestialObjectReviewer();
 
         #endregion

@@ -16,7 +16,7 @@ namespace Swoa
             this.swoaDb = swoaDb ?? throw new ArgumentNullException(nameof(swoaDb));
 
             ICelestialObjectCollection celestialObjects = new CelestialObjectList();
-            CelestialObjectManager = new CelestialObjectManager(celestialObjects, swoaDb);
+            CelestialObjectManager = new CelestialObjectManager(celestialObjects, swoaDb, dateTimeService);
 
             //CelestialObjectManager.Update();
         }
@@ -26,6 +26,8 @@ namespace Swoa
         #region Fields
 
         private readonly SwoaDb swoaDb;
+
+        private readonly IDateTimeService dateTimeService = new BaseDateTimeService();
 
         #endregion
 
