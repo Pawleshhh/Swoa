@@ -42,6 +42,8 @@ namespace Swoa
 
         private CancellationTokenSource? tokenSource;
         private Task? updateCurrentMapTask;
+        private object lockLoadingMap = new object();
+
 
         #endregion Fields
 
@@ -130,12 +132,7 @@ namespace Swoa
             {
                 updateCurrentMapTask = Task.Run(() =>
                 {
-                    ct.ThrowIfCancellationRequested();
-
-                    Filter(() => ct.IsCancellationRequested);
-                    ct.ThrowIfCancellationRequested();
-                    //celestialObjects.Clear();
-                    LoadCurrentMap(() => ct.IsCancellationRequested);
+                    UpdateCurrentMap(ct);
                 }, tokenSource.Token);
 
                 await updateCurrentMapTask;
@@ -147,7 +144,18 @@ namespace Swoa
             }
         }
 
-        private readonly object blackListLock = new object();
+        public void UpdateCurrentMap(CancellationToken ct = default)
+        {
+            lock (lockLoadingMap)
+            {
+                ct.ThrowIfCancellationRequested();
+
+                Filter(() => ct.IsCancellationRequested);
+                ct.ThrowIfCancellationRequested();
+                //celestialObjects.Clear();
+                LoadCurrentMap(() => ct.IsCancellationRequested);
+            }
+        }
 
         private void Filter(Func<bool>? cancel)
         {
