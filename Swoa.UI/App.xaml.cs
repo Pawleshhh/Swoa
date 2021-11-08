@@ -28,7 +28,8 @@ namespace Swoa.UI
             //AddRandomObjs(swoaManagerModel);
             //AddDbObjs(swoaManagerModel);
 
-            swoaManagerModel.CelestialObjectManager.TimeMachine.TimeMachinePlayer.Start();
+            //swoaManagerModel.CelestialObjectManager.TimeMachine.TimeMachinePlayer.Start();
+            swoaManagerModel.CelestialObjectManager.TimeMachine.UpdateCurrentMapAsync();
 
             MainWindow = new MainWindow();
             MainWindow.DataContext = swoaManagerVM;

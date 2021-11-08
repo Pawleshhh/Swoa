@@ -147,6 +147,8 @@ namespace Swoa
             }
         }
 
+        private readonly object blackListLock = new object();
+
         private void Filter(Func<bool>? cancel)
         {
             //keptObjects.Clear();
