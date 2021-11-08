@@ -5,11 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:extwpf="http://schemas.xceed.com/wpf/xaml/toolkit"
     xmlns:local="clr-namespace:Swoa.UI"
+    xmlns:fnt="http://schemas.fontawesome.io/icons/"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=DotNetProjects.Wpf.Extended.Toolkit"
-    Height="40"
-    d:DesignWidth="650"
+    d:DesignHeight="40"
+    d:DesignWidth="750"
+    x:Name="timeMachine"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -20,6 +22,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/ToolBarTemplateResources.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/NumericUpDownResources.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/DatePickerResources.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/ButtonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--<sys:Double x:Key="MaximumLongitude">180.0</sys:Double>
@@ -42,10 +45,12 @@
                     <Setter Property="VerticalAlignment" Value="Center" />
                     <Setter Property="Margin" Value="0,0,5,0" />
                 </Style>
+
                 <Style
                     x:Key="{x:Static themes:ResourceKeys.SpinnerButtonStyleKey}"
                     BasedOn="{StaticResource AppNumericUpDownButtonStyle}"
                     TargetType="RepeatButton" />
+
                 <Style BasedOn="{StaticResource AppNumericUpDownStyle}" TargetType="extwpf:DoubleUpDown">
                     <Setter Property="MinWidth" Value="80" />
                     <Setter Property="MaxWidth" Value="80" />
@@ -56,18 +61,42 @@
                     <Setter Property="MaxWidth" Value="80" />
                     <Setter Property="Margin" Value="5,0,5,0" />
                 </Style>
+
                 <Style TargetType="StackPanel">
                     <Setter Property="VerticalAlignment" Value="Center" />
                     <Setter Property="HorizontalAlignment" Value="Center" />
                     <Setter Property="Margin" Value="5,0,5,0" />
                     <Setter Property="Orientation" Value="Horizontal" />
                 </Style>
+
+                <Style TargetType="{x:Type ButtonBase}" x:Key="buttonStyle" BasedOn="{StaticResource AppButtonBaseStyle}">
+                    <Setter Property="Margin" Value="2,0"/>
+                    <Setter Property="MinHeight" Value="25"/>
+                </Style>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource AppCircleButtonBaseStyle}" x:Key="toggleButtonStyle">
+                    <Setter Property="Margin" Value="2,0"/>
+                    <Setter Property="Padding" Value="8"/>
+                </Style>
+
+                <Style TargetType="fnt:FontAwesome" x:Key="speedUpIconStyle">
+                    <Setter Property="Icon" Value="Play"/>
+                </Style>
+                <Style TargetType="fnt:FontAwesome" x:Key="slowDownIconStyle" BasedOn="{StaticResource speedUpIconStyle}">
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <RotateTransform Angle="180"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="fnt:FontAwesome" x:Key="startIconStyle">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.IsPlaying}" Value="True">
+                            <Setter Property="Icon" Value="StopCircleOutline"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+
             </ToolBar.Resources>
-            <ToolBar.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Grid />
-                </ItemsPanelTemplate>
-            </ToolBar.ItemsPanel>
 
             <!--  Latitude  -->
             <StackPanel>
@@ -114,17 +143,44 @@
 
             <Separator />
 
-            <ToggleButton
-                Margin="5"
-                Background="Red"
-                Command="{Binding TimeMachinePlayerVM.Play, Mode=OneWay}"
-                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
-                Content="Play" />
+            <Button Style="{StaticResource buttonStyle}" Command="{Binding TimeMachinePlayerVM.SetTimeBackward, Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Fill="Black" Width="1" VerticalAlignment="Stretch" StrokeThickness="2"/>
+                    <fnt:FontAwesome Icon="Play" Style="{StaticResource slowDownIconStyle}"/>
+                </StackPanel>
+            </Button>
+            
             <Button
-                Margin="5"
-                Background="Green"
-                Command="{Binding TimeMachinePlayerVM.SpeedUp, Mode=OneWay}"
-                Content="Speed Up" />
+                Style="{StaticResource buttonStyle}"
+                Command="{Binding TimeMachinePlayerVM.SlowDown, Mode=OneWay}">
+                <Grid>
+                    <fnt:FontAwesome Margin="-10, 0, 0, 0" Style="{StaticResource slowDownIconStyle}"/>
+                    <fnt:FontAwesome Style="{StaticResource slowDownIconStyle}"/>
+                    <fnt:FontAwesome Margin="10, 0, 0, 0" Style="{StaticResource slowDownIconStyle}"/>
+                </Grid>
+            </Button>
+            <ToggleButton
+                Style="{StaticResource toggleButtonStyle}"
+                Command="{Binding TimeMachinePlayerVM.Play, Mode=OneWay}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}">
+                <fnt:FontAwesome Icon="PlayCircleOutline"/>
+            </ToggleButton>
+            <Button
+                Style="{StaticResource buttonStyle}"
+                Command="{Binding TimeMachinePlayerVM.SpeedUp, Mode=OneWay}">
+                <Grid>
+                    <fnt:FontAwesome Margin="-10, 0, 0, 0" Style="{StaticResource speedUpIconStyle}"/>
+                    <fnt:FontAwesome Style="{StaticResource speedUpIconStyle}"/>
+                    <fnt:FontAwesome Margin="10, 0, 0, 0" Style="{StaticResource speedUpIconStyle}"/>
+                </Grid>
+            </Button>
+
+            <Button Style="{StaticResource buttonStyle}" Command="{Binding TimeMachinePlayerVM.SetTimeForward, Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <fnt:FontAwesome Icon="Play" Style="{StaticResource speedUpIconStyle}"/>
+                    <Rectangle Fill="Black" Width="1" VerticalAlignment="Stretch" StrokeThickness="2"/>
+                </StackPanel>
+            </Button>
         </ToolBar>
     </Grid>
 </UserControl>

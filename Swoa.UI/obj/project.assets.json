@@ -14,6 +14,15 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "FontAwesome.WPF/4.7.0.9": {
+        "type": "package",
+        "compile": {
+          "lib/net40/FontAwesome.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FontAwesome.WPF.dll": {}
+        }
+      },
       "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
         "type": "package",
         "dependencies": {
@@ -1512,6 +1521,29 @@
         "dotnetprojects.extended.wpf.toolkit.nuspec",
         "lib/net40/DotNetProjects.Wpf.Extended.Toolkit.dll",
         "lib/netcoreapp3.0/DotNetProjects.Wpf.Extended.Toolkit.dll"
+      ]
+    },
+    "FontAwesome.WPF/4.7.0.9": {
+      "sha512": "SXE080rnyWMm9Dt0BZzMxh89/o9teuSaqL1N+0O/XM/F/HU8JuZA4XaEKxjBigwZPHHU3/udTa0QMYCHkmH43Q==",
+      "type": "package",
+      "path": "fontawesome.wpf/4.7.0.9",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fontawesome.wpf.4.7.0.9.nupkg.sha512",
+        "fontawesome.wpf.nuspec",
+        "lib/net35/FontAwesome.WPF.dll",
+        "lib/net35/FontAwesome.WPF.xml",
+        "lib/net40/FontAwesome.WPF.dll",
+        "lib/net40/FontAwesome.WPF.xml",
+        "lib/uap10.0/FontAwesome.UWP.XML",
+        "lib/uap10.0/FontAwesome.UWP.dll",
+        "lib/uap10.0/FontAwesome.UWP.pri",
+        "lib/uap10.0/FontAwesome.UWP/FontAwesome.otf",
+        "lib/wp81/FontAwesome.WIN81.dll",
+        "lib/wp81/FontAwesome.WIN81.xml",
+        "tools/install.ps1"
       ]
     },
     "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
@@ -5087,61 +5119,53 @@
       "Astronomy >= 1.0.0",
       "CelestialObjects >= 1.0.0",
       "DotNetProjects.Extended.Wpf.Toolkit >= 4.6.97",
+      "FontAwesome.WPF >= 4.7.0.9",
       "Swoa >= 1.0.0",
       "Swoa.ViewModel >= 1.0.0",
       "SwoaDatabaseAPI >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\1\\.nuget\\packages\\": {},
-    "F:\\Visual Studio 2019\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\mtwp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
+      "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
       "projectName": "Swoa.UI",
-      "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
-      "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-      "outputPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.UI\\obj\\",
+      "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
+      "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.UI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "F:\\Visual Studio 2019\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj": {
-              "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj"
+            "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj": {
+              "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj"
             },
-            "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
-              "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
+            "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
+              "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
             },
-            "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj": {
-              "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj"
+            "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj": {
+              "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj"
             },
-            "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj": {
-              "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj"
+            "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj": {
+              "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj"
             },
-            "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj": {
-              "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj"
+            "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\Swoa.csproj": {
+              "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\Swoa.csproj"
             }
           }
         }
@@ -5159,6 +5183,10 @@
           "DotNetProjects.Extended.Wpf.Toolkit": {
             "target": "Package",
             "version": "[4.6.97, )"
+          },
+          "FontAwesome.WPF": {
+            "target": "Package",
+            "version": "[4.7.0.9, )"
           }
         },
         "imports": [
@@ -5171,12 +5199,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.9, 5.0.9]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -5185,8 +5207,20 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'FontAwesome.WPF 4.7.0.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "FontAwesome.WPF",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
 }

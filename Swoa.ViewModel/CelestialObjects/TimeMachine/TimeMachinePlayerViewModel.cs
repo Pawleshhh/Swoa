@@ -28,6 +28,12 @@ namespace Swoa.ViewModel
 
         #region Properties
 
+        public bool TimeForward
+        {
+            get => timeMachinePlayer.TimeForward;
+            set => SetProperty(() => timeMachinePlayer.TimeForward == value, () => timeMachinePlayer.TimeForward = value);
+        }
+
         public bool IsPlaying => timeMachinePlayer.IsPlaying;
 
         public TimeMachinePlayerSpeed PlayerSpeed => timeMachinePlayer.PlayerSpeed;
@@ -66,6 +72,15 @@ namespace Swoa.ViewModel
 
         private ICommand speedUp;
         public ICommand SpeedUp => RelayCommand.Create(ref speedUp, _ => timeMachinePlayer.SpeedUp());
+
+        private ICommand slowDown;
+        public ICommand SlowDown => RelayCommand.Create(ref slowDown, _ => timeMachinePlayer.SlowDown());
+
+        private ICommand setTimeBackward;
+        public ICommand SetTimeBackward => RelayCommand.Create(ref setTimeBackward, _ => TimeForward = false);
+
+        private ICommand setTimeForward;
+        public ICommand SetTimeForward => RelayCommand.Create(ref setTimeForward, _ => TimeForward = true);
 
         #endregion
 

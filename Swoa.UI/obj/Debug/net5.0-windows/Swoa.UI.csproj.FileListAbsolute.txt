@@ -59,7 +59,6 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\runti
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\SwoaDatabaseAPI.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\SwoaDatabaseAPI.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\CelestialMapResources.baml
-C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.UI.exe
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.UI.deps.json
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Swoa.UI.runtimeconfig.json
@@ -138,3 +137,5 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resou
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\TimeMachine\TimeMachine.g.cs
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\TimeMachine\TimeMachine.baml
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ToolBarTemplateResources.baml
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\FontAwesome.WPF.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ButtonStyles.baml

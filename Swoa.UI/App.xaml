@@ -9,6 +9,7 @@
         <local:DivideValueConverter x:Key="divideValueConverter" />
         <local:MultipleValueConverter x:Key="multipleValueConverter" />
         <local:SubstractValueConverter x:Key="substractValueConverter" />
+        <local:BorderThicknessToStrokeThickness x:Key="borderThicknessToStrokeConv"/>
 
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
     </Application.Resources>

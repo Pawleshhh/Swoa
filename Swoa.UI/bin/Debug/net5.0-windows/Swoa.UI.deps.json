@@ -11,6 +11,7 @@
           "Astronomy": "1.0.0",
           "CelestialObjects": "1.0.0",
           "DotNetProjects.Extended.Wpf.Toolkit": "4.6.97",
+          "FontAwesome.WPF": "4.7.0.9",
           "Swoa": "1.0.0",
           "Swoa.ViewModel": "1.0.0",
           "SwoaDatabaseAPI": "1.0.0"
@@ -24,6 +25,14 @@
           "lib/netcoreapp3.0/DotNetProjects.Wpf.Extended.Toolkit.dll": {
             "assemblyVersion": "4.6.97.0",
             "fileVersion": "4.6.97.0"
+          }
+        }
+      },
+      "FontAwesome.WPF/4.7.0.9": {
+        "runtime": {
+          "lib/net40/FontAwesome.WPF.dll": {
+            "assemblyVersion": "4.7.0.37774",
+            "fileVersion": "4.7.0.9"
           }
         }
       },
@@ -938,6 +947,13 @@
       "sha512": "sha512-xEKmDYltHOwgrYYdJn6mtEXMWbguuCDgTwdrjJ6OeYGP9FQTWjkaF/SH7MLX/9F/8e126zXv/W70gGHFgOAhLQ==",
       "path": "dotnetprojects.extended.wpf.toolkit/4.6.97",
       "hashPath": "dotnetprojects.extended.wpf.toolkit.4.6.97.nupkg.sha512"
+    },
+    "FontAwesome.WPF/4.7.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SXE080rnyWMm9Dt0BZzMxh89/o9teuSaqL1N+0O/XM/F/HU8JuZA4XaEKxjBigwZPHHU3/udTa0QMYCHkmH43Q==",
+      "path": "fontawesome.wpf/4.7.0.9",
+      "hashPath": "fontawesome.wpf.4.7.0.9.nupkg.sha512"
     },
     "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
       "type": "package",

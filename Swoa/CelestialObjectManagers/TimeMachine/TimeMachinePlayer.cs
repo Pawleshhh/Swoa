@@ -17,6 +17,8 @@ namespace Swoa
         public TimeMachinePlayer(TimeMachine timeMachine)
         {
             this.timeMachine = timeMachine ?? throw new ArgumentNullException(nameof(timeMachine));
+
+            TimeForward = true;
         }
 
         #endregion
@@ -25,16 +27,21 @@ namespace Swoa
 
         private readonly TimeMachine timeMachine;
 
+        private bool timeForward;
         private bool isPlaying;
         private TimeMachinePlayerSpeed playerSpeed;
-
-        private int timeDirection = 1;
 
         private Timer timer = new Timer();
 
         #endregion
 
         #region Properties
+
+        public bool TimeForward
+        {
+            get => timeForward;
+            set => SetProperty(ref timeForward, value, OnTimeForwardChanged);
+        }
 
         public bool IsPlaying
         {
@@ -52,15 +59,16 @@ namespace Swoa
 
         #region Events
 
+        public event EventHandler<DataChangedEventArgs<bool>>? TimeForwardChanged;
         public event EventHandler<DataChangedEventArgs<bool>>? IsPlayingChanged;
         public event EventHandler<DataChangedEventArgs<TimeMachinePlayerSpeed>>? PlayerSpeedChanged;
 
+        protected void OnTimeForwardChanged(bool prev, bool curr)
+            => TimeForwardChanged?.Invoke(this, new DataChangedEventArgs<bool>(prev, curr));
         protected void OnIsPlayingChanged(bool prev, bool curr)
             => IsPlayingChanged?.Invoke(this, new DataChangedEventArgs<bool>(prev, curr));
         protected void OnPlayerSpeedChanged(TimeMachinePlayerSpeed prev, TimeMachinePlayerSpeed curr)
-        {
-            PlayerSpeedChanged?.Invoke(this, new DataChangedEventArgs<TimeMachinePlayerSpeed>(prev, curr));
-        }
+            => PlayerSpeedChanged?.Invoke(this, new DataChangedEventArgs<TimeMachinePlayerSpeed>(prev, curr));
 
         #endregion
 
@@ -105,6 +113,18 @@ namespace Swoa
             }
         }
 
+        public void SlowDown()
+        {
+            if (PlayerSpeed == TimeMachinePlayerSpeed.BySecond)
+            {
+                PlayerSpeed = TimeMachinePlayerSpeed.ByYear;
+            }
+            else
+            {
+                PlayerSpeed--;
+            }
+        }
+
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             UpdateTimeMachine();
@@ -112,6 +132,7 @@ namespace Swoa
 
         private void UpdateTimeMachine()
         {
+            var timeDirection = GetTimeDirection();
             switch (PlayerSpeed)
             {
                 case TimeMachinePlayerSpeed.BySecond:
@@ -134,6 +155,9 @@ namespace Swoa
             timer.Stop();
             timer.Dispose();
         }
+
+        private int GetTimeDirection()
+            => TimeForward ? 1 : -1;
 
         #endregion
 
