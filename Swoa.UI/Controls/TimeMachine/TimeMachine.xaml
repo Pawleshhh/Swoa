@@ -77,6 +77,27 @@
                     <Setter Property="MinHeight" Value="25" />
                 </Style>
                 <Style
+                    x:Key="timeDirectionBackwardButtonStyle"
+                    BasedOn="{StaticResource buttonStyle}"
+                    TargetType="ButtonBase">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.TimeForward, Converter={StaticResource booleanNegationConverter}, Mode=OneWay}" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.MouseOver.Background}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+                <Style
+                    x:Key="timeDirectionForwardButtonStyle"
+                    BasedOn="{StaticResource buttonStyle}"
+                    TargetType="ButtonBase">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.TimeForward, Mode=OneWay}" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.MouseOver.Background}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Style
                     x:Key="toggleButtonStyle"
                     BasedOn="{StaticResource AppCircleButtonBaseStyle}"
                     TargetType="ToggleButton">
@@ -174,7 +195,7 @@
 
             <Separator />
 
-            <Button Command="{Binding TimeMachinePlayerVM.SetTimeBackward, Mode=OneWay}" Style="{StaticResource buttonStyle}">
+            <Button Command="{Binding TimeMachinePlayerVM.SetTimeBackward, Mode=OneWay}" Style="{StaticResource timeDirectionBackwardButtonStyle}">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle
                         Width="1"
@@ -207,7 +228,7 @@
                 </Grid>
             </Button>
 
-            <Button Command="{Binding TimeMachinePlayerVM.SetTimeForward, Mode=OneWay}" Style="{StaticResource buttonStyle}">
+            <Button Command="{Binding TimeMachinePlayerVM.SetTimeForward, Mode=OneWay}" Style="{StaticResource timeDirectionForwardButtonStyle}">
                 <StackPanel Orientation="Horizontal">
                     <fnt:FontAwesome Icon="Play" Style="{StaticResource speedUpIconStyle}" />
                     <Rectangle
