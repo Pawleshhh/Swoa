@@ -139,4 +139,3 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Contr
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ToolBarTemplateResources.baml
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\FontAwesome.WPF.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ButtonStyles.baml
-C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete

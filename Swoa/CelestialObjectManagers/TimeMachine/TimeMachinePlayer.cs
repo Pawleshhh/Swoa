@@ -29,7 +29,7 @@ namespace Swoa
 
         private bool timeForward;
         private bool isPlaying;
-        private TimeMachinePlayerSpeed playerSpeed;
+        private TimeMachinePlayerSpeed playerSpeed = TimeMachinePlayerSpeed.BySecond;
 
         private Timer timer = new Timer();
 
@@ -77,17 +77,15 @@ namespace Swoa
         public void Start()
         {
             if (IsPlaying)
-                SpeedUp();
-            else
-            {
-                timer = new Timer();
-                timer.Elapsed += Timer_Elapsed;
-                timer.Interval = 1000;
+                return;
 
-                IsPlaying = true;
+            timer = new Timer();
+            timer.Elapsed += Timer_Elapsed;
+            timer.Interval = 1000;
 
-                timer.Start();
-            }
+            IsPlaying = true;
+
+            timer.Start();
         }
 
         public void Stop()

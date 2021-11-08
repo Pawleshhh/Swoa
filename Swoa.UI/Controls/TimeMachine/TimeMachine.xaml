@@ -75,7 +75,12 @@
                 </Style>
                 <Style TargetType="ToggleButton" BasedOn="{StaticResource AppCircleButtonBaseStyle}" x:Key="toggleButtonStyle">
                     <Setter Property="Margin" Value="2,0"/>
-                    <Setter Property="Padding" Value="8"/>
+                    <Setter Property="Padding" Value="6"/>
+                    <!--<Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.IsPlaying}" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </DataTrigger>
+                    </Style.Triggers>-->
                 </Style>
 
                 <Style TargetType="fnt:FontAwesome" x:Key="speedUpIconStyle">
@@ -89,8 +94,11 @@
                     </Setter>
                 </Style>
                 <Style TargetType="fnt:FontAwesome" x:Key="startIconStyle">
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                    <Setter Property="Icon" Value="PlayCircleOutline"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.IsPlaying}" Value="True">
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.IsPlaying}" Value="True">
                             <Setter Property="Icon" Value="StopCircleOutline"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -160,10 +168,11 @@
                 </Grid>
             </Button>
             <ToggleButton
+                IsChecked="{Binding TimeMachinePlayerVM.IsPlaying, Mode=OneWay}"
                 Style="{StaticResource toggleButtonStyle}"
                 Command="{Binding TimeMachinePlayerVM.Play, Mode=OneWay}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}">
-                <fnt:FontAwesome Icon="PlayCircleOutline"/>
+                <fnt:FontAwesome Style="{StaticResource startIconStyle}"/>
             </ToggleButton>
             <Button
                 Style="{StaticResource buttonStyle}"
