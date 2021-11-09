@@ -82,7 +82,7 @@
                     TargetType="ButtonBase">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.TimeForward, Converter={StaticResource booleanNegationConverter}, Mode=OneWay}" Value="True">
-                            <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.MouseOver.Background}" />
+                            <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.Active.Background}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
@@ -92,7 +92,7 @@
                     TargetType="ButtonBase">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.TimeForward, Mode=OneWay}" Value="True">
-                            <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.MouseOver.Background}" />
+                            <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.Active.Background}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
@@ -103,11 +103,11 @@
                     TargetType="ToggleButton">
                     <Setter Property="Margin" Value="2,0" />
                     <Setter Property="Padding" Value="6" />
-                    <!--<Style.Triggers>
+                    <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.IsPlaying}" Value="True">
-                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.Active.Background}"/>
                         </DataTrigger>
-                    </Style.Triggers>-->
+                    </Style.Triggers>
                 </Style>
 
                 <Style x:Key="speedUpIconStyle" TargetType="fnt:FontAwesome">

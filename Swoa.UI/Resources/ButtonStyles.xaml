@@ -5,6 +5,7 @@
     <SolidColorBrush x:Key="AppButtonBaseStyle.Static.BorderBrush" Color="Black"/>
     <SolidColorBrush x:Key="AppButtonBaseStyle.Static.Background" Color="#4e4c5d"/>
     <SolidColorBrush x:Key="AppButtonBaseStyle.Static.Foreground" Color="Black"/>
+    <SolidColorBrush x:Key="AppButtonBaseStyle.Active.Background" Color="#4b7879"/>
     <SolidColorBrush x:Key="AppButtonBaseStyle.MouseOver.BorderBrush" Color="Black"/>
     <SolidColorBrush x:Key="AppButtonBaseStyle.MouseOver.Background" Color="#6f6c8f"/>
     <SolidColorBrush x:Key="AppButtonBaseStyle.MouseOver.Foreground" Color="Black"/>
