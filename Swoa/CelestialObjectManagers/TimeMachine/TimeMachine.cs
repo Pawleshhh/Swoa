@@ -197,6 +197,7 @@ namespace Swoa
                 var celestialObj = new OutsideStarObject()
                 {
                     Id = record.Id,
+                    Name = GetStarObjectName((SwoaDbStarRecord)record),
                     EquatorialCoordinates = new Astronomy.Units.EquatorialCoordinates(record.Dec, ra),
                     HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
                     VisualMagnitude = record.Mag,
@@ -234,6 +235,24 @@ namespace Swoa
                 return updateCurrentMapTask.Status;
             else
                 return TaskStatus.RanToCompletion;
+        }
+
+        private string GetStarObjectName(SwoaDbStarRecord swoaDbStarRecord)
+        {
+            if (!string.IsNullOrEmpty(swoaDbStarRecord.Proper))
+                return swoaDbStarRecord.Proper;
+            if (!string.IsNullOrEmpty(swoaDbStarRecord.Bf))
+                return swoaDbStarRecord.Bf;
+            if (!string.IsNullOrEmpty(swoaDbStarRecord.Gl))
+                return swoaDbStarRecord.Gl;
+            if (!string.IsNullOrEmpty(swoaDbStarRecord.Hr))
+                return swoaDbStarRecord.Hr;
+            if (!string.IsNullOrEmpty(swoaDbStarRecord.Hd))
+                return swoaDbStarRecord.Hd;
+            if (!string.IsNullOrEmpty(swoaDbStarRecord.Hip))
+                return swoaDbStarRecord.Hip;
+
+            return "None";
         }
 
         #endregion Methods
