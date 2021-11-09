@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Utilities;
 
 namespace Swoa.ViewModel
@@ -43,6 +44,8 @@ namespace Swoa.ViewModel
 
         public CelestialObject CelestialObject { get; }
 
+        public HorizonCoordinates HorizonCoordinates => CelestialObject.HorizontalCoordinates;
+
         public double XPos
         {
             get => x;
@@ -72,13 +75,17 @@ namespace Swoa.ViewModel
             set => SetProperty(ref color, value);
         }
 
-        public event EventHandler<DataChangedEventArgs<HorizonCoordinates>>? HorizonCoordsChanged;
+        public event EventHandler<DataChangedEventArgs<HorizonCoordinates>> HorizonCoordsChanged;
+        public event EventHandler Selected;
 
         protected void OnHorizonCoordsChanged(DataChangedEventArgs<HorizonCoordinates> e)
             => HorizonCoordsChanged?.Invoke(this, e);
+        protected void OnSelected()
+            => Selected?.Invoke(this, EventArgs.Empty);
 
         private void CelestialObject_HorizonCoordsChanged(object sender, DataChangedEventArgs<HorizonCoordinates> e)
         {
+            OnPropertyChanged(nameof(HorizonCoordinates));
             OnHorizonCoordsChanged(e);
         }
 
@@ -115,6 +122,15 @@ namespace Swoa.ViewModel
                 color = "Red";
             }
         }
+
+        #region Commands
+
+        private ICommand select;
+        public ICommand Select => RelayCommand.Create(
+            ref select,
+            _ => OnSelected());
+
+        #endregion
 
     }
 }

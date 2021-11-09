@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zYpmP4RPlIUr5QukwDYqOlu++MZg2WBEBO+3Yv+X8L+Ox3czfNZ/cT2/ypY9xDv2+oAhRWZtIfdxAAgDPPMcBQ==",
+  "dgSpecHash": "BPd8GQc5Ylwl7jDdCTqH7dQsiScavMQdQnLNF69ibhK5+JCp0d5Km+rCSgvWBMVEyQNIV6hj7I4qra6FMHoKOg==",
   "success": true,
   "projectFilePath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.UI\\Swoa.UI.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\mtwp\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\mtwp\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\mtwp\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\mtwp\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.37\\microsoft.xaml.behaviors.wpf.1.1.37.nupkg.sha512",
     "C:\\Users\\mtwp\\.nuget\\packages\\mstest.testframework\\2.2.3\\mstest.testframework.2.2.3.nupkg.sha512",
     "C:\\Users\\mtwp\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\mtwp\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

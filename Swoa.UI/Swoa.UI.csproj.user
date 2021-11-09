@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\Map\CelestialMap.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +18,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\Map\CelestialMap.xaml">
       <SubType>Designer</SubType>
     </Page>

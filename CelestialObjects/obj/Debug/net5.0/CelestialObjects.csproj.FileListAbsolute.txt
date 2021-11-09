@@ -11,7 +11,6 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\Cele
 C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.AssemblyInfoInputs.cache
 C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.AssemblyInfo.cs
 C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.csproj.CoreCompileInputs.cache
-C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.csproj.CopyComplete
 C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\ref\CelestialObjects.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\CelestialObjects\obj\Debug\net5.0\CelestialObjects.pdb

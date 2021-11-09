@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Swoa.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="720"
+    Width="1020"
     Height="720"
     mc:Ignorable="d">
 
@@ -23,20 +23,29 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8.2*"/>
+            <ColumnDefinition Width="1.8*"/>
+        </Grid.ColumnDefinitions>
 
         <local:TimeMachine
             Panel.ZIndex="10"
+            Grid.ColumnSpan="2"
             DataContext="{Binding CelestialObjectManagerVM.TimeMachineVM}" />
 
         <local:CelestialMap
             x:Name="celestialMap"
             Grid.Row="1"
+            Grid.ColumnSpan="2"
             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
             Height="Auto"
             MinWidth="300"
             MinHeight="300"
             Margin="20"
             DataContext="{Binding CelestialObjectManagerVM}" />
+
+        <local:CelestialObjectInfo DataContext="{Binding CelestialObjectManagerVM.SelectedObject, Mode=OneWay}" Grid.Column="1" Grid.Row="1"/>
+
         <!--<StackPanel
             Grid.Row="1"
             HorizontalAlignment="Center"

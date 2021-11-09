@@ -141,3 +141,6 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\FontA
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ButtonStyles.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\FontAwesome.WPF.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ButtonStyles.baml
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.g.cs
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.baml
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll

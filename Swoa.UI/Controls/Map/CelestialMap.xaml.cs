@@ -126,12 +126,12 @@ namespace Swoa.UI
         {
             InitializeComponent();
 
-            MouseLeftButtonDown += OnMouseLeftButtonDown;
-            MouseRightButtonDown += OnMouseRightButtonDown;
-            MouseUp += OnMouseUp;
-            MouseMove += OnMouseMove;
+            PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
+            PreviewMouseRightButtonDown += OnMouseRightButtonDown;
+            PreviewMouseUp += OnMouseUp;
+            PreviewMouseMove += OnMouseMove;
 
-            MouseWheel += CelestialMap_MouseWheel;
+            PreviewMouseWheel += CelestialMap_MouseWheel;
         }
 
         private void ResetPosition()

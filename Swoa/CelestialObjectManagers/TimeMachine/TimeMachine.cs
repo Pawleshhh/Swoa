@@ -200,6 +200,8 @@ namespace Swoa
                     EquatorialCoordinates = new Astronomy.Units.EquatorialCoordinates(record.Dec, ra),
                     HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
                     VisualMagnitude = record.Mag,
+                    DistanceToSun = record.SunDist,
+                    DistanceToEarth = record.SunDist,
                     SpectralClass = ((SwoaDbStarRecord)record).Spect
                 };
 

@@ -58,6 +58,8 @@ namespace Swoa.ViewModel
         private CancellationTokenSource tokenSource;
         private Task updatePositionTask;
 
+        private CelestialObjectViewModel selectedObject;
+
         #endregion
 
         #region Properties
@@ -65,6 +67,12 @@ namespace Swoa.ViewModel
         public TimeMachineViewModel TimeMachineVM { get; }
 
         public ReadOnlyObservableCollection<CelestialObjectViewModel> CelestialObjects { get; }
+
+        public CelestialObjectViewModel SelectedObject
+        {
+            get => selectedObject;
+            private set => SetProperty(ref selectedObject, value);
+        }
 
         public double MapDiameter
         {
@@ -164,7 +172,7 @@ namespace Swoa.ViewModel
                 foreach (var item in e.ItemsChanged)
                 {
                     var celestialObjectVM = GetCelestialObjectVM(item);
-                    celestialObjectVM.HorizonCoordsChanged += CelestialObjectVM_HorizonCoordsChanged;
+                    Subscribe(celestialObjectVM);
 
                     celestialObjects.Add(celestialObjectVM);
 
@@ -179,7 +187,7 @@ namespace Swoa.ViewModel
             {
                 foreach (var index in e.Indexes)
                 {
-                    celestialObjects[index].HorizonCoordsChanged -= CelestialObjectVM_HorizonCoordsChanged;
+                    Unsubscribe(celestialObjects[index]);
                     celestialObjects.RemoveAt(index);
                 }
             }
@@ -190,7 +198,7 @@ namespace Swoa.ViewModel
             lock (itemsLock)
             {
                 foreach (var item in celestialObjects)
-                    item.HorizonCoordsChanged -= CelestialObjectVM_HorizonCoordsChanged;
+                    Unsubscribe(item);
 
                 celestialObjects.Clear();
             }
@@ -201,11 +209,28 @@ namespace Swoa.ViewModel
             SetPosition((CelestialObjectViewModel)sender);
         }
 
+        private void CelestialObjectVM_Selected(object sender, EventArgs e)
+        {
+            SelectedObject = (CelestialObjectViewModel)sender;
+        }
+
         protected virtual CelestialObjectViewModel GetCelestialObjectVM(CelestialObject celestialObject)
         {
             var obj = new CelestialObjectViewModel(celestialObject);
 
             return obj;
+        }
+
+        protected void Subscribe(CelestialObjectViewModel celestialObjectVM)
+        {
+            celestialObjectVM.HorizonCoordsChanged += CelestialObjectVM_HorizonCoordsChanged;
+            celestialObjectVM.Selected += CelestialObjectVM_Selected;
+        }
+
+        protected void Unsubscribe(CelestialObjectViewModel celestialObjectVM)
+        {
+            celestialObjectVM.HorizonCoordsChanged -= CelestialObjectVM_HorizonCoordsChanged;
+            celestialObjectVM.Selected -= CelestialObjectVM_Selected;
         }
 
         public void CancelTask()
