@@ -53,8 +53,8 @@
             <TextBlock Text="{Binding CelestialObject.Name, Mode=OneWay, FallbackValue=None}"/>
             <TextBlock Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
             <TextBlock Text="{Binding CelestialObject.EquatorialCoordinates.Declination, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding HorizonCoordinates.Altitude, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding HorizonCoordinates.Azimuth, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
+            <TextBlock Text="{Binding CelestialObject.HorizonCoordinates.Altitude, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
+            <TextBlock Text="{Binding CelestialObject.HorizonCoordinates.Azimuth, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
             <TextBlock Text="{Binding CelestialObject.VisualMagnitude, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
             <TextBlock Text="{Binding CelestialObject.DistanceToSun, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
             <TextBlock Text="{Binding CelestialObject.DistanceToEarth, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>

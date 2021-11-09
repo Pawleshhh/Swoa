@@ -13,7 +13,7 @@ namespace CelestialObjects
         public EquatorialCoordinates EquatorialCoordinates { get; init; }
 
         private HorizonCoordinates horizonCoordinates;
-        public HorizonCoordinates HorizontalCoordinates
+        public HorizonCoordinates HorizonCoordinates
         {
             get => horizonCoordinates;
             set => SetProperty(ref horizonCoordinates, value, OnHorizonCoordsChanged);

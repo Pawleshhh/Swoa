@@ -68,7 +68,7 @@ namespace Swoa.ViewModel
 
         public ReadOnlyObservableCollection<CelestialObjectViewModel> CelestialObjects { get; }
 
-        public CelestialObjectViewModel SelectedObject
+        public CelestialObjectViewModel SelectedCelestialObject
         {
             get => selectedObject;
             private set => SetProperty(ref selectedObject, value);
@@ -153,7 +153,7 @@ namespace Swoa.ViewModel
 
         private void SetPosition(CelestialObjectViewModel celestialObjectVM)
         {
-            var (alt, az) = celestialObjectVM.CelestialObject.HorizontalCoordinates;
+            var (alt, az) = celestialObjectVM.CelestialObject.HorizonCoordinates;
             var (width, height) = (celestialObjectVM.Width, celestialObjectVM.Height);
             const double MAXALT = HorizonCoordinates.MAXALTITUDE;
             double r = (MAXALT - alt) / MAXALT * (mapDiameter / 2.0);
@@ -211,7 +211,7 @@ namespace Swoa.ViewModel
 
         private void CelestialObjectVM_Selected(object sender, EventArgs e)
         {
-            SelectedObject = (CelestialObjectViewModel)sender;
+            SelectedCelestialObject = (CelestialObjectViewModel)sender;
         }
 
         protected virtual CelestialObjectViewModel GetCelestialObjectVM(CelestialObject celestialObject)

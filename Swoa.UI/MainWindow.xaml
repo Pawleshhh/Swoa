@@ -44,7 +44,7 @@
             Margin="20"
             DataContext="{Binding CelestialObjectManagerVM}" />
 
-        <local:CelestialObjectInfo DataContext="{Binding CelestialObjectManagerVM.SelectedObject, Mode=OneWay}" Grid.Column="1" Grid.Row="1"/>
+        <local:CelestialObjectInfo DataContext="{Binding CelestialObjectManagerVM.SelectedCelestialObject, Mode=OneWay}" Grid.Column="1" Grid.Row="1"/>
 
         <!--<StackPanel
             Grid.Row="1"

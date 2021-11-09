@@ -368,7 +368,8 @@
                             <Ellipse
                             Width="{Binding Width, Mode=TwoWay}"
                             Height="{Binding Height, Mode=TwoWay}"
-                            Fill="{Binding Color, Mode=OneWay}">
+                            Fill="{Binding Color, Mode=OneWay}"
+                            Visibility="{Binding IsVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonUp">
                                     <i:InvokeCommandAction Command="{Binding Select, Mode=OneWay}"/>

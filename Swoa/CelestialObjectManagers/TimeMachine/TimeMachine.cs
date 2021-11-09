@@ -160,14 +160,14 @@ namespace Swoa
             for (int i = 0; i < ((ICollection<CelestialObject>)celestialObjects).Count; i++)
             {
                 var obj = celestialObjects.ElementAt(i);
-                //if (obj == null) continue;
+                
                 var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
                 var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, Date.ToUniversalTime(), latitude, longitude);
 
                 if (alt >= 0)
                 {
                     swoaDb.AddBlackListId(obj.Id);
-                    obj.HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
+                    obj.HorizonCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
                 }
                 else
                 {
@@ -199,7 +199,7 @@ namespace Swoa
                     Id = record.Id,
                     Name = GetStarObjectName((SwoaDbStarRecord)record),
                     EquatorialCoordinates = new Astronomy.Units.EquatorialCoordinates(record.Dec, ra),
-                    HorizontalCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
+                    HorizonCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
                     VisualMagnitude = record.Mag,
                     DistanceToSun = record.SunDist,
                     DistanceToEarth = record.SunDist,

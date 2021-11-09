@@ -50,7 +50,7 @@ namespace Swoa.UI
 
                 swoaManager.CelestialObjectManager.Add(new PlanetObject()
                 {
-                    HorizontalCoordinates = horizonCoords
+                    HorizonCoordinates = horizonCoords
                 });
             }
         }

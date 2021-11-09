@@ -14,25 +14,20 @@ namespace Swoa.ViewModel
     public class CelestialObjectViewModel : NotifyPropertyChanges
     {
 
+        #region Constructors
+
         public CelestialObjectViewModel(CelestialObject celestialObject)
         {
             CelestialObject = celestialObject;
             celestialObject.HorizonCoordsChanged += CelestialObject_HorizonCoordsChanged;
 
-            double size = 0;
-            if (celestialObject.VisualMagnitude > 4)
-                size = 1.0;
-            else if (celestialObject.VisualMagnitude > 2)
-                size = 1.5;
-            else if (celestialObject.VisualMagnitude > 0)
-                size = 2.5;
-            else
-                size = 3.5;
-
-            height = width = size;
-
+            SetSize();
             SetColor();
         }
+
+        #endregion
+
+        #region Fields
 
         private double x;
         private double y;
@@ -42,9 +37,13 @@ namespace Swoa.ViewModel
 
         private string color;
 
+        #endregion
+
+        #region Properties
+
         public CelestialObject CelestialObject { get; }
 
-        public HorizonCoordinates HorizonCoordinates => CelestialObject.HorizontalCoordinates;
+        public bool IsVisible => CelestialObject.HorizonCoordinates.Altitude >= 0;
 
         public double XPos
         {
@@ -75,6 +74,10 @@ namespace Swoa.ViewModel
             set => SetProperty(ref color, value);
         }
 
+        #endregion
+
+        #region Events
+
         public event EventHandler<DataChangedEventArgs<HorizonCoordinates>> HorizonCoordsChanged;
         public event EventHandler Selected;
 
@@ -83,13 +86,32 @@ namespace Swoa.ViewModel
         protected void OnSelected()
             => Selected?.Invoke(this, EventArgs.Empty);
 
+        #endregion
+
+        #region Methods
+
         private void CelestialObject_HorizonCoordsChanged(object sender, DataChangedEventArgs<HorizonCoordinates> e)
         {
-            OnPropertyChanged(nameof(HorizonCoordinates));
+            OnPropertyChanged(nameof(CelestialObject), nameof(IsVisible));
             OnHorizonCoordsChanged(e);
         }
 
-        private void SetColor()
+        protected virtual void SetSize()
+        {
+            double size;
+            if (CelestialObject.VisualMagnitude > 4)
+                size = 1.0;
+            else if (CelestialObject.VisualMagnitude > 2)
+                size = 1.5;
+            else if (CelestialObject.VisualMagnitude > 0)
+                size = 2.5;
+            else
+                size = 3.5;
+
+            height = width = size;
+        }
+
+        protected virtual void SetColor()
         {
             try
             {
@@ -122,6 +144,8 @@ namespace Swoa.ViewModel
                 color = "Red";
             }
         }
+
+        #endregion
 
         #region Commands
 
