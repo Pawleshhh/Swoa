@@ -123,38 +123,34 @@ namespace Swoa
             if (updateCurrentMapTask != null && updateCurrentMapTask.Status == TaskStatus.Running)
                 CancelTask();
 
-            IsWorking = true;
-
             tokenSource = new CancellationTokenSource();
             var ct = tokenSource.Token;
 
-            try
+            updateCurrentMapTask = Task.Run(() =>
             {
-                updateCurrentMapTask = Task.Run(() =>
-                {
-                    UpdateCurrentMap(ct);
-                }, tokenSource.Token);
+                UpdateCurrentMap(ct);
+            }, tokenSource.Token);
 
-                await updateCurrentMapTask;
-            }
-            catch (OperationCanceledException) { }
-            finally
-            {
-                IsWorking = false;
-            }
+            await updateCurrentMapTask;
         }
 
         public void UpdateCurrentMap(CancellationToken ct = default)
         {
+            IsWorking = true;
             lock (lockLoadingMap)
             {
-                ct.ThrowIfCancellationRequested();
+                try
+                {
+                    ct.ThrowIfCancellationRequested();
 
-                Filter(() => ct.IsCancellationRequested);
-                ct.ThrowIfCancellationRequested();
-                //celestialObjects.Clear();
-                LoadCurrentMap(() => ct.IsCancellationRequested);
+                    Filter(() => ct.IsCancellationRequested);
+                    ct.ThrowIfCancellationRequested();
+                    //celestialObjects.Clear();
+                    LoadCurrentMap(() => ct.IsCancellationRequested);
+                }
+                catch (OperationCanceledException) {  }
             }
+            IsWorking = false;
         }
 
         private void Filter(Func<bool>? cancel)

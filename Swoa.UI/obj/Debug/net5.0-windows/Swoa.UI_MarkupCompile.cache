@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\
 Swoa.UI
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\App.xaml
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\App.xaml
 10-1793691597
 
 121737516116
-208-442058446
+208-2052928238
 Controls\Map\CelestialMap.xaml;Controls\TimeMachine\TimeMachine.xaml;MainWindow.xaml;Resources\AppColors.xaml;Resources\ButtonStyles.xaml;Resources\CelestialMapResources.xaml;Resources\DatePickerResources.xaml;Resources\NumericUpDownResources.xaml;Resources\ToolBarTemplateResources.xaml;Resources\Values.xaml;
 
 False
