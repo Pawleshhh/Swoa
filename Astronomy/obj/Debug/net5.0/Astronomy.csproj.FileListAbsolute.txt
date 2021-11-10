@@ -27,3 +27,4 @@ N:\Programowanie\Ogólne\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.csproj.CopyCo
 N:\Programowanie\Ogólne\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.dll
 N:\Programowanie\Ogólne\Swoa\Astronomy\obj\Debug\net5.0\ref\Astronomy.dll
 N:\Programowanie\Ogólne\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.csproj.CopyComplete

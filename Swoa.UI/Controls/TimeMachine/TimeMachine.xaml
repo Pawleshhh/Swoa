@@ -134,6 +134,16 @@
                     </Style.Triggers>
                 </Style>
 
+                <Style x:Key="ellipseTimeSpeedIndicatorStyle" TargetType="Ellipse">
+                    <Setter Property="Fill" Value="Red"/>
+                    <Setter Property="Width" Value="5"/>
+                    <Setter Property="Height" Value="5"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Grid.Row" Value="1"/>
+                    <Setter Property="Visibility" Value="Hidden"/>
+                </Style>
+
             </ToolBar.Resources>
 
             <!--  Latitude  -->
@@ -158,40 +168,133 @@
 
             <Separator />
 
-            <DatePicker
-                MinWidth="120"
-                MaxWidth="120"
-                Margin="5,0,5,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                SelectedDate="{Binding Date, Mode=TwoWay}"
-                SelectedDateFormat="Short"
-                Style="{StaticResource AppDatePickerStyle}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="45"/>
+                    
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="30"/>
+                    
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
 
-            <StackPanel>
-                <TextBlock Text="Time" />
 
-                <extwpf:TimeSpanUpDown
-                    MinWidth="70"
-                    MaxWidth="70"
-                    Maximum="{StaticResource MaximumTimeMachineTime}"
-                    Minimum="{StaticResource MinimumTimeMachineTime}"
-                    Value="{Binding Time, Mode=TwoWay, FallbackValue=0}" />
-            </StackPanel>
-
-            <Button
-                Width="Auto"
-                Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width}"
-                Margin="0,0,5,0"
-                Command="{Binding SetCurrentDate, Mode=OneWay}"
-                Style="{StaticResource AppCircleButtonBaseStyle}">
-                <fnt:FontAwesome
-                    Margin="2"
+                <DatePicker
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Margin="5,0,5,0"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Icon="ClockOutline"
-                    TextAlignment="Center" />
-            </Button>
+                    VerticalAlignment="Bottom"
+                    SelectedDate="{Binding Date, Mode=TwoWay, FallbackValue=01/01/2000, StringFormat=dd/MM/yyyy}"
+                    Style="{StaticResource AppDatePickerStyle}" />
+
+                <StackPanel Grid.Column="5" Grid.ColumnSpan="5" VerticalAlignment="Bottom" Margin="0, 0, 0, 2">
+                    <TextBlock Text="Time" />
+
+                    <extwpf:TimeSpanUpDown
+                        MinWidth="70"
+                        MaxWidth="70"
+                        Maximum="{StaticResource MaximumTimeMachineTime}"
+                        Minimum="{StaticResource MinimumTimeMachineTime}"
+                        Value="{Binding Time, Mode=TwoWay, FallbackValue=00:00:00}" />
+                </StackPanel>
+
+                <Button
+                    Grid.Column="10"
+                    Width="Auto"
+                    Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="0, 0, 5, 2"
+                    Command="{Binding SetCurrentDate, Mode=OneWay}"
+                    Style="{StaticResource AppCircleButtonBaseStyle}">
+                    <fnt:FontAwesome
+                        Margin="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Icon="ClockOutline"
+                        TextAlignment="Center" />
+                </Button>
+
+                <Ellipse Grid.Column="1">
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+                <Ellipse Grid.Column="2">
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+                <Ellipse Grid.Column="3">
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="5">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+                <Ellipse Grid.Column="6">
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="2">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+                <Ellipse Grid.Column="7">
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="1">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+                <Ellipse Grid.Column="8">
+                    <Ellipse.Style>
+                        <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Ellipse.Style>
+                </Ellipse>
+
+            </Grid>
 
             <Separator />
 

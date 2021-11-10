@@ -144,4 +144,3 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\ButtonS
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.g.cs
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.baml
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
-C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete
