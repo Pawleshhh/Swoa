@@ -8,7 +8,7 @@ using Utilities;
 
 namespace Swoa.ViewModel
 {
-    public class TimeMachineViewModel : NotifyPropertyChanges, IAsyncTaskDirector
+    public class TimeMachineViewModel : NotifyPropertyChanges
     {
 
         #region Constructors
@@ -20,7 +20,6 @@ namespace Swoa.ViewModel
             timeMachine.DateChanged += TimeMachine_DateChanged;
             timeMachine.LatitudeChanged += TimeMachine_LatitudeChanged;
             timeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
-            timeMachine.IsWorkingChanged += TimeMachine_IsWorkingChanged;
             timeMachine.IsPlayingChanged += TimeMachinePlayer_IsPlayingChanged;
             timeMachine.PlayerSpeedChanged += TimeMachinePlayer_PlayerSpeedChanged;
             timeMachine.TimeForwardChanged += TimeMachinePlayer_TimeForwardChanged;
@@ -38,8 +37,6 @@ namespace Swoa.ViewModel
         #endregion
 
         #region Properties
-
-        public bool IsWorking => timeMachine.IsWorking;
 
         public double Latitude
         {
@@ -107,11 +104,6 @@ namespace Swoa.ViewModel
             OnPropertyChanged(nameof(Time), nameof(Date));
         }
 
-        private void TimeMachine_IsWorkingChanged(object sender, DataChangedEventArgs<bool> e)
-        {
-            OnPropertyChanged(nameof(IsWorking));
-        }
-
         private void TimeMachinePlayer_PlayerSpeedChanged(object sender, Utilities.DataChangedEventArgs<TimeMachinePlayerSpeed> e)
         {
             OnPropertyChanged(nameof(PlayerSpeed));
@@ -125,21 +117,6 @@ namespace Swoa.ViewModel
         private void TimeMachinePlayer_TimeForwardChanged(object sender, Utilities.DataChangedEventArgs<bool> e)
         {
             OnPropertyChanged(nameof(TimeForward));
-        }
-
-        public void CancelTask()
-        {
-            timeMachine.CancelTask();
-        }
-
-        public void WaitForTask()
-        {
-            timeMachine.WaitForTask();
-        }
-
-        public TaskStatus GetTaskStatus()
-        {
-            return timeMachine.GetTaskStatus();
         }
 
         #endregion

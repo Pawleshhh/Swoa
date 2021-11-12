@@ -32,6 +32,8 @@ namespace Swoa.ViewModel
             celestialObjectManager.Added += CelestialObjectManager_Added;
             celestialObjectManager.Removed += CelestialObjectManager_Removed;
             celestialObjectManager.Cleared += CelestialObjectManager_Cleared;
+            celestialObjectManager.ChangeOnUpdateEnabledChanged += CelestialObjectManager_ChangeOnUpdateEnabledChanged;
+            celestialObjectManager.IsWorkingChanged += CelestialObjectManager_IsWorkingChanged;
 
             itemsLock = uiThread.OnUiThread(CelestialObjects);
         }
@@ -102,10 +104,18 @@ namespace Swoa.ViewModel
             set => SetProperty(ref areDirectionsVisible, value);
         }
 
-        public bool IsWorking
+        public bool IsPositionUpdateWorking
         {
             get => isWorking;
             set => SetProperty(ref isWorking, value);
+        }
+
+        public bool IsUpdateMapWorking => celestialObjectManager.IsWorking;
+
+        public bool ChangeOnUpdateEnabled
+        {
+            get => celestialObjectManager.ChangeOnUpdateEnabled;
+            set => SetProperty(() => celestialObjectManager.ChangeOnUpdateEnabled == value, () => celestialObjectManager.ChangeOnUpdateEnabled = value);
         }
 
         //public double MapWidth
@@ -129,9 +139,9 @@ namespace Swoa.ViewModel
             if (updatePositionTask != null && updatePositionTask.Status == TaskStatus.Running)
                 CancelTask();
 
-            TimeMachineVM.WaitForTask();
+            celestialObjectManager.WaitForTask();
 
-            IsWorking = true;
+            IsPositionUpdateWorking = true;
 
             tokenSource = new CancellationTokenSource();
             var ct = tokenSource.Token;
@@ -148,7 +158,7 @@ namespace Swoa.ViewModel
             }, ct);
             await updatePositionTask;
 
-            IsWorking = false;
+            IsPositionUpdateWorking = false;
         }
 
         private void SetPosition(CelestialObjectViewModel celestialObjectVM)
@@ -204,6 +214,16 @@ namespace Swoa.ViewModel
             }
         }
 
+        private void CelestialObjectManager_IsWorkingChanged(object sender, DataChangedEventArgs<bool> e)
+        {
+            OnPropertyChanged(nameof(IsUpdateMapWorking));
+        }
+
+        private void CelestialObjectManager_ChangeOnUpdateEnabledChanged(object sender, DataChangedEventArgs<bool> e)
+        {
+            OnPropertyChanged(nameof(ChangeOnUpdateEnabled));
+        }
+
         private void CelestialObjectVM_HorizonCoordsChanged(object sender, Utilities.DataChangedEventArgs<HorizonCoordinates> e)
         {
             SetPosition((CelestialObjectViewModel)sender);
@@ -237,7 +257,7 @@ namespace Swoa.ViewModel
         {
             tokenSource?.Cancel();
             WaitForTask();
-            IsWorking = false;
+            IsPositionUpdateWorking = false;
         }
 
         public void WaitForTask()
