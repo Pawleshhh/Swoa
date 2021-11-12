@@ -1,4 +1,5 @@
 ﻿using Astronomy;
+using Astronomy.Units;
 using CelestialObjects;
 using SwoaDatabaseAPI;
 using System;
@@ -137,17 +138,7 @@ namespace Swoa
 
                 var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, timeMachine.Date.ToUniversalTime(), timeMachine.Latitude, timeMachine.Longitude);
 
-                var celestialObj = new OutsideStarObject()
-                {
-                    Id = record.Id,
-                    Name = GetStarObjectName((SwoaDbStarRecord)record),
-                    EquatorialCoordinates = new Astronomy.Units.EquatorialCoordinates(record.Dec, ra),
-                    HorizonCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az),
-                    VisualMagnitude = record.Mag,
-                    DistanceToSun = record.SunDist,
-                    DistanceToEarth = record.SunDist,
-                    SpectralClass = ((SwoaDbStarRecord)record).Spect
-                };
+                var celestialObj = CelestialObjectFactory.CreateFromSwoaDbRecord(record, new EquatorialCoordinates(record.Dec, ra), new HorizonCoordinates(alt, az));
 
                 celestialObjects.Add(celestialObj);
 
@@ -178,25 +169,6 @@ namespace Swoa
             else
                 return TaskStatus.RanToCompletion;
         }
-
-        private string GetStarObjectName(SwoaDbStarRecord swoaDbStarRecord)
-        {
-            if (!string.IsNullOrEmpty(swoaDbStarRecord.Proper))
-                return swoaDbStarRecord.Proper;
-            if (!string.IsNullOrEmpty(swoaDbStarRecord.Bf))
-                return swoaDbStarRecord.Bf;
-            if (!string.IsNullOrEmpty(swoaDbStarRecord.Gl))
-                return swoaDbStarRecord.Gl;
-            if (!string.IsNullOrEmpty(swoaDbStarRecord.Hr))
-                return swoaDbStarRecord.Hr;
-            if (!string.IsNullOrEmpty(swoaDbStarRecord.Hd))
-                return swoaDbStarRecord.Hd;
-            if (!string.IsNullOrEmpty(swoaDbStarRecord.Hip))
-                return swoaDbStarRecord.Hip;
-
-            return "None";
-        }
-
 
         #endregion
 
