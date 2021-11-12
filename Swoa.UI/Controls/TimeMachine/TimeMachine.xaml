@@ -81,7 +81,7 @@
                     BasedOn="{StaticResource buttonStyle}"
                     TargetType="ButtonBase">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.TimeForward, Converter={StaticResource booleanNegationConverter}, Mode=OneWay}" Value="True">
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeForward, Converter={StaticResource booleanNegationConverter}, Mode=OneWay}" Value="True">
                             <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.Active.Background}" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -91,7 +91,7 @@
                     BasedOn="{StaticResource buttonStyle}"
                     TargetType="ButtonBase">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.TimeForward, Mode=OneWay}" Value="True">
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeForward, Mode=OneWay}" Value="True">
                             <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.Active.Background}" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -104,7 +104,7 @@
                     <Setter Property="Margin" Value="2,0" />
                     <Setter Property="Padding" Value="6" />
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.IsPlaying}" Value="True">
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.IsPlaying}" Value="True">
                             <Setter Property="Background" Value="{StaticResource AppButtonBaseStyle.Active.Background}"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -128,7 +128,7 @@
                     <Setter Property="TextAlignment" Value="Center" />
                     <Setter Property="Icon" Value="PlayCircleOutline" />
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.TimeMachinePlayerVM.IsPlaying}" Value="True">
+                        <DataTrigger Binding="{Binding ElementName=timeMachine, Path=DataContext.IsPlaying}" Value="True">
                             <Setter Property="Icon" Value="StopCircleOutline" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -231,7 +231,7 @@
                     <Ellipse.Style>
                         <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="3">
+                                <DataTrigger Binding="{Binding PlayerSpeed, Mode=OneWay}" Value="3">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -242,7 +242,7 @@
                     <Ellipse.Style>
                         <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="4">
+                                <DataTrigger Binding="{Binding PlayerSpeed, Mode=OneWay}" Value="4">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -253,7 +253,7 @@
                     <Ellipse.Style>
                         <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="5">
+                                <DataTrigger Binding="{Binding PlayerSpeed, Mode=OneWay}" Value="5">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -264,7 +264,7 @@
                     <Ellipse.Style>
                         <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="2">
+                                <DataTrigger Binding="{Binding PlayerSpeed, Mode=OneWay}" Value="2">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -275,7 +275,7 @@
                     <Ellipse.Style>
                         <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="1">
+                                <DataTrigger Binding="{Binding PlayerSpeed, Mode=OneWay}" Value="1">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -286,7 +286,7 @@
                     <Ellipse.Style>
                         <Style TargetType="Ellipse" BasedOn="{StaticResource ellipseTimeSpeedIndicatorStyle}">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding TimeMachinePlayerVM.PlayerSpeed, Mode=OneWay}" Value="0">
+                                <DataTrigger Binding="{Binding PlayerSpeed, Mode=OneWay}" Value="0">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -298,7 +298,7 @@
 
             <Separator />
 
-            <Button Command="{Binding TimeMachinePlayerVM.SetTimeBackward, Mode=OneWay}" Style="{StaticResource timeDirectionBackwardButtonStyle}">
+            <Button Command="{Binding SetTimeBackward, Mode=OneWay}" Style="{StaticResource timeDirectionBackwardButtonStyle}">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle
                         Width="1"
@@ -309,7 +309,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Command="{Binding TimeMachinePlayerVM.SlowDown, Mode=OneWay}" Style="{StaticResource buttonStyle}">
+            <Button Command="{Binding SlowDown, Mode=OneWay}" Style="{StaticResource buttonStyle}">
                 <Grid>
                     <fnt:FontAwesome Margin="-10,0,0,0" Style="{StaticResource slowDownIconStyle}" />
                     <fnt:FontAwesome Style="{StaticResource slowDownIconStyle}" />
@@ -317,13 +317,13 @@
                 </Grid>
             </Button>
             <ToggleButton
-                Command="{Binding TimeMachinePlayerVM.Play, Mode=OneWay}"
+                Command="{Binding Play, Mode=OneWay}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsChecked}"
-                IsChecked="{Binding TimeMachinePlayerVM.IsPlaying, Mode=OneWay}"
+                IsChecked="{Binding IsPlaying, Mode=OneWay}"
                 Style="{StaticResource toggleButtonStyle}">
                 <fnt:FontAwesome Style="{StaticResource startIconStyle}" />
             </ToggleButton>
-            <Button Command="{Binding TimeMachinePlayerVM.SpeedUp, Mode=OneWay}" Style="{StaticResource buttonStyle}">
+            <Button Command="{Binding SpeedUp, Mode=OneWay}" Style="{StaticResource buttonStyle}">
                 <Grid>
                     <fnt:FontAwesome Margin="-10,0,0,0" Style="{StaticResource speedUpIconStyle}" />
                     <fnt:FontAwesome Style="{StaticResource speedUpIconStyle}" />
@@ -331,7 +331,7 @@
                 </Grid>
             </Button>
 
-            <Button Command="{Binding TimeMachinePlayerVM.SetTimeForward, Mode=OneWay}" Style="{StaticResource timeDirectionForwardButtonStyle}">
+            <Button Command="{Binding SetTimeForward, Mode=OneWay}" Style="{StaticResource timeDirectionForwardButtonStyle}">
                 <StackPanel Orientation="Horizontal">
                     <fnt:FontAwesome Icon="Play" Style="{StaticResource speedUpIconStyle}" />
                     <Rectangle

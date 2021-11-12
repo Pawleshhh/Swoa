@@ -21,8 +21,10 @@ namespace Swoa.ViewModel
             timeMachine.LatitudeChanged += TimeMachine_LatitudeChanged;
             timeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
             timeMachine.IsWorkingChanged += TimeMachine_IsWorkingChanged;
+            timeMachine.IsPlayingChanged += TimeMachinePlayer_IsPlayingChanged;
+            timeMachine.PlayerSpeedChanged += TimeMachinePlayer_PlayerSpeedChanged;
+            timeMachine.TimeForwardChanged += TimeMachinePlayer_TimeForwardChanged;
 
-            TimeMachinePlayerVM = new TimeMachinePlayerViewModel(timeMachine.TimeMachinePlayer);
         }
 
         #endregion
@@ -36,8 +38,6 @@ namespace Swoa.ViewModel
         #endregion
 
         #region Properties
-
-        public TimeMachinePlayerViewModel TimeMachinePlayerVM { get; }
 
         public bool IsWorking => timeMachine.IsWorking;
 
@@ -76,6 +76,16 @@ namespace Swoa.ViewModel
             }
         }
 
+        public bool TimeForward
+        {
+            get => timeMachine.TimeForward;
+            set => SetProperty(() => timeMachine.TimeForward == value, () => timeMachine.TimeForward = value);
+        }
+
+        public bool IsPlaying => timeMachine.IsPlaying;
+
+        public TimeMachinePlayerSpeed PlayerSpeed => timeMachine.PlayerSpeed;
+
         #endregion
 
         #region Methods
@@ -102,6 +112,21 @@ namespace Swoa.ViewModel
             OnPropertyChanged(nameof(IsWorking));
         }
 
+        private void TimeMachinePlayer_PlayerSpeedChanged(object sender, Utilities.DataChangedEventArgs<TimeMachinePlayerSpeed> e)
+        {
+            OnPropertyChanged(nameof(PlayerSpeed));
+        }
+
+        private void TimeMachinePlayer_IsPlayingChanged(object sender, Utilities.DataChangedEventArgs<bool> e)
+        {
+            OnPropertyChanged(nameof(IsPlaying));
+        }
+
+        private void TimeMachinePlayer_TimeForwardChanged(object sender, Utilities.DataChangedEventArgs<bool> e)
+        {
+            OnPropertyChanged(nameof(TimeForward));
+        }
+
         public void CancelTask()
         {
             timeMachine.CancelTask();
@@ -123,6 +148,33 @@ namespace Swoa.ViewModel
 
         private ICommand setCurrentDate;
         public ICommand SetCurrentDate => RelayCommand.Create(ref setCurrentDate, _ => timeMachine.SetCurrentDate());
+
+        private ICommand play;
+        public ICommand Play => RelayCommand.Create(ref play, o =>
+        {
+            if (o is bool start)
+            {
+                if (start)
+                    timeMachine.Start();
+                else
+                    timeMachine.Stop();
+            }
+            else if (o is null)
+                timeMachine.Stop();
+        });
+
+        private ICommand speedUp;
+        public ICommand SpeedUp => RelayCommand.Create(ref speedUp, _ => timeMachine.SpeedUp());
+
+        private ICommand slowDown;
+        public ICommand SlowDown => RelayCommand.Create(ref slowDown, _ => timeMachine.SlowDown());
+
+        private ICommand setTimeBackward;
+        public ICommand SetTimeBackward => RelayCommand.Create(ref setTimeBackward, _ => TimeForward = false);
+
+        private ICommand setTimeForward;
+        public ICommand SetTimeForward => RelayCommand.Create(ref setTimeForward, _ => TimeForward = true);
+
 
         #endregion
 

@@ -2,6 +2,7 @@
 using CelestialObjects;
 using SwoaDatabaseAPI;
 using System;
+using timers = System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -21,8 +22,8 @@ namespace Swoa
             this.celestialObjects = celestialObjects ?? throw new ArgumentNullException(nameof(celestialObjects));
             this.dateTimeService = dateTimeService ?? throw new ArgumentNullException(nameof(dateTimeService));
 
-            TimeMachinePlayer = new TimeMachinePlayer(this);
             Date = dateTimeService.GetLocalDateTime();
+            TimeForward = true;
         }
 
         #endregion Constructors
@@ -35,21 +36,21 @@ namespace Swoa
 
         private double latitude;
         private double longitude;
-
         private DateTime date;
-
         private bool isWorking;
+        private bool timeForward;
+        private bool isPlaying;
+        private TimeMachinePlayerSpeed playerSpeed = TimeMachinePlayerSpeed.BySecond;
+
+        private timers.Timer timer = new timers.Timer();
 
         private CancellationTokenSource? tokenSource;
         private Task? updateCurrentMapTask;
         private object lockLoadingMap = new object();
 
-
         #endregion Fields
 
         #region Properties
-
-        public TimeMachinePlayer TimeMachinePlayer { get; }
 
         public double Latitude
         {
@@ -75,17 +76,35 @@ namespace Swoa
             set => SetProperty(ref isWorking, value, OnIsWorkingChanged);
         }
 
+        public bool TimeForward
+        {
+            get => timeForward;
+            set => SetProperty(ref timeForward, value, OnTimeForwardChanged);
+        }
+
+        public bool IsPlaying
+        {
+            get => isPlaying;
+            private set => SetProperty(ref isPlaying, value, OnIsPlayingChanged);
+        }
+
+        public TimeMachinePlayerSpeed PlayerSpeed
+        {
+            get => playerSpeed;
+            private set => SetProperty(ref playerSpeed, value, OnPlayerSpeedChanged);
+        }
+
         #endregion Properties
 
         #region Events
 
         public event EventHandler<DataChangedEventArgs<DateTime>>? DateChanged;
-
         public event EventHandler<DataChangedEventArgs<double>>? LatitudeChanged;
-
         public event EventHandler<DataChangedEventArgs<double>>? LongitudeChanged;
-
         public event EventHandler<DataChangedEventArgs<bool>>? IsWorkingChanged;
+        public event EventHandler<DataChangedEventArgs<bool>>? TimeForwardChanged;
+        public event EventHandler<DataChangedEventArgs<bool>>? IsPlayingChanged;
+        public event EventHandler<DataChangedEventArgs<TimeMachinePlayerSpeed>>? PlayerSpeedChanged;
 
         protected void OnDateChanged(DateTime previous, DateTime current)
             => DateChanged?.Invoke(this, new DataChangedEventArgs<DateTime>(previous, current));
@@ -98,25 +117,109 @@ namespace Swoa
 
         protected void OnIsWorkingChanged(bool previous, bool current)
             => IsWorkingChanged?.Invoke(this, new DataChangedEventArgs<bool>(previous, current));
+        protected void OnTimeForwardChanged(bool prev, bool curr)
+           => TimeForwardChanged?.Invoke(this, new DataChangedEventArgs<bool>(prev, curr));
+        protected void OnIsPlayingChanged(bool prev, bool curr)
+            => IsPlayingChanged?.Invoke(this, new DataChangedEventArgs<bool>(prev, curr));
+        protected void OnPlayerSpeedChanged(TimeMachinePlayerSpeed prev, TimeMachinePlayerSpeed curr)
+            => PlayerSpeedChanged?.Invoke(this, new DataChangedEventArgs<TimeMachinePlayerSpeed>(prev, curr));
 
         #endregion Events
 
         #region Methods
 
-        //public void UpdateCurrentMap()
-        //{
-        //    LoadCurrentMap(null);
-        //}
+        public void Start()
+        {
+            if (IsPlaying)
+                return;
+
+            timer = new timers.Timer();
+            timer.Elapsed += Timer_Elapsed;
+            timer.Interval = 1000;
+
+            IsPlaying = true;
+
+            timer.Start();
+        }
+
+        public void Stop()
+        {
+            if (!IsPlaying)
+                return;
+
+            timer.Stop();
+            timer.Dispose();
+
+            IsPlaying = false;
+        }
+
+        public void SpeedUp()
+        {
+            if (PlayerSpeed == TimeMachinePlayerSpeed.ByYear)
+            {
+                PlayerSpeed = TimeMachinePlayerSpeed.BySecond;
+            }
+            else
+            {
+                PlayerSpeed++;
+            }
+        }
+
+        public void SlowDown()
+        {
+            if (PlayerSpeed == TimeMachinePlayerSpeed.BySecond)
+            {
+                PlayerSpeed = TimeMachinePlayerSpeed.ByYear;
+            }
+            else
+            {
+                PlayerSpeed--;
+            }
+        }
 
         public void SetCurrentDate()
         {
-            if (TimeMachinePlayer.IsPlaying)
-                TimeMachinePlayer.Stop();
+            if (IsPlaying)
+                Stop();
 
             WaitForTask();
 
             Date = dateTimeService.GetLocalDateTime();
         }
+
+        private void Timer_Elapsed(object sender, timers.ElapsedEventArgs e)
+        {
+            UpdateTimeMachine();
+        }
+
+        private void UpdateTimeMachine()
+        {
+            var timeDirection = GetTimeDirection();
+            switch (PlayerSpeed)
+            {
+                case TimeMachinePlayerSpeed.BySecond:
+                    Date = Date.AddSeconds(timeDirection); break;
+                case TimeMachinePlayerSpeed.ByMinute:
+                    Date = Date.AddMinutes(timeDirection); break;
+                case TimeMachinePlayerSpeed.ByHour:
+                    Date = Date.AddHours(timeDirection); break;
+                case TimeMachinePlayerSpeed.ByDay:
+                    Date = Date.AddDays(timeDirection); break;
+                case TimeMachinePlayerSpeed.ByMonth:
+                    Date = Date.AddMonths(timeDirection); break;
+                case TimeMachinePlayerSpeed.ByYear:
+                    Date = Date.AddYears(timeDirection); break;
+            }
+        }
+
+        public void Dispose()
+        {
+            timer.Stop();
+            timer.Dispose();
+        }
+
+        private int GetTimeDirection()
+            => TimeForward ? 1 : -1;
 
         public async void UpdateCurrentMapAsync()
         {
