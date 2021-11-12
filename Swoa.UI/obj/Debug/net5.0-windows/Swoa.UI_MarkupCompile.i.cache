@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\App.xaml
-11-2009525916
+11-941303498
 
-15-2095115398
+15-522478502
 209-1003637874
-Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.xaml;Controls\Map\CelestialMap.xaml;Controls\TimeMachine\TimeMachine.xaml;MainWindow.xaml;Resources\AppColors.xaml;Resources\ButtonStyles.xaml;Resources\CelestialMapResources.xaml;Resources\DatePickerResources.xaml;Resources\NumericUpDownResources.xaml;Resources\ToolBarTemplateResources.xaml;Resources\Values.xaml;
+Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.xaml;Controls\Map\CelestialMap.xaml;Controls\TimeMachine\TimeMachine.xaml;Resources\AppColors.xaml;Resources\ButtonStyles.xaml;Resources\CelestialMapResources.xaml;Resources\DatePickerResources.xaml;Resources\NumericUpDownResources.xaml;Resources\ToolBarTemplateResources.xaml;Resources\Values.xaml;Windows\MainWindow.xaml;
 
-True
+False
 

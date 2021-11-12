@@ -27,7 +27,7 @@
     <Page Update="Controls\TimeMachine\TimeMachine.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\AppColors.xaml">

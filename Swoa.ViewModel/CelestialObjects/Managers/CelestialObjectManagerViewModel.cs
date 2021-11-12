@@ -139,7 +139,7 @@ namespace Swoa.ViewModel
             if (updatePositionTask != null && updatePositionTask.Status == TaskStatus.Running)
                 CancelTask();
 
-            celestialObjectManager.WaitForTask();
+            celestialObjectManager.CelestialObjectsLoader.WaitForTask();
 
             IsPositionUpdateWorking = true;
 
