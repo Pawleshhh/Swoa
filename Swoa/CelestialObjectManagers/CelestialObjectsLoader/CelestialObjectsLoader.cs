@@ -84,17 +84,18 @@ namespace Swoa
                 {
                     ct.ThrowIfCancellationRequested();
 
-                    Filter(() => ct.IsCancellationRequested);
+                    Filter(ct);
+
                     ct.ThrowIfCancellationRequested();
-                    //celestialObjects.Clear();
-                    LoadCurrentMap(() => ct.IsCancellationRequested);
+
+                    LoadCurrentMap(ct);
                 }
                 catch (OperationCanceledException) { }
             }
             IsWorking = false;
         }
 
-        private void Filter(Func<bool>? cancel)
+        private void Filter(CancellationToken ct = default)
         {
             //keptObjects.Clear();
             swoaDb.ClearBlackList();
@@ -116,17 +117,16 @@ namespace Swoa
                     i--;
                 }
 
-                if (cancel != null && cancel())
-                    return;
+                ct.ThrowIfCancellationRequested();
             }
         }
 
-        private void LoadCurrentMap(Func<bool>? cancel)
+        private void LoadCurrentMap(CancellationToken ct = default)
         {
             var str_query = $"notblacklisted(id) AND mag <= 4 " +
                 $"AND (90 - {timeMachine.Latitude} + dec) >= 0 " +
                 $"AND skycontains(ra, dec, '{timeMachine.Date.ToString("dd/MM/yyyy HH:mm:ss")}', {timeMachine.Latitude}, {timeMachine.Longitude})";
-            var records = swoaDb.GetAllSwoaDbRecords(str_query, cancel);
+            var records = swoaDb.GetAllSwoaDbRecords(str_query, ct);
 
             foreach (var record in records)
             {
@@ -151,8 +151,7 @@ namespace Swoa
 
                 celestialObjects.Add(celestialObj);
 
-                if (cancel != null && cancel())
-                    return;
+                ct.ThrowIfCancellationRequested();
             }
         }
 

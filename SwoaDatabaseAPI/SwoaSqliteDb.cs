@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using static System.Math;
 
@@ -42,22 +43,19 @@ namespace SwoaDatabaseAPI
 
         public override IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition)
         {
-            return GetAllSwoaDbRecords(condition, null);
+            return GetAllSwoaDbRecords(condition);
         }
 
-        public override IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition, Func<bool> cancel)
+        public override IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition, CancellationToken ct = default)
         {
             using (var connection = GetSqliteConnection())
             {
                 IEnumerable<SwoaDbRecord> result = Enumerable.Empty<SwoaDbRecord>();
                 foreach (SwoaDbRecordType dbRecordType in Enum.GetValues(typeof(SwoaDbRecordType)))
                 {
-                    result = result.Concat(GetDbRecordsByType(connection, condition, dbRecordType, cancel));
+                    result = result.Concat(GetDbRecordsByType(connection, condition, dbRecordType, ct));
 
-                    if (cancel != null && cancel())
-                    {
-                        return Enumerable.Empty<SwoaDbRecord>();
-                    }
+                    ct.ThrowIfCancellationRequested();
                 }
 
                 return result;
@@ -68,7 +66,7 @@ namespace SwoaDatabaseAPI
         {
             using(var connection = GetSqliteConnection())
             {
-                var result = GetDbRecordsByType(connection, condition, dbRecordType, null);
+                var result = GetDbRecordsByType(connection, condition, dbRecordType);
 
                 return result;
             }
@@ -89,7 +87,7 @@ namespace SwoaDatabaseAPI
                 throw new ArgumentException(nameof(dbRecordType));
         }
 
-        protected IEnumerable<SwoaDbRecord> GetDbRecordsByType(SqliteConnection connection, string condition, SwoaDbRecordType dbRecordType, Func<bool> cancel)
+        protected IEnumerable<SwoaDbRecord> GetDbRecordsByType(SqliteConnection connection, string condition, SwoaDbRecordType dbRecordType, CancellationToken ct = default)
         {
             connection.Open();
             var command = connection.CreateCommand();
@@ -101,8 +99,7 @@ namespace SwoaDatabaseAPI
                 {
                     yield return factory.CreateSwoaDbRecord(reader, dbRecordType);
 
-                    if (cancel != null && cancel())
-                        yield break;
+                    ct.ThrowIfCancellationRequested();
                 }
             }
         }

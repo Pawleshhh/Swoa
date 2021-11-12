@@ -2,7 +2,6 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\bin\Debug\net5.0\Utilities.d
 C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\bin\Debug\net5.0\Utilities.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\bin\Debug\net5.0\ref\Utilities.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\bin\Debug\net5.0\Utilities.pdb
-C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\obj\Debug\net5.0\Utilities.csproj.AssemblyReference.cache
 C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\obj\Debug\net5.0\Utilities.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfoInputs.cache
 C:\Users\mtwp\Personal\Programowanie\Swoa\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfo.cs

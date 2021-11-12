@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SwoaDatabaseAPI
@@ -41,7 +42,7 @@ namespace SwoaDatabaseAPI
             => dbBlackList.Contains(id);
 
         public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition);
-        public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition, Func<bool> cancel);
+        public abstract IEnumerable<SwoaDbRecord> GetAllSwoaDbRecords(string condition, CancellationToken ct = default);
 
         public abstract IEnumerable<SwoaDbRecord> GetSwoaDbRecords(string condition, SwoaDbRecordType dbRecordType);
 
