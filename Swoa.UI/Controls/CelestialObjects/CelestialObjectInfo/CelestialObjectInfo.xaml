@@ -1,66 +1,79 @@
-﻿<UserControl x:Class="Swoa.UI.CelestialObjectInfo"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Swoa.UI"
-             mc:Ignorable="d" 
-             d:DesignHeight="420" d:DesignWidth="400">
+﻿<UserControl
+    x:Class="Swoa.UI.CelestialObjectInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Swoa.UI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="420"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/ButtonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="StackPanel" x:Key="columnStackPanelStyle">
-                <Setter Property="Orientation" Value="Vertical"/>
+            <Style x:Key="columnStackPanelStyle" TargetType="StackPanel">
+                <Setter Property="Orientation" Value="Vertical" />
             </Style>
             <Style TargetType="TextBlock">
-                <Setter Property="Text" Value="None"/>
-                <Setter Property="Foreground" Value="{StaticResource AppForeground}"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Text" Value="None" />
+                <Setter Property="Foreground" Value="{StaticResource AppForeground}" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="FontSize" Value="16" />
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Background="{StaticResource MainToolBarBackground}">
+    <Grid Grid.Column="1" Background="{StaticResource MainToolBarBackground}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Style="{StaticResource columnStackPanelStyle}">
-            <TextBlock Text="Name"/>
-            <TextBlock Text="Right Ascension"/>
-            <TextBlock Text="Declination"/>
-            <TextBlock Text="Altitude"/>
-            <TextBlock Text="Azimuth"/>
-            <TextBlock Text="Visual Magnitude"/>
-            <TextBlock Text="Distance To Sun"/>
-            <TextBlock Text="Distance To Earth"/>
-            <TextBlock Text="Rises At"/>
-            <TextBlock Text="Sets At"/>
+        <Button
+            Grid.Column="0"
+            Background="{StaticResource SubToolBarBackground}"
+            BorderThickness="0"
+            Command="{Binding Select, Mode=OneWay}"
+            Content="&gt;"
+            Foreground="{StaticResource AppForeground}"
+            Style="{StaticResource AppButtonBaseStyle}" />
+
+        <StackPanel Grid.Column="1" Style="{StaticResource columnStackPanelStyle}">
+            <TextBlock Text="Name" />
+            <TextBlock Text="Right Ascension" />
+            <TextBlock Text="Declination" />
+            <TextBlock Text="Altitude" />
+            <TextBlock Text="Azimuth" />
+            <TextBlock Text="Visual Magnitude" />
+            <TextBlock Text="Distance To Sun" />
+            <TextBlock Text="Distance To Earth" />
+            <TextBlock Text="Rises At" />
+            <TextBlock Text="Sets At" />
         </StackPanel>
 
-        <Rectangle Grid.Column="1" Fill="{StaticResource AppForeground}" />
+        <Rectangle Grid.Column="2" Fill="{StaticResource AppForeground}" />
 
-        <StackPanel Grid.Column="2" Style="{StaticResource columnStackPanelStyle}">
-            <TextBlock Text="{Binding CelestialObject.Name, Mode=OneWay, FallbackValue=None}"/>
-            <TextBlock Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.EquatorialCoordinates.Declination, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.HorizonCoordinates.Altitude, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.HorizonCoordinates.Azimuth, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.VisualMagnitude, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.DistanceToSun, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.DistanceToEarth, FallbackValue=None, StringFormat=N2, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.RisesAt, FallbackValue=None, Mode=OneWay}"/>
-            <TextBlock Text="{Binding CelestialObject.SetsAt, FallbackValue=None, Mode=OneWay}"/>
+        <StackPanel Grid.Column="3" Style="{StaticResource columnStackPanelStyle}">
+            <TextBlock Text="{Binding CelestialObject.Name, Mode=OneWay, FallbackValue=None}" />
+            <TextBlock Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, FallbackValue=None, StringFormat=N2, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.EquatorialCoordinates.Declination, FallbackValue=None, StringFormat=N2, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.HorizonCoordinates.Altitude, FallbackValue=None, StringFormat=N2, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.HorizonCoordinates.Azimuth, FallbackValue=None, StringFormat=N2, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.VisualMagnitude, FallbackValue=None, StringFormat=N2, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.DistanceToSun, FallbackValue=None, StringFormat=N2, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.DistanceToEarth, FallbackValue=None, StringFormat=N2, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.RisesAt, FallbackValue=None, Mode=OneWay}" />
+            <TextBlock Text="{Binding CelestialObject.SetsAt, FallbackValue=None, Mode=OneWay}" />
         </StackPanel>
-        
+
     </Grid>
 </UserControl>
