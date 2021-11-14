@@ -6,8 +6,8 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:Swoa.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="10"
-    d:DesignWidth="10"
+    MaxWidth="{Binding Width, Mode=TwoWay}"
+    MaxHeight="{Binding Height, Mode=TwoWay}"
     Background="Transparent"
     mc:Ignorable="d">
 
@@ -31,10 +31,61 @@
     </UserControl.Resources>
 
     <Grid>
+
+        <Ellipse
+            x:Name="selectedEllipse"
+            Width="{Binding Width, Mode=OneWay}"
+            Height="{Binding Height, Mode=OneWay}"
+            Fill="{x:Null}"
+            RenderTransformOrigin="0.5, 0.5"
+            Stroke="Red"
+            StrokeThickness="0.25"
+            Visibility="{Binding IsSelected, Converter={StaticResource booleanToVisibilityConverter}}">
+            <Ellipse.RenderTransform>
+                <ScaleTransform x:Name="scaleTransformSelectedEllipse" ScaleX="3" ScaleY="3" />
+            </Ellipse.RenderTransform>
+            <Ellipse.Style>
+                <Style TargetType="Ellipse">
+                    <Style.Triggers>
+                        <Trigger Property="IsVisible" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            AutoReverse="True"
+                                            RepeatBehavior="Forever"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                            From="3.0"
+                                            To="5.0"
+                                            Duration="0:0:01.500" />
+                                        <DoubleAnimation
+                                            AutoReverse="True"
+                                            RepeatBehavior="Forever"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            From="3.0"
+                                            To="5.0"
+                                            Duration="0:0:01.500" />
+                                        <DoubleAnimation
+                                            AutoReverse="True"
+                                            RepeatBehavior="Forever"
+                                            Storyboard.TargetProperty="(Ellipse.StrokeThickness)"
+                                            From="0.25"
+                                            To="0.1"
+                                            Duration="0:0:01.500" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Ellipse.Style>
+        </Ellipse>
+
+
         <Ellipse
             x:Name="celestialObjectEllipse"
-            Width="{Binding Width, Mode=TwoWay, FallbackValue=3}"
-            Height="{Binding Height, Mode=TwoWay, FallbackValue=3}"
+            Width="{Binding Width, Mode=TwoWay}"
+            Height="{Binding Height, Mode=TwoWay}"
             Fill="{Binding Color, Mode=OneWay}"
             Style="{StaticResource EllipseStyle}">
             <i:Interaction.Triggers>
