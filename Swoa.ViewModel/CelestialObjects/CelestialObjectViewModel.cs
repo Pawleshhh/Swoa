@@ -50,7 +50,7 @@ namespace Swoa.ViewModel
         public bool IsSelected
         {
             get => isSelected;
-            private set => SetProperty(ref isSelected, value);
+            set => SetProperty(ref isSelected, value);
         }
 
         public double XPos

@@ -73,8 +73,14 @@ namespace Swoa.ViewModel
         public CelestialObjectViewModel SelectedCelestialObject
         {
             get => selectedObject;
-            private set => SetProperty(ref selectedObject, value);
+            private set
+            {
+                if (SetProperty(ref selectedObject, value))
+                    OnPropertyChanged(nameof(IsCelestialObjectSelected));
+            }
         }
+
+        public bool IsCelestialObjectSelected => SelectedCelestialObject != null;
 
         public double MapDiameter
         {
@@ -231,7 +237,17 @@ namespace Swoa.ViewModel
 
         private void CelestialObjectVM_Selected(object sender, EventArgs e)
         {
-            SelectedCelestialObject = (CelestialObjectViewModel)sender;
+            if (sender == SelectedCelestialObject)
+            {
+                SelectedCelestialObject.IsSelected = false;
+                SelectedCelestialObject = null;
+            }
+            else
+            {
+                if (SelectedCelestialObject != null)
+                    SelectedCelestialObject.IsSelected = false;
+                SelectedCelestialObject = (CelestialObjectViewModel)sender;
+            }
         }
 
         protected virtual CelestialObjectViewModel GetCelestialObjectVM(CelestialObject celestialObject)

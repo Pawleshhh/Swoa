@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Swoa.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="mainWindow"
     Title="MainWindow"
     Width="1020"
     Height="720"
@@ -13,24 +14,24 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Resources/AppColors.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
+
     <Grid Background="{StaticResource AppBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8.2*"/>
-            <ColumnDefinition Width="1.8*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
 
         <local:TimeMachine
-            Panel.ZIndex="10"
             Grid.ColumnSpan="2"
+            Panel.ZIndex="10"
             DataContext="{Binding CelestialObjectManagerVM.TimeMachineVM}" />
 
         <local:CelestialMap
@@ -44,7 +45,39 @@
             Margin="20"
             DataContext="{Binding CelestialObjectManagerVM}" />
 
-        <local:CelestialObjectInfo DataContext="{Binding CelestialObjectManagerVM.SelectedCelestialObject, Mode=OneWay}" Grid.Column="1" Grid.Row="1"/>
+        <local:CelestialObjectInfo
+            Grid.Row="1"
+            Grid.Column="1"
+            DataContext="{Binding CelestialObjectManagerVM.SelectedCelestialObject, Mode=OneWay}">
+            <local:CelestialObjectInfo.RenderTransform>
+                <TranslateTransform X="300" />
+            </local:CelestialObjectInfo.RenderTransform>
+            <local:CelestialObjectInfo.Style>
+                <Style TargetType="local:CelestialObjectInfo">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=mainWindow, Path=DataContext.CelestialObjectManagerVM.IsCelestialObjectSelected, Mode=OneWay}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="0:0:00.200" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Duration="0:0:00.200" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </local:CelestialObjectInfo.Style>
+        </local:CelestialObjectInfo>
 
         <!--<StackPanel
             Grid.Row="1"
