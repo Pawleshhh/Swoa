@@ -364,30 +364,34 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <!--<Grid>
                             <Ellipse
-                            Width="{Binding Width, Mode=TwoWay}"
-                            Height="{Binding Height, Mode=TwoWay}"
-                            Fill="{Binding Color, Mode=OneWay}"
-                            Visibility="{Binding IsVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+                                Width="{Binding Width, Mode=TwoWay}"
+                                Height="{Binding Height, Mode=TwoWay}"
+                                Fill="{Binding Color, Mode=OneWay}"
+                                Visibility="{Binding IsVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
                                 <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseLeftButtonUp">
-                                    <i:InvokeCommandAction Command="{Binding Select, Mode=OneWay}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                        <i:InvokeCommandAction Command="{Binding Select, Mode=OneWay}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <Ellipse.ToolTip>
                                     <TextBlock>
-                                    <Run Text="{Binding CelestialObject.HorizontalCoordinates.Altitude, Mode=OneWay}" />
-                                    ,<Run Text="{Binding CelestialObject.HorizontalCoordinates.Azimuth, Mode=OneWay}" />
-                                    <LineBreak />
-                                    <Run Text="{Binding CelestialObject.EquatorialCoordinates.Declination, Mode=OneWay}" />
-                                    ,<Run Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, Mode=OneWay}" />
+                                        <Run Text="{Binding CelestialObject.HorizontalCoordinates.Altitude, Mode=OneWay}" />
+                                        ,<Run Text="{Binding CelestialObject.HorizontalCoordinates.Azimuth, Mode=OneWay}" />
+                                        <LineBreak />
+                                        <Run Text="{Binding CelestialObject.EquatorialCoordinates.Declination, Mode=OneWay}" />
+                                        ,<Run Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, Mode=OneWay}" />
                                     </TextBlock>
                                 </Ellipse.ToolTip>
                             </Ellipse>
 
-                            <!--<Button Width="{Binding Width, Mode=TwoWay}" Height="{Binding Height, Mode=TwoWay}" Command="{Binding Select, Mode=OneWay}"/>-->
-                        </Grid>
+                        -->
+                        <!--<Button Width="{Binding Width, Mode=TwoWay}" Height="{Binding Height, Mode=TwoWay}" Command="{Binding Select, Mode=OneWay}"/>-->
+                        <!--
+                        </Grid>-->
+
+                        <local:CelestialObject />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemContainerStyle>

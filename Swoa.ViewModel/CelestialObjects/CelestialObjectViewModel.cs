@@ -35,6 +35,8 @@ namespace Swoa.ViewModel
         private double height = 2;
         private double width = 2;
 
+        private bool isSelected;
+
         private string color;
 
         #endregion
@@ -44,6 +46,12 @@ namespace Swoa.ViewModel
         public CelestialObject CelestialObject { get; }
 
         public bool IsVisible => CelestialObject.HorizonCoordinates.Altitude >= 0;
+
+        public bool IsSelected
+        {
+            get => isSelected;
+            private set => SetProperty(ref isSelected, value);
+        }
 
         public double XPos
         {
@@ -152,7 +160,11 @@ namespace Swoa.ViewModel
         private ICommand select;
         public ICommand Select => RelayCommand.Create(
             ref select,
-            _ => OnSelected());
+            _ =>
+            {
+                IsSelected = !IsSelected;
+                OnSelected();
+            });
 
         #endregion
 

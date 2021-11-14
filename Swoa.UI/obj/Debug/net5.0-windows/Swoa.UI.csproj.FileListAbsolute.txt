@@ -103,7 +103,6 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.As
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Resources\CelestialMapResources.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialMap.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\TimeMachine\TimeMachine.g.cs
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\MainWindow.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\App.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI_MarkupCompile.cache
@@ -111,7 +110,6 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI_MarkupCom
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\App.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\Map\CelestialMap.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\TimeMachine\TimeMachine.baml
-N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\MainWindow.baml
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.g.resources
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.GeneratedMSBuildEditorConfig.editorconfig
 N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.AssemblyInfoInputs.cache
@@ -145,3 +143,10 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Micro
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Windows\MainWindow.g.cs
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Windows\MainWindow.baml
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObject.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Windows\MainWindow.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObject.baml
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObjectInfo\CelestialObjectInfo.baml
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Windows\MainWindow.baml
