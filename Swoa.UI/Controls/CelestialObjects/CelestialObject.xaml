@@ -32,11 +32,29 @@
 
     <Grid>
 
+        <Rectangle
+            x:Name="hitboxRectangle"
+            Width="{Binding Width, Mode=OneWay}"
+            Height="{Binding Height, Mode=OneWay}"
+            Fill="Transparent"
+            RenderTransformOrigin="0.5, 0.5">
+            <Rectangle.RenderTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </Rectangle.RenderTransform>
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding Select, Mode=OneWay}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Rectangle>
+
         <Ellipse
             x:Name="selectedEllipse"
             Width="{Binding Width, Mode=OneWay}"
             Height="{Binding Height, Mode=OneWay}"
             Fill="{x:Null}"
+            IsHitTestVisible="False"
             RenderTransformOrigin="0.5, 0.5"
             Stroke="Red"
             StrokeThickness="0.25"
@@ -87,12 +105,8 @@
             Width="{Binding Width, Mode=TwoWay}"
             Height="{Binding Height, Mode=TwoWay}"
             Fill="{Binding Color, Mode=OneWay}"
+            IsHitTestVisible="False"
             Style="{StaticResource EllipseStyle}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonUp">
-                    <i:InvokeCommandAction Command="{Binding Select, Mode=OneWay}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
             <Ellipse.ToolTip>
                 <ToolTip
                     Background="{StaticResource MainToolBarBackground}"
