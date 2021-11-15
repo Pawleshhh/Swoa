@@ -47,6 +47,62 @@
                     <i:InvokeCommandAction Command="{Binding Select, Mode=OneWay}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
+            <Rectangle.ToolTip>
+                <ToolTip
+                    Background="{StaticResource MainToolBarBackground}"
+                    BorderThickness="0"
+                    Foreground="{StaticResource AppForeground}"
+                    Opacity="0.8">
+                    <Grid>
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment" Value="Left" />
+                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Margin" Value="2" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="Name: " />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding CelestialObject.Name, Mode=OneWay}" />
+                        <TextBlock Grid.Row="1" Text="RA: " />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, StringFormat=N2, Mode=OneWay}" />
+                        <TextBlock Grid.Row="2" Text="Dec: " />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding CelestialObject.EquatorialCoordinates.Declination, StringFormat=N2, Mode=OneWay}" />
+                        <TextBlock Grid.Row="3" Text="Alt: " />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding CelestialObject.HorizonCoordinates.Altitude, StringFormat=N2, Mode=OneWay}" />
+                        <TextBlock Grid.Row="4" Text="Az: " />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding CelestialObject.HorizonCoordinates.Azimuth, StringFormat=N2, Mode=OneWay}" />
+
+                    </Grid>
+                </ToolTip>
+            </Rectangle.ToolTip>
         </Rectangle>
 
         <Ellipse
@@ -107,62 +163,7 @@
             Fill="{Binding Color, Mode=OneWay}"
             IsHitTestVisible="False"
             Style="{StaticResource EllipseStyle}">
-            <Ellipse.ToolTip>
-                <ToolTip
-                    Background="{StaticResource MainToolBarBackground}"
-                    BorderThickness="0"
-                    Foreground="{StaticResource AppForeground}"
-                    Opacity="0.8">
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="TextAlignment" Value="Left" />
-                                <Setter Property="HorizontalAlignment" Value="Left" />
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                                <Setter Property="Margin" Value="2" />
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Row="0" Text="Name: " />
-                        <TextBlock
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Text="{Binding CelestialObject.Name, Mode=OneWay}" />
-                        <TextBlock Grid.Row="1" Text="RA: " />
-                        <TextBlock
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Text="{Binding CelestialObject.EquatorialCoordinates.RightAscension, StringFormat=N2, Mode=OneWay}" />
-                        <TextBlock Grid.Row="2" Text="Dec: " />
-                        <TextBlock
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Text="{Binding CelestialObject.EquatorialCoordinates.Declination, StringFormat=N2, Mode=OneWay}" />
-                        <TextBlock Grid.Row="3" Text="Alt: " />
-                        <TextBlock
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            Text="{Binding CelestialObject.HorizonCoordinates.Altitude, StringFormat=N2, Mode=OneWay}" />
-                        <TextBlock Grid.Row="4" Text="Az: " />
-                        <TextBlock
-                            Grid.Row="4"
-                            Grid.Column="1"
-                            Text="{Binding CelestialObject.HorizonCoordinates.Azimuth, StringFormat=N2, Mode=OneWay}" />
-
-                    </Grid>
-                </ToolTip>
-            </Ellipse.ToolTip>
+            
         </Ellipse>
     </Grid>
 </UserControl>
