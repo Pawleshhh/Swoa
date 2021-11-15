@@ -121,9 +121,9 @@
             <Ellipse.Style>
                 <Style TargetType="Ellipse">
                     <Style.Triggers>
-                        <Trigger Property="IsVisible" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
+                        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="selectionBeginStoryboard">
                                     <Storyboard>
                                         <DoubleAnimation
                                             AutoReverse="True"
@@ -148,8 +148,11 @@
                                             Duration="0:0:01.500" />
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.EnterActions>
-                        </Trigger>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="selectionBeginStoryboard" />
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Ellipse.Style>
@@ -163,7 +166,7 @@
             Fill="{Binding Color, Mode=OneWay}"
             IsHitTestVisible="False"
             Style="{StaticResource EllipseStyle}">
-            
+
         </Ellipse>
     </Grid>
 </UserControl>
