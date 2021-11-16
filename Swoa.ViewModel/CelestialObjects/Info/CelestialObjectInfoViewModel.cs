@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swoa.ViewModel
 {
-    public class CelestialObjectInfoViewModel<T> : NotifyPropertyChanges, ICelestialObjectInfoViewModel<T>
+    public class CelestialObjectInfoViewModel<T> : NotifyPropertyChanges, ICelestialObjectInfoViewModel
     {
 
         #region Constructors
@@ -30,5 +30,28 @@ namespace Swoa.ViewModel
         object ICelestialObjectInfoViewModel.Value => Value;
 
         #endregion
+
+        #region Methods
+
+        public override bool Equals(object obj)
+        {
+            if (obj is ICelestialObjectInfoViewModel<T> info)
+                return Value.Equals(info.Value);
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() * Value.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+
+        #endregion
+
     }
 }
