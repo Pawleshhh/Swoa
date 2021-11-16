@@ -3,6 +3,7 @@ using Astronomy.Units;
 using CelestialObjects;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,8 @@ namespace Swoa.ViewModel
         private bool isSelected;
 
         private string color;
+
+        private ReadOnlyObservableCollection<ICelestialObjectInfoViewModel> celestialObjectInfoCollection;
 
         #endregion
 
@@ -81,6 +84,10 @@ namespace Swoa.ViewModel
             get => color;
             set => SetProperty(ref color, value);
         }
+
+        public ReadOnlyObservableCollection<ICelestialObjectInfoViewModel> CelestialObjectInfoCollection =>
+            celestialObjectInfoCollection ??= new ReadOnlyObservableCollection<ICelestialObjectInfoViewModel>(
+                GetCelestialObjectInfoViewModelFactory().CreateCelestialObjectInfoViewModels(this));
 
         #endregion
 
@@ -150,6 +157,17 @@ namespace Swoa.ViewModel
             catch
             {
                 color = "Red";
+            }
+        }
+
+        protected virtual CelestialObjectInfoViewModelFactory GetCelestialObjectInfoViewModelFactory()
+        {
+            switch (CelestialObject)
+            {
+                case OutsideStarObject s:
+                    return new OutsideStarInfoViewModelFactory();
+                default:
+                    throw new InvalidOperationException("Unrecognized type of CelestialObject");
             }
         }
 
