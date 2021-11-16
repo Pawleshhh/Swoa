@@ -22,8 +22,7 @@ namespace Swoa.ViewModel
                 GetInfoViewModel("Alt", starObj.HorizonCoordinates.Altitude),
                 GetInfoViewModel("Az", starObj.HorizonCoordinates.Azimuth),
                 GetInfoViewModel("Visual mag.", starObj.VisualMagnitude),
-                GetInfoViewModel("Distance To Sun", starObj.DistanceToSun),
-                GetInfoViewModel("Distance To Earth", starObj.DistanceToEarth),
+                new CelestialObjectMeasureInfoViewModel<double>("Distance To Sun", starObj.VisualMagnitude, Units.LightYears),
                 GetInfoViewModel("Rises At", starObj.RisesAt),
                 GetInfoViewModel("Sets At", starObj.SetsAt),
             };

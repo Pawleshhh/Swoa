@@ -32,7 +32,7 @@
 
     <Grid Background="{StaticResource MainToolBarBackground}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -45,25 +45,29 @@
             Foreground="{StaticResource AppForeground}"
             Style="{StaticResource AppButtonBaseStyle}" />
 
-        <ListView Grid.Column="1" 
-                  ItemsSource="{Binding CelestialObjectInfoCollection, Mode=OneWay}" 
-                  Background="Transparent" 
-                  BorderBrush="Transparent"
-                  BorderThickness="0"
-                  HorizontalContentAlignment="Left"
-                  VerticalContentAlignment="Top"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top">
+        <ListView
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Left"
+            VerticalContentAlignment="Top"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            ItemsSource="{Binding CelestialObjectInfoCollection, Mode=OneWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Style="{StaticResource infoTextBlockStyle}" Text="{Binding Name, Mode=OneWay, FallbackValue=None}"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource infoTextBlockStyle}" Text="{Binding Value, Mode=OneWay, FallbackValue=None}"/>
+                        <TextBlock Style="{StaticResource infoTextBlockStyle}" Text="{Binding Name, Mode=OneWay, FallbackValue=None}" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Style="{StaticResource infoTextBlockStyle}"
+                            Text="{Binding Mode=OneWay, FallbackValue=None}" />
 
                     </Grid>
                 </DataTemplate>
