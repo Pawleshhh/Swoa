@@ -87,7 +87,7 @@ namespace Swoa.ViewModel
 
         public ReadOnlyObservableCollection<ICelestialObjectInfoViewModel> CelestialObjectInfoCollection =>
             celestialObjectInfoCollection ??= new ReadOnlyObservableCollection<ICelestialObjectInfoViewModel>(
-                GetCelestialObjectInfoViewModelFactory().CreateCelestialObjectInfoViewModels(this));
+                GetCelestialObjectInfoViewModelFactory().BuildCelestialObjectInfoViewModelCollection(this));
 
         #endregion
 
@@ -160,12 +160,12 @@ namespace Swoa.ViewModel
             }
         }
 
-        protected virtual CelestialObjectInfoViewModelFactory GetCelestialObjectInfoViewModelFactory()
+        protected virtual CelestialObjectInfoViewModelCollectionBuilder GetCelestialObjectInfoViewModelFactory()
         {
             switch (CelestialObject)
             {
                 case OutsideStarObject s:
-                    return new OutsideStarInfoViewModelFactory();
+                    return new OutsideStarInfoViewModelCollectionFactory();
                 default:
                     throw new InvalidOperationException("Unrecognized type of CelestialObject");
             }

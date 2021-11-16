@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swoa.ViewModel
 {
-    public class CelestialObjectInfoViewModel<T> : NotifyPropertyChanges, ICelestialObjectInfoViewModel
+    public class CelestialObjectInfoViewModel<T> : NotifyPropertyChanges, ICelestialObjectInfoViewModel<T>
     {
 
         #region Constructors

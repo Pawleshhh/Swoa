@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Swoa.ViewModel
 {
-    public abstract class CelestialObjectInfoViewModelFactory
+    public abstract class CelestialObjectInfoViewModelCollectionBuilder
     {
 
-        public abstract ObservableCollection<ICelestialObjectInfoViewModel> CreateCelestialObjectInfoViewModels(CelestialObjectViewModel celestialObjectVM);
+        public abstract ObservableCollection<ICelestialObjectInfoViewModel> BuildCelestialObjectInfoViewModelCollection(CelestialObjectViewModel celestialObjectVM);
 
         protected ICelestialObjectInfoViewModel<T> GetInfoViewModel<T>(string name, T value)
             => new CelestialObjectInfoViewModel<T>(name, value);

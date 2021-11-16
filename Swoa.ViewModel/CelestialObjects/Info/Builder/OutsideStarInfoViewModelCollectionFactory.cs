@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Swoa.ViewModel
 {
-    public class OutsideStarInfoViewModelFactory : CelestialObjectInfoViewModelFactory
+    public class OutsideStarInfoViewModelCollectionFactory : CelestialObjectInfoViewModelCollectionBuilder
     {
-        public override ObservableCollection<ICelestialObjectInfoViewModel> CreateCelestialObjectInfoViewModels(CelestialObjectViewModel celestialObjectVM)
+        public override ObservableCollection<ICelestialObjectInfoViewModel> BuildCelestialObjectInfoViewModelCollection(CelestialObjectViewModel celestialObjectVM)
         {
             OutsideStarObject starObj = (OutsideStarObject)celestialObjectVM.CelestialObject;
 
