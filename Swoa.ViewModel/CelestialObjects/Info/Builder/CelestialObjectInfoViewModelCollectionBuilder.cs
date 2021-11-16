@@ -12,8 +12,8 @@ namespace Swoa.ViewModel
 
         public abstract ObservableCollection<ICelestialObjectInfoViewModel> BuildCelestialObjectInfoViewModelCollection(CelestialObjectViewModel celestialObjectVM);
 
-        protected ICelestialObjectInfoViewModel<T> GetInfoViewModel<T>(string name, T value)
-            => new CelestialObjectInfoViewModel<T>(name, value);
+        protected ICelestialObjectInfoViewModel<T> GetInfoViewModel<T>(string name, T value, string format = null)
+            => new CelestialObjectInfoViewModel<T>(name, value) { Format = format };
 
     }
 }

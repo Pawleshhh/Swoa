@@ -26,7 +26,7 @@ namespace Swoa.ViewModel
 
         public override string ToString()
         {
-            return $"{Value} {Unit.UnitShort}";
+            return $"{base.ToString()} {Unit.UnitShort}";
         }
 
         #endregion

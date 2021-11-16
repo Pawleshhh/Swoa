@@ -27,6 +27,8 @@ namespace Swoa.ViewModel
         public string Name { get; }
         public T Value { get; }
 
+        public string Format { get; set; }
+
         object ICelestialObjectInfoViewModel.Value => Value;
 
         #endregion
@@ -48,7 +50,15 @@ namespace Swoa.ViewModel
 
         public override string ToString()
         {
-            return Value.ToString();
+            if (Format != null)
+            {
+                string val = string.Format("{0:" + Format + "}", Value);
+                return val;
+            }
+            else
+            {
+                return Value.ToString();
+            }
         }
 
         #endregion

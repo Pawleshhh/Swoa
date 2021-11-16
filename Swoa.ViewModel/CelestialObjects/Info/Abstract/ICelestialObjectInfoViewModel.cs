@@ -13,6 +13,8 @@ namespace Swoa.ViewModel
         string Name { get; }
         object Value { get; }
 
+        string Format { get; set; }
+
     }
 
     public interface ICelestialObjectInfoViewModel<T> : ICelestialObjectInfoViewModel
