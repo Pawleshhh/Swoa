@@ -165,7 +165,7 @@ namespace Swoa.ViewModel
             switch (CelestialObject)
             {
                 case OutsideStarObject s:
-                    return new OutsideStarInfoViewModelCollectionFactory();
+                    return new OutsideStarInfoViewModelCollectionBuilder();
                 default:
                     throw new InvalidOperationException("Unrecognized type of CelestialObject");
             }

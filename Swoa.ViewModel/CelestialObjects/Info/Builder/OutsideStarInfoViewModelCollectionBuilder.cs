@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Swoa.ViewModel
 {
-    public class OutsideStarInfoViewModelCollectionFactory : CelestialObjectInfoViewModelCollectionBuilder
+    public class OutsideStarInfoViewModelCollectionBuilder : CelestialObjectInfoViewModelCollectionBuilder
     {
         public override ObservableCollection<ICelestialObjectInfoViewModel> BuildCelestialObjectInfoViewModelCollection(CelestialObjectViewModel celestialObjectVM)
         {
@@ -22,9 +22,12 @@ namespace Swoa.ViewModel
                 GetInfoViewModel("Alt", starObj.HorizonCoordinates.Altitude),
                 GetInfoViewModel("Az", starObj.HorizonCoordinates.Azimuth),
                 GetInfoViewModel("Visual mag.", starObj.VisualMagnitude),
-                new CelestialObjectMeasureInfoViewModel<double>("Distance To Sun", starObj.VisualMagnitude, Units.LightYears),
+                GetInfoViewModel("Absolute mag.", starObj.AbsoluteMagnitude),
+                new CelestialObjectMeasureInfoViewModel<double>("Distance To Sun", starObj.DistanceToSun, Units.LightYears),
                 GetInfoViewModel("Rises At", starObj.RisesAt),
                 GetInfoViewModel("Sets At", starObj.SetsAt),
+                GetInfoViewModel("Spectral class", starObj.SpectralClass),
+                GetInfoViewModel("Constellation", starObj.Constellation)
             };
         }
     }

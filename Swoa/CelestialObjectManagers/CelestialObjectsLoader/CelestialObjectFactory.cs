@@ -23,10 +23,11 @@ namespace Swoa
                         Name = GetStarObjectName(starRecord),
                         EquatorialCoordinates = equatorialCoordinates,
                         HorizonCoordinates = horizonCoordinates,
+                        AbsoluteMagnitude = starRecord.AbsMag,
                         VisualMagnitude = starRecord.Mag,
                         DistanceToSun = starRecord.SunDist,
                         DistanceToEarth = starRecord.SunDist,
-                        SpectralClass = (starRecord).Spect
+                        SpectralClass = starRecord.Spect
                     };
                 default:
                     throw new ArgumentException(nameof(swoaDbRecord));
