@@ -15,18 +15,22 @@ namespace Swoa.ViewModel
         {
             OutsideStarObject starObj = (OutsideStarObject)celestialObjectVM.CelestialObject;
 
-            var format = "N2";
+            var digitCountFormat = "N2";
+
+            var astrCoordsFormat_ra = "HMS";
+            var astrCoordsFormat_degr = "DMS";
+            var astrCoordsProvider = new AstronomicCoordsFormatProvider();
 
             return new ObservableCollection<ICelestialObjectInfoViewModel>()
             {
                 GetInfoViewModel("Name", starObj.Name),
-                GetInfoViewModel("RA", starObj.EquatorialCoordinates.RightAscension, format),
-                GetInfoViewModel("Dec", starObj.EquatorialCoordinates.Declination, format),
-                GetInfoViewModel("Alt", starObj.HorizonCoordinates.Altitude, format),
-                GetInfoViewModel("Az", starObj.HorizonCoordinates.Azimuth, format),
-                GetInfoViewModel("Visual mag.", starObj.VisualMagnitude, format),
-                GetInfoViewModel("Absolute mag.", starObj.AbsoluteMagnitude, format),
-                new CelestialObjectMeasureInfoViewModel<double>("Distance To Sun", starObj.DistanceToSun, Units.LightYears) { Format = format },
+                GetInfoViewModel("RA", starObj.EquatorialCoordinates.RightAscension, astrCoordsFormat_ra, astrCoordsProvider),
+                GetInfoViewModel("Dec", starObj.EquatorialCoordinates.Declination, astrCoordsFormat_degr, astrCoordsProvider),
+                GetInfoViewModel("Alt", starObj.HorizonCoordinates.Altitude, astrCoordsFormat_degr, astrCoordsProvider),
+                GetInfoViewModel("Az", starObj.HorizonCoordinates.Azimuth, astrCoordsFormat_degr, astrCoordsProvider),
+                GetInfoViewModel("Visual mag.", starObj.VisualMagnitude, digitCountFormat),
+                GetInfoViewModel("Absolute mag.", starObj.AbsoluteMagnitude, digitCountFormat),
+                new CelestialObjectMeasureInfoViewModel<double>("Distance To Sun", starObj.DistanceToSun, Units.LightYears) { Format = digitCountFormat },
                 GetInfoViewModel("Rises At", starObj.RisesAt),
                 GetInfoViewModel("Sets At", starObj.SetsAt),
                 GetInfoViewModel("Spectral class", starObj.SpectralClass),

@@ -28,6 +28,7 @@ namespace Swoa.ViewModel
         public T Value { get; }
 
         public string Format { get; set; }
+        public IFormatProvider FormatProvider { get; set; }
 
         object ICelestialObjectInfoViewModel.Value => Value;
 
@@ -52,8 +53,11 @@ namespace Swoa.ViewModel
         {
             if (Format != null)
             {
-                string val = string.Format("{0:" + Format + "}", Value);
-                return val;
+                string format = "{0:" + Format + "}";
+                if (FormatProvider == null)
+                    return string.Format(format, Value);
+                else
+                    return string.Format(FormatProvider, format, Value);
             }
             else
             {

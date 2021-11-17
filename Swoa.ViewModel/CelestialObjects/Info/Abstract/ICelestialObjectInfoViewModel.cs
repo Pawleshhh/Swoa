@@ -14,6 +14,7 @@ namespace Swoa.ViewModel
         object Value { get; }
 
         string Format { get; set; }
+        IFormatProvider FormatProvider { get; set; }
 
     }
 
