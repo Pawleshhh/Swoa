@@ -67,7 +67,7 @@
                         <TextBlock
                             Grid.Column="1"
                             Style="{StaticResource infoTextBlockStyle}"
-                            Text="{Binding Mode=OneWay, FallbackValue=None}" />
+                            Text="{Binding ValueStr, Mode=OneWay, FallbackValue=None}" />
 
                     </Grid>
                 </DataTemplate>

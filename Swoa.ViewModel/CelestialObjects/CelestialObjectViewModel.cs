@@ -24,6 +24,15 @@ namespace Swoa.ViewModel
 
             SetSize();
             SetColor();
+
+            this.WhenPropertyChanged.Subscribe(n =>
+            {
+                if (celestialObjectInfoCollection != null)
+                {
+                    foreach (var info in celestialObjectInfoCollection)
+                        info.Update();
+                }
+            });
         }
 
         #endregion

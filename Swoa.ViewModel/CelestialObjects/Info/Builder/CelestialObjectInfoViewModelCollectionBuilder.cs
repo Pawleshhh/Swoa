@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CelestialObjects;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace Swoa.ViewModel
 
         protected ICelestialObjectInfoViewModel<T> GetInfoViewModel<T>(string name, T value, string format = null, IFormatProvider formatProvider = null)
             => new CelestialObjectInfoViewModel<T>(name, value) { Format = format, FormatProvider = formatProvider };
+
+        protected ICelestialObjectInfoViewModel<T> GetInfoViewModel<T>(string name, Func<T> update, string format = null, IFormatProvider formatProvider = null)
+            => new CelestialObjectInfoViewModel<T>(name, update) { Format = format, FormatProvider = formatProvider };
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CelestialObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace Swoa.ViewModel
 
         string Name { get; }
         object Value { get; }
+        string ValueStr => this.ToString();
 
         string Format { get; set; }
         IFormatProvider FormatProvider { get; set; }
 
+        void Update();
     }
 
     public interface ICelestialObjectInfoViewModel<T> : ICelestialObjectInfoViewModel
