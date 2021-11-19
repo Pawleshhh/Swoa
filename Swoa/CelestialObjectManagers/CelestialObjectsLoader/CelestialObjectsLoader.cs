@@ -124,7 +124,7 @@ namespace Swoa
 
         private void LoadCurrentMap(CancellationToken ct = default)
         {
-            var str_query = $"notblacklisted(id) AND mag <= 4 " +
+            var str_query = $"notblacklisted(id) AND mag <= 3 " +
                 $"AND (90 - {timeMachine.Latitude} + dec) >= 0 " +
                 $"AND skycontains(ra, dec, '{timeMachine.Date.ToString("dd/MM/yyyy HH:mm:ss")}', {timeMachine.Latitude}, {timeMachine.Longitude})";
             var records = swoaDb.GetAllSwoaDbRecords(str_query, ct);
