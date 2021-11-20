@@ -1,4 +1,5 @@
-﻿using Astronomy.Units;
+﻿using Astronomy;
+using Astronomy.Units;
 using CelestialObjects;
 using SwoaDatabaseAPI;
 using System;
@@ -12,11 +13,12 @@ namespace Swoa
     public static class CelestialObjectFactory
     {
 
-        public static CelestialObject CreateFromSwoaDbRecord(SwoaDbRecord swoaDbRecord, EquatorialCoordinates equatorialCoordinates, HorizonCoordinates horizonCoordinates)
+        public static CelestialObject CreateFromSwoaDbRecord(SwoaDbRecord swoaDbRecord, EquatorialCoordinates equatorialCoordinates, HorizonCoordinates horizonCoordinates, double latitude, double longitude)
         {
             switch (swoaDbRecord)
             {
                 case SwoaDbStarRecord starRecord:
+                    var risingAndSetting = AstronomyDateTime.GetRisingAndSettingTime(starRecord.Ra, starRecord.Dec, latitude);
                     return new OutsideStarObject()
                     {
                         Id = starRecord.Id,
@@ -27,7 +29,9 @@ namespace Swoa
                         VisualMagnitude = starRecord.Mag,
                         DistanceToSun = starRecord.SunDist,
                         DistanceToEarth = starRecord.SunDist,
-                        SpectralClass = starRecord.Spect
+                        SpectralClass = starRecord.Spect,
+                        RisesAt = new DateTime(risingAndSetting.risesAt.Ticks).ToLocalTime().TimeOfDay,
+                        SetsAt = new DateTime(risingAndSetting.setsAt.Ticks).ToLocalTime().TimeOfDay
                     };
                 default:
                     throw new ArgumentException(nameof(swoaDbRecord));

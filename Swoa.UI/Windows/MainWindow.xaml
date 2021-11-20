@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Swoa.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Name="mainWindow"
-    Title="MainWindow"
+    Title="SWOA"
     Width="1020"
     Height="720"
     mc:Ignorable="d">

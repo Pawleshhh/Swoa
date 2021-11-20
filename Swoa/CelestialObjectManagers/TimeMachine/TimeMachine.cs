@@ -30,6 +30,7 @@ namespace Swoa
 
         private readonly IDateTimeService dateTimeService;
 
+        private double magnitude = 5;
         private double latitude;
         private double longitude;
         private DateTime date;
@@ -42,6 +43,12 @@ namespace Swoa
         #endregion Fields
 
         #region Properties
+
+        public double Magnitude
+        {
+            get => magnitude;
+            set => SetProperty(ref magnitude, value, OnMagnitudeChanged);
+        }
 
         public double Latitude
         {
@@ -85,6 +92,7 @@ namespace Swoa
 
         public event EventHandler<DataChangedEventArgs<DateTime>>? DateChanged;
         public event EventHandler<DataChangedEventArgs<DateTime>>? SetCurrentDateChanged;
+        public event EventHandler<DataChangedEventArgs<double>>? MagnitudeChanged;
         public event EventHandler<DataChangedEventArgs<double>>? LatitudeChanged;
         public event EventHandler<DataChangedEventArgs<double>>? LongitudeChanged;
         public event EventHandler<DataChangedEventArgs<bool>>? TimeForwardChanged;
@@ -101,6 +109,9 @@ namespace Swoa
 
         protected void OnLongitudeChanged(double previous, double current)
             => LongitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
+
+        protected void OnMagnitudeChanged(double previous, double current)
+            => MagnitudeChanged?.Invoke(this, new DataChangedEventArgs<double>(previous, current));
 
         protected void OnTimeForwardChanged(bool prev, bool curr)
            => TimeForwardChanged?.Invoke(this, new DataChangedEventArgs<bool>(prev, curr));
@@ -204,7 +215,7 @@ namespace Swoa
         private int GetTimeDirection()
             => TimeForward ? 1 : -1;
 
-        
+
         #endregion Methods
     }
 }

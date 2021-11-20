@@ -45,7 +45,7 @@ namespace Swoa
         {
             get => isWorking;
             set => SetProperty(ref isWorking, value, OnIsWorkingChanged);
-        }    
+        }
 
         #endregion
 
@@ -107,7 +107,7 @@ namespace Swoa
                 var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
                 var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, timeMachine.Date.ToUniversalTime(), timeMachine.Latitude, timeMachine.Longitude);
 
-                if (alt >= 0)
+                if (alt >= 0 && obj.VisualMagnitude <= timeMachine.Magnitude)
                 {
                     swoaDb.AddBlackListId(obj.Id);
                     obj.HorizonCoordinates = new Astronomy.Units.HorizonCoordinates(alt, az);
@@ -124,7 +124,7 @@ namespace Swoa
 
         private void LoadCurrentMap(CancellationToken ct = default)
         {
-            var str_query = $"notblacklisted(id) AND mag <= 3 " +
+            var str_query = $"notblacklisted(id) AND mag <= {timeMachine.Magnitude} " +
                 $"AND (90 - {timeMachine.Latitude} + dec) >= 0 " +
                 $"AND skycontains(ra, dec, '{timeMachine.Date.ToString("dd/MM/yyyy HH:mm:ss")}', {timeMachine.Latitude}, {timeMachine.Longitude})";
             var records = swoaDb.GetAllSwoaDbRecords(str_query, ct);
@@ -138,7 +138,7 @@ namespace Swoa
 
                 var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, timeMachine.Date.ToUniversalTime(), timeMachine.Latitude, timeMachine.Longitude);
 
-                var celestialObj = CelestialObjectFactory.CreateFromSwoaDbRecord(record, new EquatorialCoordinates(record.Dec, ra), new HorizonCoordinates(alt, az));
+                var celestialObj = CelestialObjectFactory.CreateFromSwoaDbRecord(record, new EquatorialCoordinates(record.Dec, ra), new HorizonCoordinates(alt, az), timeMachine.Latitude, timeMachine.Longitude);
 
                 celestialObjects.Add(celestialObj);
 

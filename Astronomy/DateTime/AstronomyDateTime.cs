@@ -11,7 +11,7 @@ namespace Astronomy
     public static class AstronomyDateTime
     {
 
-        public static (TimeSpan risesAt, double risesAtAz, TimeSpan setsAt, double setsAtAz) GetRisingAndSettingTime(double ra, double dec, DateTime dateTime, double latitude, double longitude, double v = 0)
+        public static (TimeSpan risesAt, double risesAtAz, TimeSpan setsAt, double setsAtAz) GetRisingAndSettingTime(double ra, double dec, double latitude, double v = 0)
         {
             double cosH = -((SinD(v) + SinD(latitude) * SinD(dec)) / (CosD(latitude) * CosD(dec)));
 
@@ -22,9 +22,6 @@ namespace Astronomy
 
             double lst_r = RestoreRange(ra - h, 24);
             double lst_s = RestoreRange(ra + h, 24);
-
-            if (lst_r > lst_s)
-                ;
 
             double a = (SinD(ra) + SinD(v) * SinD(latitude)) / (CosD(v) * CosD(latitude));
             double a_r = RestoreRange(Math.Pow(a, -1), 360);

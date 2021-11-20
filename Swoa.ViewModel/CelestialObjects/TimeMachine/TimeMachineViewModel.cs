@@ -23,6 +23,7 @@ namespace Swoa.ViewModel
             timeMachine.IsPlayingChanged += TimeMachinePlayer_IsPlayingChanged;
             timeMachine.PlayerSpeedChanged += TimeMachinePlayer_PlayerSpeedChanged;
             timeMachine.TimeForwardChanged += TimeMachinePlayer_TimeForwardChanged;
+            timeMachine.MagnitudeChanged += TimeMachine_MagnitudeChanged;
 
         }
 
@@ -37,6 +38,12 @@ namespace Swoa.ViewModel
         #endregion
 
         #region Properties
+
+        public double Magnitude
+        {
+            get => timeMachine.Magnitude;
+            set => SetProperty(() => timeMachine.Magnitude == value, () => timeMachine.Magnitude = value);
+        }
 
         public double Latitude
         {
@@ -117,6 +124,11 @@ namespace Swoa.ViewModel
         private void TimeMachinePlayer_TimeForwardChanged(object sender, Utilities.DataChangedEventArgs<bool> e)
         {
             OnPropertyChanged(nameof(TimeForward));
+        }
+
+        private void TimeMachine_MagnitudeChanged(object sender, DataChangedEventArgs<double> e)
+        {
+            OnPropertyChanged(nameof(Magnitude));
         }
 
         #endregion

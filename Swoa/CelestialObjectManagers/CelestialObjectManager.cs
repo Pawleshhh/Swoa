@@ -28,6 +28,7 @@ namespace Swoa
             TimeMachine.LongitudeChanged += TimeMachine_LongitudeChanged;
             TimeMachine.LatitudeChanged += TimeMachine_LatitudeChanged;
             TimeMachine.SetCurrentDateChanged += TimeMachine_SetCurrentDateChanged;
+            TimeMachine.MagnitudeChanged += TimeMachine_MagnitudeChanged;
         }
 
         #endregion
@@ -144,6 +145,11 @@ namespace Swoa
         private void TimeMachine_SetCurrentDateChanged(object? sender, DataChangedEventArgs<DateTime> e)
         {
             OnAnyPropertyChanged(true);
+        }
+
+        private void TimeMachine_MagnitudeChanged(object? sender, DataChangedEventArgs<double> e)
+        {
+            OnAnyPropertyChanged();
         }
 
         #endregion

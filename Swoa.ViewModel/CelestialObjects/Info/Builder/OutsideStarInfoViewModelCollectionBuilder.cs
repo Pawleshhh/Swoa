@@ -16,6 +16,7 @@ namespace Swoa.ViewModel
             OutsideStarObject starObj = (OutsideStarObject)celestialObjectVM.CelestialObject;
 
             var digitCountFormat = "N2";
+            //var timeFormat = "hh\\:mm\\:ss";
 
             var astrCoordsFormat_ra = "HMS";
             var astrCoordsFormat_degr = "DMS";
@@ -31,10 +32,10 @@ namespace Swoa.ViewModel
                 GetInfoViewModel("Visual mag.", starObj.VisualMagnitude, digitCountFormat),
                 GetInfoViewModel("Absolute mag.", starObj.AbsoluteMagnitude, digitCountFormat),
                 new CelestialObjectMeasureInfoViewModel<double>("Distance To Sun", starObj.DistanceToSun, Units.LightYears) { Format = digitCountFormat },
-                GetInfoViewModel("Rises At", starObj.RisesAt),
-                GetInfoViewModel("Sets At", starObj.SetsAt),
+                //GetInfoViewModel("Rises At", starObj.RisesAt, timeFormat),
+                //GetInfoViewModel("Sets At", starObj.SetsAt, timeFormat),
                 GetInfoViewModel("Spectral class", starObj.SpectralClass),
-                GetInfoViewModel("Constellation", starObj.Constellation)
+                //GetInfoViewModel("Constellation", starObj.Constellation)
             };
         }
     }
