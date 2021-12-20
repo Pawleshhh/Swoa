@@ -30,6 +30,8 @@
             <SolidColorBrush x:Key="CelestialMapGridColor" Color="#253b7d" />
             <SolidColorBrush x:Key="CelestialMapCenterColor" Color="Yellow" />-->
 
+            <local:AnglePositionConverter x:Key="angleConv" />
+
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -366,7 +368,23 @@
                     <DataTemplate>
                         <Grid>
 
-                            <local:CelestialObject />
+                            <local:CelestialObject x:Name="celestialObj" />
+                            <TextBlock
+                                Margin="10,0,0,0"
+                                Panel.ZIndex="-10"
+                                Background="{x:Null}"
+                                FontSize="1"
+                                Foreground="Yellow"
+                                RenderTransformOrigin="0.5, 0.5"
+                                Text="{Binding CelestialObject.Name, Mode=OneWay}"
+                                Visibility="{Binding IsLabelVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="{Binding ElementName=celestialMap, Path=DirectionLabelsAngle}" />
+                                        <ScaleTransform ScaleX="6" ScaleY="6" />
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -377,6 +395,46 @@
                     </Style>
                 </ItemsControl.ItemContainerStyle>
             </ItemsControl>
+
+            <!--<ItemsControl
+                x:Name="labelsItemsControl"
+                Grid.RowSpan="12"
+                Grid.ColumnSpan="12"
+                ItemsSource="{Binding CelestialObjects}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock
+                                Margin="5"
+                                Background="{x:Null}"
+                                FontSize="10"
+                                Foreground="Yellow"
+                                RenderTransformOrigin="0.5, 0.5"
+                                Text="{Binding CelestialObject.Name, Mode=OneWay}"
+                                Visibility="{Binding IsLabelVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="{Binding ElementName=celestialMap, Path=DirectionLabelsAngle}" />
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding YPos}" />
+                        <Setter Property="Canvas.Top" Value="{Binding XPos}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>-->
+
         </Grid>
+
+
+
     </Grid>
 </UserControl>

@@ -165,8 +165,6 @@
             Height="{Binding Height, Mode=TwoWay}"
             Fill="{Binding Color, Mode=OneWay}"
             IsHitTestVisible="False"
-            Style="{StaticResource EllipseStyle}">
-
-        </Ellipse>
+            Style="{StaticResource EllipseStyle}" />
     </Grid>
 </UserControl>

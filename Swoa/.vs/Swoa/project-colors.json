@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "63ced02a-b84c-4804-a179-9b28fae8ea57": {
+      "ProjectGuid": "63ced02a-b84c-4804-a179-9b28fae8ea57",
+      "DisplayName": "Swoa.UI",
+      "ColorIndex": 0
+    },
+    "70dd9c3a-36a0-4195-9988-afcf2c56a9cf": {
+      "ProjectGuid": "70dd9c3a-36a0-4195-9988-afcf2c56a9cf",
+      "DisplayName": "Swoa.ViewModel",
+      "ColorIndex": 1
+    },
+    "30a6a675-955e-4315-8c22-87e45d1d06b8": {
+      "ProjectGuid": "30a6a675-955e-4315-8c22-87e45d1d06b8",
+      "DisplayName": "Swoa",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

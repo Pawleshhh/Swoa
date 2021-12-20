@@ -59,6 +59,8 @@ namespace Swoa.ViewModel
 
         public bool IsVisible => CelestialObject.HorizonCoordinates.Altitude >= 0;
 
+        public bool IsLabelVisible => CelestialObject.VisualMagnitude <= 2;
+
         public bool IsSelected
         {
             get => isSelected;
