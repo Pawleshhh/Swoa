@@ -19,6 +19,9 @@
     <Compile Update="Controls\TimeMachine\TimeMachine.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\WeatherConditionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\CelestialObjects\CelestialObject.xaml">
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\TimeMachine\TimeMachine.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\WeatherConditionView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\MainWindow.xaml">

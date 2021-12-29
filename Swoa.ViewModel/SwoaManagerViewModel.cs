@@ -15,6 +15,7 @@ namespace Swoa.ViewModel
             this.swoaManager = swoaManager ?? throw new ArgumentNullException(nameof(swoaManager));
 
             CelestialObjectManagerVM = new CelestialObjectManagerViewModel(swoaManager.CelestialObjectManager, uiThread);
+            WeatherManagerVM = new SwoaWeatherManagerViewModel(swoaManager.WeatherManager);
         }
         #endregion
 
@@ -27,6 +28,7 @@ namespace Swoa.ViewModel
         #region Properties
 
         public CelestialObjectManagerViewModel CelestialObjectManagerVM { get; }
+        public SwoaWeatherManagerViewModel WeatherManagerVM { get; }
 
         #endregion
 

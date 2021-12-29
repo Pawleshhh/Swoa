@@ -152,3 +152,5 @@ N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Windows\MainWindo
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObject.g.cs
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\CelestialObjects\CelestialObject.baml
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Swoa.UI.csproj.CopyComplete
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\WeatherConditionView.g.cs
+N:\Programowanie\Ogólne\Swoa\Swoa.UI\obj\Debug\net5.0-windows\Controls\WeatherConditionView.baml

@@ -17,6 +17,14 @@
     <SolidColorBrush x:Key="AppNumericUpDown.Button.Static.Foreground" Color="White" />
     <SolidColorBrush x:Key="AppNumericUpDown.Button.Static.BorderBrush" />
 
+    <Style x:Key="AppIntUpDownStyle" TargetType="extwpf:IntegerUpDown">
+        <Setter Property="Background" Value="{StaticResource AppNumericUpDown.Static.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource AppForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource AppNumericUpDown.Static.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+
+    </Style>
+
     <Style x:Key="AppNumericUpDownStyle" TargetType="extwpf:DoubleUpDown">
         <Setter Property="Background" Value="{StaticResource AppNumericUpDown.Static.Background}" />
         <Setter Property="Foreground" Value="{StaticResource AppForeground}" />

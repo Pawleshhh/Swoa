@@ -20,4 +20,3 @@ N:\Programowanie\Ogólne\Swoa\Utilities\obj\Debug\net5.0\Utilities.csproj.CoreCo
 N:\Programowanie\Ogólne\Swoa\Utilities\obj\Debug\net5.0\Utilities.dll
 N:\Programowanie\Ogólne\Swoa\Utilities\obj\Debug\net5.0\ref\Utilities.dll
 N:\Programowanie\Ogólne\Swoa\Utilities\obj\Debug\net5.0\Utilities.pdb
-N:\Programowanie\Ogólne\Swoa\Utilities\obj\Debug\net5.0\Utilities.csproj.AssemblyReference.cache

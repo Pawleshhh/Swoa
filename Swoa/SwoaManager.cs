@@ -34,6 +34,7 @@ namespace Swoa
         #region Properties
 
         public CelestialObjectManager CelestialObjectManager { get; }
+        public SwoaWeatherManager WeatherManager { get; } = new SwoaWeatherManager();
 
         #endregion
 
