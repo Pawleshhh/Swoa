@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using static Astronomy.MathHelper;
 using static System.Math;
+using NCelestial;
+using static NCelestial.Types.Coordinates;
 
 namespace Astronomy
 {
@@ -25,28 +27,33 @@ namespace Astronomy
         /// <param name="longitude">Longitude of given location in degrees (east positive).</param>
         public static (double alt, double az) EquatorialToHorizonCoords(double ra, double dec, DateTime date, double latitude, double longitude)
         {
-            double daysFromJ2000 = (date - J2000).TotalDays;
+            var geoCoords = new GeoCoords(latitude, longitude);
+            var hourAngle = CoordsCalculations.RightAscensionToHourAngle(new EquatorialCoords(ra, dec), geoCoords, date.ToUniversalTime());
+            var result = CoordsCalculations.EquatorialToHorizonCoords(hourAngle, dec, geoCoords);
 
-            double lst = (100.46 + 0.985647 * daysFromJ2000 + longitude + 15 * date.TimeOfDay.TotalHours) + 360.0;
+            return (result.Altitude, result.Azimuth);
+            //double daysFromJ2000 = (date - J2000).TotalDays;
 
-            double ha = lst - ra;
-            if (ha < 0)
-                ha += 360.0;
+            //double lst = (100.46 + 0.985647 * daysFromJ2000 + longitude + 15 * date.TimeOfDay.TotalHours) + 360.0;
 
-            double dec_rad = DegreesToRadians(dec),
-                lat_rad = DegreesToRadians(latitude),
-                ha_rad = DegreesToRadians(ha);
+            //double ha = lst - ra;
+            //if (ha < 0)
+            //    ha += 360.0;
 
-            double sin_alt = Sin(dec_rad) * Sin(lat_rad) + Cos(dec_rad) * Cos(lat_rad) * Cos(ha_rad);
-            double alt = Asin(sin_alt);
+            //double dec_rad = DegreesToRadians(dec),
+            //    lat_rad = DegreesToRadians(latitude),
+            //    ha_rad = DegreesToRadians(ha);
 
-            double cos_az = (Sin(dec_rad) - Sin(alt) * Sin(lat_rad)) / (Cos(alt) * Cos(lat_rad));
-            double az = RadiansToDegrees(Acos(cos_az));
+            //double sin_alt = Sin(dec_rad) * Sin(lat_rad) + Cos(dec_rad) * Cos(lat_rad) * Cos(ha_rad);
+            //double alt = Asin(sin_alt);
 
-            if (Sin(ha_rad) >= 0.0)
-                az = 360.0 - az;
+            //double cos_az = (Sin(dec_rad) - Sin(alt) * Sin(lat_rad)) / (Cos(alt) * Cos(lat_rad));
+            //double az = RadiansToDegrees(Acos(cos_az));
 
-            return (RadiansToDegrees(alt), az);
+            //if (Sin(ha_rad) >= 0.0)
+            //    az = 360.0 - az;
+
+            //return (RadiansToDegrees(alt), az);
         }
 
         public static (double, double) HorizonToCartesianCoords(double r, HorizonCoordinates horizonCoords)

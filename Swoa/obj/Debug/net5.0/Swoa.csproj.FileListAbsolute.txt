@@ -40,3 +40,6 @@ N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net5.0\Swoa.dll
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net5.0\ref\Swoa.dll
 N:\Programowanie\Ogólne\Swoa\Swoa\obj\Debug\net5.0\Swoa.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\obj\Debug\net5.0\Swoa.csproj.CopyComplete
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net5.0\NCelestial.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net5.0\NCelestial.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa\bin\Debug\net5.0\NCelestial.xml

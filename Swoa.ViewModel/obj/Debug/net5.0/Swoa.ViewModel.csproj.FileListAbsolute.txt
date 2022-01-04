@@ -44,3 +44,6 @@ N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\ref\Swoa.ViewModel.dll
 N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.ViewModel.csproj.CopyComplete
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.xml

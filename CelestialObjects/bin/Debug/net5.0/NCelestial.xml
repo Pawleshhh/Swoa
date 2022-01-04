@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>NCelestial</name></assembly>
+<members>
+<member name="T:NCelestial.Data.AstronomicalEpoch.Epoch">
+ <summary>
+ Enum of astronomical epochs.
+ </summary>
+</member>
+<member name="M:NCelestial.Data.AstronomicalEpoch.GetDateTimeEpoch(NCelestial.Data.AstronomicalEpoch.Epoch)">
+ <summary>
+ Gets date time for given epoch.
+ </summary>
+ <param name="epoch">Given epoch of which date time is returned.</param>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.rad">
+ <summary>
+ A synonym for radians, the unit of angle.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.deg">
+ <summary>
+ A synonym for degrees, the unit of angle.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.d">
+ <summary>
+ A synonym for day, the unit of time in astronomy.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.earthMass">
+ <summary>
+ The unit of mass in astronomy related to the Earth.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.jupiterMass">
+ <summary>
+ The unit of mass in astronomy related to the Jupiter.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.solarMass">
+ <summary>
+ The unit of mass in astronomy related to the Sun.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.gpc">
+ <summary>
+ A synonym for gigaparsec, the unit of distance/length in astronomy.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.mpc">
+ <summary>
+ A synonym for megaparsec, the unit of distance/length in astronomy.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.pc">
+ <summary>
+ A synonym for parsec, the unit of distance/length in astronomy.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.ly">
+ <summary>
+ A synonym for light years, the unit of distance/length in astronomy.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits.au">
+ <summary>
+ A synonym for astronomical unit, the unit of distance/length in astronomy.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.AstronomicalUnits">
+ <summary>
+ Module which contains astronomical units.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.Coordinates.GalacticCoords">
+ <summary>
+ Galactic coordinates record.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.Coordinates.EclipticCoords">
+ <summary>
+ Ecliptic coordinates record.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.Coordinates.HorizonCoords">
+ <summary>
+ Horizon coordinates record.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.Coordinates.EquatorialCoords">
+ <summary>
+ Equatorial coordinates record.
+ </summary>
+</member>
+<member name="T:NCelestial.Types.Coordinates.GeoCoords">
+ <summary>
+ Geographical coordinates record.
+ </summary>
+</member>
+<member name="M:NCelestial.Time.LstToGst(System.TimeSpan,NCelestial.Types.Coordinates.GeoCoords)">
+ <summary>
+ Converts LST time to GST time.
+ </summary>
+ <param name="lst">LST to be converted.</param>
+ <param name="geoCoords">GeoCoords with longitude needed.</param>
+</member>
+<member name="M:NCelestial.Time.GstToLst(System.TimeSpan,NCelestial.Types.Coordinates.GeoCoords)">
+ <summary>
+ Converts GST time to LST time.
+ </summary>
+ <param name="gst">GST to be converted.</param>
+ <param name="geoCoords">GeoCoords with longitude needed.</param>
+</member>
+<member name="M:NCelestial.Time.GstToUtc(System.DateTime)">
+ <summary>
+ Converts GST date time to UTC.
+ </summary>
+ <param name="dateTimeGst">GST DateTime.</param>
+</member>
+<member name="M:NCelestial.Time.UtcToGst(System.DateTime)">
+ <summary>
+ Converts UTC date time to greenwich sidereal time (GST).
+ </summary>
+ <param name="dateTimeUtc">UTC DateTime.</param>
+</member>
+<member name="M:NCelestial.Time.JulianDateToUtcDateTime(System.Double)">
+ <summary>
+ Converts julian date to utc greenwich date time.
+ </summary>
+ <param name="jd">Julian date to be converted.</param>
+</member>
+<member name="M:NCelestial.Time.JulianDate(System.DateTime)">
+ <summary>
+ Converts greenwich calendar date to Julian date.
+ </summary>
+ <param name="dateTime">UTC DateTime.</param>
+</member>
+<member name="M:NCelestial.CoordsCalculations.HorizonToEquatorialCoords(NCelestial.Types.Coordinates.HorizonCoords,NCelestial.Types.Coordinates.GeoCoords,System.DateTime)">
+ <summary>
+ Converts Horizon coordinates to Equatorial coordinates.
+ </summary>
+ <param name="horCoords">Horizon coordinates to be converted.</param>
+ <param name="geoCoords">Geographical coordinates.</param>
+ <param name="dateTimeUtc">UTC date time.</param>
+</member>
+<member name="M:NCelestial.CoordsCalculations.EquatorialToHorizonCoords(System.Double,System.Double,NCelestial.Types.Coordinates.GeoCoords)">
+ <summary>
+ Converts Equatorial coordinates to Horizon coordinates.
+ </summary>
+ <param name="hourAngle">Hour angle.</param>
+ <param name="dec">Declination.</param>
+ <param name="geoCoords">Geographical coordinates.</param>
+</member>
+<member name="M:NCelestial.CoordsCalculations.HourAngleToRightAscension(System.Double,NCelestial.Types.Coordinates.GeoCoords,System.DateTime)">
+ <summary>
+ Converts Hour angle to Right Ascension.
+ </summary>
+ <param name="hourAngle">Hour angle to be converted.</param>
+ <param name="geoCoords">Geographical coordinates.</param>
+ <param name="dateTimeUtc">UTC date time.</param>
+</member>
+<member name="M:NCelestial.CoordsCalculations.RightAscensionToHourAngle(NCelestial.Types.Coordinates.EquatorialCoords,NCelestial.Types.Coordinates.GeoCoords,System.DateTime)">
+ <summary>
+ Converts EquatorialCoords.RightAscension to Hour angle.
+ </summary>
+ <param name="eqCoords">Equatorial coordinates with right ascension to be converted.</param>
+ <param name="geoCoords">Geographical coordinates.</param>
+ <param name="dateTimeUtc">UTC date time.</param>
+</member>
+</members>
+</doc>

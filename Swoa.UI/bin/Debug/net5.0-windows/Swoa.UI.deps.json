@@ -37,6 +37,55 @@
           }
         }
       },
+      "FSharp.Core/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/FSharp.Core.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.50704"
+          }
+        },
+        "resources": {
+          "lib/netstandard2.0/cs/FSharp.Core.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard2.0/de/FSharp.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard2.0/es/FSharp.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.0/fr/FSharp.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard2.0/it/FSharp.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard2.0/ja/FSharp.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard2.0/ko/FSharp.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard2.0/pl/FSharp.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard2.0/pt-BR/FSharp.Core.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.0/ru/FSharp.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard2.0/tr/FSharp.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard2.0/zh-Hans/FSharp.Core.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
         "dependencies": {
           "Microsoft.Data.Sqlite.Core": "6.0.0-rc.2.21480.5",
@@ -892,6 +941,7 @@
       },
       "Astronomy/1.0.0": {
         "dependencies": {
+          "NCelestial": "1.0.0",
           "Utilities": "1.0.0"
         },
         "runtime": {
@@ -906,6 +956,14 @@
           "CelestialObjects.dll": {}
         }
       },
+      "NCelestial/1.0.0": {
+        "dependencies": {
+          "FSharp.Core": "5.0.0"
+        },
+        "runtime": {
+          "NCelestial.dll": {}
+        }
+      },
       "Swoa/1.0.0": {
         "dependencies": {
           "CelestialObjects": "1.0.0",
@@ -918,6 +976,7 @@
       "Swoa.ViewModel/1.0.0": {
         "dependencies": {
           "CelestialObjects": "1.0.0",
+          "NCelestial": "1.0.0",
           "Swoa": "1.0.0",
           "System.Reactive": "5.0.0"
         },
@@ -928,7 +987,8 @@
       "SwoaDatabaseAPI/1.0.0": {
         "dependencies": {
           "CelestialObjects": "1.0.0",
-          "Microsoft.Data.Sqlite": "6.0.0-rc.2.21480.5"
+          "Microsoft.Data.Sqlite": "6.0.0-rc.2.21480.5",
+          "NCelestial": "1.0.0"
         },
         "runtime": {
           "SwoaDatabaseAPI.dll": {}
@@ -963,6 +1023,13 @@
       "sha512": "sha512-SXE080rnyWMm9Dt0BZzMxh89/o9teuSaqL1N+0O/XM/F/HU8JuZA4XaEKxjBigwZPHHU3/udTa0QMYCHkmH43Q==",
       "path": "fontawesome.wpf/4.7.0.9",
       "hashPath": "fontawesome.wpf.4.7.0.9.nupkg.sha512"
+    },
+    "FSharp.Core/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iHoYXA0VaSQUONGENB1aVafjDDZDZpwu39MtaRCTrmwFW/cTcK0b2yKNVYneFHJMc3ChtsSoM9lNtJ1dYXkHfA==",
+      "path": "fsharp.core/5.0.0",
+      "hashPath": "fsharp.core.5.0.0.nupkg.sha512"
     },
     "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
       "type": "package",
@@ -1565,6 +1632,11 @@
       "sha512": ""
     },
     "CelestialObjects/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NCelestial/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

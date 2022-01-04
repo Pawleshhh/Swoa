@@ -36,3 +36,6 @@ N:\Programowanie\Ogólne\Swoa\SwoaDatabaseAPI\obj\Debug\net5.0\SwoaDatabaseAPI.d
 N:\Programowanie\Ogólne\Swoa\SwoaDatabaseAPI\obj\Debug\net5.0\ref\SwoaDatabaseAPI.dll
 N:\Programowanie\Ogólne\Swoa\SwoaDatabaseAPI\obj\Debug\net5.0\SwoaDatabaseAPI.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\SwoaDatabaseAPI\obj\Debug\net5.0\SwoaDatabaseAPI.csproj.CopyComplete
+C:\Users\mtwp\Personal\Programowanie\Swoa\SwoaDatabaseAPI\bin\Debug\net5.0\NCelestial.dll
+C:\Users\mtwp\Personal\Programowanie\Swoa\SwoaDatabaseAPI\bin\Debug\net5.0\NCelestial.pdb
+C:\Users\mtwp\Personal\Programowanie\Swoa\SwoaDatabaseAPI\bin\Debug\net5.0\NCelestial.xml

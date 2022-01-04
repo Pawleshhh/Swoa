@@ -1,172 +1,257 @@
 {
   "format": 1,
   "restore": {
-    "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj": {}
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj": {}
   },
   "projects": {
-    "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj": {
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj",
+        "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj",
         "projectName": "Astronomy",
-        "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj",
-        "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\obj\\",
+        "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj",
+        "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Visual Studio 2019\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-dependencies/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-technical-writing/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/sws-packages/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/test-phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsrdcloud/_packaging/remote-assistance/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "N:\\Programowanie\\Ogólne\\Swoa\\Utilities\\Utilities.csproj": {
-                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Utilities\\Utilities.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj",
-        "projectName": "CelestialObjects",
-        "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj",
-        "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "F:\\Visual Studio 2019\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {
-              "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj": {
-                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Astronomy\\Astronomy.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj",
-        "projectName": "Swoa.ViewModel",
-        "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj",
-        "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa.ViewModel\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "F:\\Visual Studio 2019\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {
-              "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
-                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj"
               },
-              "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj": {
-                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj"
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj",
+        "projectName": "CelestialObjects",
+        "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj",
+        "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-dependencies/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-technical-writing/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/sws-packages/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/test-phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsrdcloud/_packaging/remote-assistance/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Astronomy\\Astronomy.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj",
+        "projectName": "NCelestial",
+        "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj",
+        "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-dependencies/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-technical-writing/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/sws-packages/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/test-phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsrdcloud/_packaging/remote-assistance/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "FSharp.Core": {
+              "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[5.0.0, )",
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj",
+        "projectName": "Swoa.ViewModel",
+        "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.ViewModel\\Swoa.ViewModel.csproj",
+        "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa.ViewModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-dependencies/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-technical-writing/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/sws-packages/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/test-phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsrdcloud/_packaging/remote-assistance/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
+              },
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj"
+              },
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\Swoa.csproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\Swoa.csproj"
               }
             }
           }
@@ -201,42 +286,49 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj": {
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj",
+        "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj",
         "projectName": "SwoaDatabaseAPI",
-        "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj",
-        "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\obj\\",
+        "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj",
+        "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Visual Studio 2019\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-dependencies/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-technical-writing/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/sws-packages/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/test-phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsrdcloud/_packaging/remote-assistance/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
-                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
+              },
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj"
               }
             }
           }
@@ -271,45 +363,49 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj": {
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\Swoa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj",
+        "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\Swoa.csproj",
         "projectName": "Swoa",
-        "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj",
-        "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\obj\\",
+        "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\Swoa.csproj",
+        "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Swoa\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Visual Studio 2019\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-dependencies/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-technical-writing/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/sws-packages/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/test-phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsrdcloud/_packaging/remote-assistance/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
-                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\CelestialObjects\\CelestialObjects.csproj"
               },
-              "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj": {
-                "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj"
+              "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj": {
+                "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\SwoaDatabaseAPI\\SwoaDatabaseAPI.csproj"
               }
             }
           }
@@ -338,35 +434,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "N:\\Programowanie\\Ogólne\\Swoa\\Utilities\\Utilities.csproj": {
+    "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Utilities\\Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "N:\\Programowanie\\Ogólne\\Swoa\\Utilities\\Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Utilities\\Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "N:\\Programowanie\\Ogólne\\Swoa\\Utilities\\Utilities.csproj",
-        "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "N:\\Programowanie\\Ogólne\\Swoa\\Utilities\\obj\\",
+        "projectPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Utilities\\Utilities.csproj",
+        "packagesPath": "C:\\Users\\mtwp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mtwp\\Personal\\Programowanie\\Swoa\\Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Visual Studio 2019\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mtwp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-dependencies/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/phoenix-technical-writing/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/Infrastructure/_packaging/sws-packages/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsit/_packaging/test-phoenix/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dgsrdcloud/_packaging/remote-assistance/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -404,7 +504,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

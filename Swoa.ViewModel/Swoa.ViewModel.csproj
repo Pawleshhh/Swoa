@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CelestialObjects\CelestialObjects.csproj" />
+    <ProjectReference Include="..\NCelestial\NCelestial\NCelestial.fsproj" />
     <ProjectReference Include="..\Swoa\Swoa.csproj" />
   </ItemGroup>
 
