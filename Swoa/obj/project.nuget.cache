@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "S/WkumJo6p/Qy90dKU+/ljuIBHNkkygzlOIOMtoEZFRSPl9dOIN3v36mO62rweFTKTMQ/dBAoATcN9kq9ZaR5g==",
-  "success": false,
+  "dgSpecHash": "UB4FUgWMEhmc4Im4KYsf+bWYZfKbiEwzJKa3RCosrjJpiwJf/TMstr8kP/Vq3UiglP6B8RAeLy28JzoJcbD+JQ==",
+  "success": true,
   "projectFilePath": "N:\\Programowanie\\Ogólne\\Swoa\\Swoa\\Swoa.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\1\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.data.sqlite\\6.0.0-rc.2.21480.5\\microsoft.data.sqlite.6.0.0-rc.2.21480.5.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0-rc.2.21480.5\\microsoft.data.sqlite.core.6.0.0-rc.2.21480.5.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
@@ -88,15 +89,5 @@
     "C:\\Users\\1\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'N:\\Programowanie\\Ogólne\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "N:\\Programowanie\\Ogólne\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }

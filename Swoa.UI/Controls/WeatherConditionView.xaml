@@ -93,18 +93,31 @@
             Text="Result" />
 
         <t:DoubleUpDown Style="{StaticResource numericUpDownWeatherStyle}" Value="{Binding ObservatoryHeight, Mode=TwoWay}" />
-        <t:DoubleUpDown
+
+        <ComboBox
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding CloudinessLevels, Mode=OneWay}"
+            SelectedItem="{Binding CloudinessLevelSelected, Mode=OneWayToSource}" />
+        <!--<t:DoubleUpDown
             Grid.Row="1"
             Maximum="5"
             Minimum="1"
             Style="{StaticResource numericUpDownWeatherStyle}"
-            Value="{Binding Cloudiness, Mode=TwoWay}" />
-        <t:DoubleUpDown
+            Value="{Binding Cloudiness, Mode=TwoWay}" />-->
+        <ComboBox
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding ArtificialLightingLevels, Mode=OneWay}"
+            SelectedItem="{Binding ArtificialLightingSelected, Mode=OneWayToSource}" />
+        <!--<t:DoubleUpDown
             Grid.Row="2"
             Maximum="5"
             Minimum="1"
             Style="{StaticResource numericUpDownWeatherStyle}"
-            Value="{Binding ArtificialLighting, Mode=TwoWay}" />
+            Value="{Binding ArtificialLighting, Mode=TwoWay}" />-->
         <CheckBox
             Grid.Row="3"
             Grid.Column="1"

@@ -2,6 +2,56 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "FSharp.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/FSharp.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FSharp.Core.dll": {}
+        },
+        "resource": {
+          "lib/netstandard2.0/cs/FSharp.Core.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard2.0/de/FSharp.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard2.0/es/FSharp.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.0/fr/FSharp.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard2.0/it/FSharp.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard2.0/ja/FSharp.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard2.0/ko/FSharp.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard2.0/pl/FSharp.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard2.0/pt-BR/FSharp.Core.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.0/ru/FSharp.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard2.0/tr/FSharp.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard2.0/zh-Hans/FSharp.Core.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
         "type": "package",
         "dependencies": {
@@ -1396,7 +1446,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "N:\\Programowanie\\Ogólne\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj": "1.0.0",
+          "NCelestial": "1.0.0",
           "Utilities": "1.0.0"
         },
         "compile": {
@@ -1419,13 +1469,26 @@
           "bin/placeholder/CelestialObjects.dll": {}
         }
       },
+      "NCelestial/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "FSharp.Core": "5.0.0-beta"
+        },
+        "compile": {
+          "bin/placeholder/NCelestial.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NCelestial.dll": {}
+        }
+      },
       "SwoaDatabaseAPI/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "CelestialObjects": "1.0.0",
           "Microsoft.Data.Sqlite": "6.0.0-rc.2.21480.5",
-          "N:\\Programowanie\\Ogólne\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj": "1.0.0"
+          "NCelestial": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SwoaDatabaseAPI.dll": {}
@@ -1450,6 +1513,33 @@
     }
   },
   "libraries": {
+    "FSharp.Core/5.0.0": {
+      "sha512": "iHoYXA0VaSQUONGENB1aVafjDDZDZpwu39MtaRCTrmwFW/cTcK0b2yKNVYneFHJMc3ChtsSoM9lNtJ1dYXkHfA==",
+      "type": "package",
+      "path": "fsharp.core/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "fsharp.core.5.0.0.nupkg.sha512",
+        "fsharp.core.nuspec",
+        "lib/netstandard2.0/FSharp.Core.dll",
+        "lib/netstandard2.0/FSharp.Core.xml",
+        "lib/netstandard2.0/cs/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/de/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/es/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/fr/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/it/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/ja/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/ko/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/pl/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/pt-BR/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/ru/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/tr/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/zh-Hans/FSharp.Core.resources.dll",
+        "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll"
+      ]
+    },
     "Microsoft.Data.Sqlite/6.0.0-rc.2.21480.5": {
       "sha512": "KFv2u/ipZ4+TAVEZF46ZE0htb0Ge7A8jvsRiNnIAXSoOyVvXCrpp/eI/IWZavNl5arVM2BmrIX6H7dCllIRoMQ==",
       "type": "package",
@@ -5035,6 +5125,11 @@
       "path": "../CelestialObjects/CelestialObjects.csproj",
       "msbuildProject": "../CelestialObjects/CelestialObjects.csproj"
     },
+    "NCelestial/1.0.0": {
+      "type": "project",
+      "path": "../NCelestial/NCelestial/NCelestial.fsproj",
+      "msbuildProject": "../NCelestial/NCelestial/NCelestial.fsproj"
+    },
     "SwoaDatabaseAPI/1.0.0": {
       "type": "project",
       "path": "../SwoaDatabaseAPI/SwoaDatabaseAPI.csproj",
@@ -5124,16 +5219,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'N:\\Programowanie\\Ogólne\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "N:\\Programowanie\\Ogólne\\Swoa\\NCelestial\\NCelestial\\NCelestial.fsproj",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  }
 }

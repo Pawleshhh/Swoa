@@ -31,3 +31,6 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\obj\Debug\net5.0\Astronomy.c
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\bin\Debug\net5.0\NCelestial.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\bin\Debug\net5.0\NCelestial.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\Astronomy\bin\Debug\net5.0\NCelestial.xml
+N:\Programowanie\Ogólne\Swoa\Astronomy\bin\Debug\net5.0\NCelestial.dll
+N:\Programowanie\Ogólne\Swoa\Astronomy\bin\Debug\net5.0\NCelestial.pdb
+N:\Programowanie\Ogólne\Swoa\Astronomy\bin\Debug\net5.0\NCelestial.xml

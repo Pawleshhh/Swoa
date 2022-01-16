@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -27,6 +28,25 @@ namespace Swoa.ViewModel
         #endregion
 
         #region Properties
+
+        public ObservableCollection<string> CloudinessLevels { get; } = new ObservableCollection<string>(SwoaWeatherManager.CloudinessLevels);
+        public ObservableCollection<string> ArtificialLightingLevels { get; } = new ObservableCollection<string>(SwoaWeatherManager.ArtificialLightingLevels);
+
+        public string CloudinessLevelSelected
+        {
+            set
+            {
+                Cloudiness = CloudinessLevels.IndexOf(value) + 1;
+            }
+        }
+
+        public string ArtificialLightingSelected
+        {
+            set
+            {
+                ArtificialLighting = ArtificialLightingLevels.IndexOf(value) + 1;
+            }
+        }
 
         public double ObservatoryHeight
         {

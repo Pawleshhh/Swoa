@@ -98,14 +98,18 @@ namespace Swoa
 
         private void Filter(CancellationToken ct = default)
         {
-            //keptObjects.Clear();
             swoaDb.ClearBlackList();
             for (int i = 0; i < ((ICollection<CelestialObject>)celestialObjects).Count; i++)
             {
                 var obj = celestialObjects.ElementAt(i);
 
                 var (ra, dec) = (obj.EquatorialCoordinates.RightAscension, obj.EquatorialCoordinates.Declination);
-                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, dec, timeMachine.Date.ToUniversalTime(), timeMachine.Latitude, timeMachine.Longitude);
+                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(
+                    ra,
+                    dec,
+                    timeMachine.Date.ToUniversalTime(),
+                    timeMachine.Latitude,
+                    timeMachine.Longitude);
 
                 if (alt >= 0 && obj.VisualMagnitude <= timeMachine.Magnitude)
                 {
@@ -131,14 +135,13 @@ namespace Swoa
 
             foreach (var record in records)
             {
-                //if (keptObjects.Contains(record.Id))
-                //    continue;
-
                 var ra = record.Ra / 24.0 * 360.0;
 
-                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, timeMachine.Date.ToUniversalTime(), timeMachine.Latitude, timeMachine.Longitude);
+                var (alt, az) = CoordinatesConverter.EquatorialToHorizonCoords(ra, record.Dec, timeMachine.Date.ToUniversalTime(), timeMachine.Latitude,
+                    timeMachine.Longitude);
 
-                var celestialObj = CelestialObjectFactory.CreateFromSwoaDbRecord(record, new EquatorialCoordinates(record.Dec, ra), new HorizonCoordinates(alt, az), timeMachine.Latitude, timeMachine.Longitude);
+                var celestialObj = CelestialObjectFactory.CreateFromSwoaDbRecord(record, new EquatorialCoordinates(record.Dec, ra),
+                    new HorizonCoordinates(alt, az), timeMachine.Latitude, timeMachine.Longitude);
 
                 celestialObjects.Add(celestialObj);
 

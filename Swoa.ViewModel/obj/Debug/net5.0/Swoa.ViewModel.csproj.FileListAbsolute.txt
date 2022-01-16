@@ -47,3 +47,6 @@ C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\obj\Debug\net5.0\Swoa.V
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.dll
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.pdb
 C:\Users\mtwp\Personal\Programowanie\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.xml
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.dll
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.pdb
+N:\Programowanie\Ogólne\Swoa\Swoa.ViewModel\bin\Debug\net5.0\NCelestial.xml

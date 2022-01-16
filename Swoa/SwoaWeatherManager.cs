@@ -11,6 +11,16 @@ namespace Swoa
 
         #region Properties
 
+        public static IReadOnlyList<string> CloudinessLevels { get; } = new List<string>()
+        {
+            "Fully cloudy", "Mostly cloudy", "Average cloudy", "Slightly cloudy", "Cloudlessly"
+        };
+
+        public static IReadOnlyList<string> ArtificialLightingLevels { get; } = new List<string>()
+        {
+            "City center lighting", "Small city lighting", "Suburbs lighting", "Village lighting", "No lighting"
+        };
+
         public double ObservatoryHeight { get; set; }
         public int Cloudiness { get; set; } = 1;
         public int ArtificialLighting { get; set; } = 1;
@@ -60,7 +70,7 @@ namespace Swoa
 
         private SwoaWeatherManager CheckRest(int value)
         {
-            WeatherCondition += (3 - value);
+            WeatherCondition += (value - 3);
 
             return this;
         }
